@@ -140,33 +140,84 @@ RegisterAgent → StartAgent → [running: heartbeat monitoring] → StopAgent
 
 ---
 
-## C. Daemon Roadmap (Beyond Hackathon)
+## C. Daemon Roadmap
 
-> **This section is for Lance to fill in.** It ensures the hackathon additions align with the product direction.
+### By Feb 21 (Hackathon Deadline)
 
-Questions for Lance:
+**Build priority — agent management MVP only.** No daemon refactors, no hub protocol changes. Ship the minimum surface area that unblocks Festival 2.
 
-1. **What's planned for the daemon by Feb 21 (hackathon deadline)?**
-   - Which of the above items will you build vs. delegate to an agent?
-   - Are there any daemon changes already in progress that overlap?
+| Item | Owner | Status |
+|------|-------|--------|
+| Agent registry (table + gRPC CRUD) | Agent (Festival 0, Phase 1) | Not started |
+| Process management (spawn/stop/restart) | Agent (Festival 0, Phase 2) | Not started |
+| Event enrichment (agent_id on events) | Agent (Festival 0, Phase 3) | Not started |
+| Agent state query API | Agent (Festival 0, Phase 4) | Not started |
+| Agent config injection (env vars) | Agent (Festival 0, Phase 5) | Not started |
 
-2. **Agent management long-term vision**:
-   - Will agents always be child processes, or will the daemon support remote agents?
-   - Is there a planned agent discovery/registration protocol beyond local gRPC?
-   - Will agents have declarative configs (YAML) or only programmatic registration?
+**What I will NOT touch before the deadline:**
+- Hub protocol — existing WebSocket sync is sufficient; agent events flow through the same pipeline
+- Daemon startup flow — agents register after daemon is already running, no boot-order changes
+- Sandbox redesign — agents use the existing sandbox boundary (campaign root) for now
 
-3. **Hub integration**:
-   - Should agent status be synced to hub in real-time?
-   - Will the hub dashboard need agent management controls (start/stop)?
+**What stays out of scope for the hackathon:**
+- Remote agents, agent discovery protocols, distributed registration
+- Agent-to-agent RPC (agents communicate via HCS, not daemon)
+- Hot reload of agent configs (stop + update + start is fine)
 
-4. **Security model for agents**:
-   - Should each agent get its own sandbox boundary?
-   - Should agents have separate command allowlists?
-   - How are agent-to-agent communications secured locally?
+### Post-Hackathon: Agent Management V2
 
-5. **Priority order for implementation**:
-   - What's the minimum viable agent management for the demo?
-   - Can we start with just spawn/stop and add health monitoring later?
+**Child processes → pluggable runtimes.** The hackathon proves the pattern with OS child processes. Post-hackathon, the daemon gains a runtime interface:
+
+```go
+type AgentRuntime interface {
+    Start(ctx context.Context, def AgentDefinition) (AgentHandle, error)
+    Stop(ctx context.Context, handle AgentHandle, graceful bool) error
+    Health(ctx context.Context, handle AgentHandle) (HealthStatus, error)
+}
+```
+
+Built-in runtimes:
+- `ProcessRuntime` — what we build for the hackathon (child process, local)
+- `ContainerRuntime` — Docker/Podman agent isolation (post-hackathon)
+- `RemoteRuntime` — agent running on another machine, reporting back via hub (later)
+
+This means the hackathon's `ProcessRuntime` becomes one implementation behind a stable interface — no throwaway code.
+
+**Declarative agent configs (YAML).** Post-hackathon, agents are defined in campaign-level YAML:
+
+```yaml
+# .campaign/agents.yaml
+agents:
+  - name: coordinator
+    runtime: process
+    command: ["go", "run", "./cmd/coordinator"]
+    working_dir: projects/agent-coordinator
+    restart_policy:
+      max_restarts: 3
+      backoff: 5s
+    env:
+      HEDERA_ACCOUNT_ID: "0.0.xxx"
+      LLM_PROVIDER: "claude"
+```
+
+For the hackathon, agents are registered programmatically via gRPC. The YAML layer wraps the same gRPC calls — it's additive, not a rewrite.
+
+### Post-Hackathon: Hub Integration
+
+**Agent status synced to hub in real-time.** The hub already receives all daemon events. Adding agent lifecycle events (`AGENT_REGISTERED`, `AGENT_STARTED`, `AGENT_STOPPED`, `AGENT_HEALTH_CHANGED`) to the existing event pipeline requires no hub protocol changes — just new event types.
+
+**Hub dashboard gets read-only agent views first.** Start/stop controls come later when the hub has an authenticated command channel back to the daemon. For the hackathon, the dashboard observes only.
+
+### Post-Hackathon: Agent Security Model
+
+**Per-agent sandbox boundaries.** Today all agents share the campaign-root sandbox. Post-hackathon:
+- Each agent gets its own boundary (its `working_dir` subtree)
+- Cross-agent file access requires explicit grants in the agent config
+- Agent-specific command allowlists extend the default set
+
+**Agent-to-agent communication stays on-chain.** Agents don't talk to each other through the daemon. HCS is the communication backbone — the daemon is an observer, not a router. This is a design choice, not a limitation: on-chain communication creates the audit trail that makes the project valuable.
+
+**Agent credential isolation.** Each agent loads its own `.env` from its working directory. The daemon injects non-secret config (account IDs, endpoint URLs) via environment variables. Private keys never pass through the daemon.
 
 ---
 
