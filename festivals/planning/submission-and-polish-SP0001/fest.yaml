@@ -1,0 +1,54 @@
+version: "1.0"
+metadata:
+    id: SP0001
+    uuid: 38660428-8e21-4574-aee5-fbcec8983472
+    name: submission-and-polish
+    goal: Get every bounty submission polished, tested end-to-end, and deployed. Full economy cycle verification, per-track documentation, demo video, and deployment for all 5+ bounty submissions.
+    festival_type: standard
+    created_at: 2026-02-18T20:41:01.436947Z
+    initial_size_bytes: 36367
+    status_history:
+        - status: planning
+          timestamp: 2026-02-18T20:41:01.436947Z
+          path: /Users/lancerogers/Dev/Crypto/ETHDENVER/ethdenver2026/festivals/planning/submission-and-polish-SP0001
+          notes: Festival created
+type_config:
+    auto_phases:
+        - INGEST
+        - PLAN
+    pending_phases:
+        - name: IMPLEMENT
+          type: implementation
+        - name: POLISH
+          type: planning
+quality_gates:
+    enabled: true
+    auto_append: true
+    implementation:
+        - id: testing
+          template: gates/implementation/QUALITY_GATE_TESTING
+          name: Testing and Verification
+          enabled: true
+        - id: review
+          template: gates/implementation/QUALITY_GATE_REVIEW
+          name: Code Review
+          enabled: true
+        - id: iterate
+          template: gates/implementation/QUALITY_GATE_ITERATE
+          name: Review Results and Iterate
+          enabled: true
+        - id: fest-commit
+          template: gates/implementation/QUALITY_GATE_FEST_COMMIT
+          name: Fest Commit Changes
+          enabled: true
+excluded_patterns:
+    - '*_planning'
+    - '*_research'
+    - '*_requirements'
+    - '*_docs'
+templates:
+    task_default: tasks/SIMPLE
+    prefer_simple: true
+tracking:
+    enabled: true
+    checksum_file: .festival-checksums.json
