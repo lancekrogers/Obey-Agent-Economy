@@ -24,6 +24,7 @@ CAMPAIGN_ROOT="$(camp run pwd 2>/dev/null || pwd)"
 DRY_RUN="${1:-}"
 
 GITHUB_ORG="lancekrogers"
+REPO_SUFFIX="-ethden-2026"
 
 info()  { printf "==> %s\n" "$*"; }
 skip()  { printf "  ⊘ %s (already exists, skipping)\n" "$*"; }
@@ -41,11 +42,13 @@ project_exists() {
 }
 
 # Create a private GitHub repo and add it to the campaign as a submodule.
+# GitHub repo gets REPO_SUFFIX; local dir stays as <name>.
 # Usage: create_project <name>
 create_project() {
     local name="$1"
-    run "gh repo create $GITHUB_ORG/$name --private --add-readme"
-    run "camp project add git@github.com:$GITHUB_ORG/$name.git --no-commit"
+    local repo_name="${name}${REPO_SUFFIX}"
+    run "gh repo create $GITHUB_ORG/$repo_name --private --add-readme"
+    run "camp project add git@github.com:$GITHUB_ORG/$repo_name.git --name $name --no-commit"
 }
 
 # Commit scaffold inside a project and push to GitHub.
@@ -94,7 +97,7 @@ scaffold_agent_coordinator() {
 
     # go.mod
     cat > "$dir/go.mod" << GOMOD
-module github.com/$GITHUB_ORG/$name
+module github.com/$GITHUB_ORG/${name}${REPO_SUFFIX}
 
 go 1.23
 GOMOD
@@ -136,7 +139,7 @@ scaffold_agent_inference() {
     touch "$dir/internal/config/config.go"
 
     cat > "$dir/go.mod" << GOMOD
-module github.com/$GITHUB_ORG/$name
+module github.com/$GITHUB_ORG/${name}${REPO_SUFFIX}
 
 go 1.23
 GOMOD
@@ -180,7 +183,7 @@ scaffold_agent_defi() {
     touch "$dir/internal/config/config.go"
 
     cat > "$dir/go.mod" << GOMOD
-module github.com/$GITHUB_ORG/$name
+module github.com/$GITHUB_ORG/${name}${REPO_SUFFIX}
 
 go 1.23
 GOMOD
