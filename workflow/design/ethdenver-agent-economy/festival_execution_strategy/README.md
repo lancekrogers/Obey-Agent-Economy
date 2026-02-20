@@ -2,6 +2,22 @@
 
 Dependency analysis and execution order for the 5 ETHDenver 2026 campaign festivals.
 
+## Current Status
+
+> **Last updated**: 2026-02-20
+
+| Wave | Festival | Status |
+|------|----------|--------|
+| 1 | hedera-foundation (HF0001) | COMPLETED |
+| 1 | hiero-plugin (HP0001) | COMPLETED |
+| 2 | chain-agents (CA0001) | ACTIVE |
+| 2 | dashboard (DA0001) | ACTIVE |
+| 3 | submission-and-polish (SP0001) | PLANNING (blocked by Wave 2) |
+
+**Wave 1**: Complete. Both foundation festivals finished and archived to dungeon.
+**Wave 2**: In progress. CA0001 and DA0001 running in parallel — no cross-dependency, different projects.
+**Wave 3**: Blocked until CA0001 + DA0001 + HP0001 all complete.
+
 ## Festival Inventory
 
 | Festival              | ID     | Project(s)                                     | Sequences | Tasks   |
@@ -189,16 +205,16 @@ gantt
     title Festival Execution Strategy
     dateFormat YYYY-MM-DD
 
-    section Wave 1
-    hedera-foundation HF0001    :hf, 2026-02-18, 3d
-    hiero-plugin HP0001         :hp, 2026-02-18, 2d
+    section Wave 1 (COMPLETED)
+    hedera-foundation HF0001    :done, hf, 2026-02-18, 2026-02-20
+    hiero-plugin HP0001         :done, hp, 2026-02-18, 2026-02-20
 
-    section Wave 2
-    chain-agents CA0001         :ca, after hf, 2d
-    dashboard DA0001            :da, after hf, 2d
+    section Wave 2 (ACTIVE)
+    chain-agents CA0001         :active, ca, 2026-02-20, 2d
+    dashboard DA0001            :active, da, 2026-02-20, 2d
 
-    section Wave 3
-    submission-and-polish SP0001 :sp, after ca da hp, 1d
+    section Wave 3 (BLOCKED)
+    submission-and-polish SP0001 :sp, after ca da, 1d
 ```
 
 ## Parallel Execution Within Festivals
