@@ -2,10 +2,12 @@
 fest_type: festival
 fest_id: DA0001
 fest_name: dashboard
-fest_status: planning
+fest_status: active
 fest_created: 2026-02-18T13:40:59.812256-07:00
+fest_updated: 2026-02-20T10:20:24.924729-07:00
 fest_tracking: true
 ---
+
 
 # Dashboard — Observer Dashboard
 

@@ -1,26 +1,24 @@
 version: "1.0"
 metadata:
-    id: SP0001
-    uuid: 38660428-8e21-4574-aee5-fbcec8983472
-    name: submission-and-polish
-    goal: Get every bounty submission polished, tested end-to-end, and deployed. Full economy cycle verification, per-track documentation, demo video, and deployment for all 5+ bounty submissions.
-    festival_type: standard
-    created_at: 2026-02-18T20:41:01.436947Z
-    initial_size_bytes: 36367
+    id: CA0001
+    uuid: 51cff628-1992-4bc4-b0b0-121ec2613b0a
+    name: chain-agents
+    goal: Build the 0G inference agent and Base DeFi agent so all three agents form a working autonomous economy — coordinator assigns tasks, inference executes AI on decentralized compute, DeFi trades autonomously, both report via HCS.
+    festival_type: implementation
+    created_at: 2026-02-18T20:40:55.706889Z
+    initial_size_bytes: 21968
     status_history:
         - status: planning
-          timestamp: 2026-02-18T20:41:01.436947Z
-          path: /Users/lancerogers/Dev/Crypto/ETHDENVER/ethdenver2026/festivals/planning/submission-and-polish-SP0001
+          timestamp: 2026-02-18T20:40:55.706889Z
+          path: /Users/lancerogers/Dev/Crypto/ETHDENVER/ethdenver2026/festivals/planning/chain-agents-CA0001
           notes: Festival created
+        - status: active
+          timestamp: 2026-02-20T10:20:41.303893-07:00
+          path: /Users/lancerogers/Dev/Crypto/ETHDENVER/ethdenver2026/festivals/active/chain-agents-CA0001
 type_config:
     auto_phases:
-        - INGEST
-        - PLAN
-    pending_phases:
-        - name: IMPLEMENT
-          type: implementation
-        - name: POLISH
-          type: planning
+        - IMPLEMENT
+    skip_ingestion: true
 quality_gates:
     enabled: true
     auto_append: true

@@ -12,6 +12,9 @@ metadata:
           timestamp: 2026-02-18T20:40:53.48762Z
           path: /Users/lancerogers/Dev/Crypto/ETHDENVER/ethdenver2026/festivals/planning/hedera-foundation-HF0001
           notes: Festival created
+        - status: active
+          timestamp: 2026-02-20T10:20:06.52564-07:00
+          path: /Users/lancerogers/Dev/Crypto/ETHDENVER/ethdenver2026/festivals/active/hedera-foundation-HF0001
 type_config:
     auto_phases:
         - IMPLEMENT
