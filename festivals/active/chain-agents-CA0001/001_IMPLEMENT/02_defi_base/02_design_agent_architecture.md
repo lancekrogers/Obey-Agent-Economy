@@ -190,6 +190,7 @@ The trading framework consists of three layers:
 3. **P&L Tracker**: Records every trade, tracks costs (gas, slippage, fees) and revenue (trade profits). Produces P&L reports for HCS publishing. The self-sustaining requirement means this tracker must prove revenue > costs.
 
 Design a simple initial strategy suitable for hackathon demo:
+
 - Track a single trading pair on a Base DEX (e.g., WETH/USDC on Uniswap v3 on Base)
 - Use a simple mean-reversion or momentum strategy
 - Focus on demonstrable execution rather than sophisticated alpha generation

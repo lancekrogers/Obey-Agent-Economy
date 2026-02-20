@@ -73,6 +73,7 @@ export function formatTimeAgo(isoTimestamp: string): string {
 This can live in the AgentActivity file or as a separate component.
 
 **Props:**
+
 - `lastHeartbeat: string` -- ISO timestamp of last heartbeat
 - `className?: string`
 
@@ -81,19 +82,23 @@ This can live in the AgentActivity file or as a separate component.
 1. Use `useState` and `useEffect` with a 1-second `setInterval` to update the "time ago" text and staleness color every second.
 
 2. **Staleness calculation:**
+
    ```typescript
    const secondsAgo = Math.floor((Date.now() - new Date(lastHeartbeat).getTime()) / 1000);
    const color = secondsAgo < 10 ? 'bg-green-500' : secondsAgo < 30 ? 'bg-yellow-500' : 'bg-red-500';
    ```
 
 3. **Pulse animation:** Use a key prop that changes on each heartbeat timestamp change to re-trigger the animation:
+
    ```typescript
    <span
      key={lastHeartbeat} // Re-triggers animation when heartbeat changes
      className={`inline-block w-2 h-2 rounded-full ${color} animate-ping`}
    />
    ```
+
    Place a static dot behind it for the persistent indicator:
+
    ```typescript
    <span className="relative flex h-2 w-2">
      <span key={lastHeartbeat} className={`animate-ping absolute inline-flex h-full w-full rounded-full ${color} opacity-75`} />
@@ -108,6 +113,7 @@ This can live in the AgentActivity file or as a separate component.
 ### Step 3: Implement AgentCard sub-component
 
 **Props:**
+
 - `agent: AgentInfo`
 
 **Implementation:**
@@ -153,11 +159,13 @@ This can live in the AgentActivity file or as a separate component.
 **Panel container:** `bg-gray-900 rounded-lg border border-gray-800 p-4`
 
 **Layout:**
+
 1. **Panel header:** "Agent Activity" title with connection indicator (same pattern as HCSFeed)
 2. **Cards grid:** `grid grid-cols-3 gap-4 mt-4` for the three agent cards
    - On smaller widths, fall back to `grid-cols-1` if needed (but dashboard is primarily large-screen)
 
 **Agent ordering:** Always display agents in this order:
+
 1. Coordinator
 2. Inference
 3. DeFi
@@ -165,6 +173,7 @@ This can live in the AgentActivity file or as a separate component.
 If the `agents` array does not contain all three, render a placeholder card for missing agents with "Waiting for agent..." text.
 
 **Sorting logic:**
+
 ```typescript
 const agentOrder = ['coordinator', 'inference', 'defi'];
 const sortedAgents = agentOrder.map(name =>

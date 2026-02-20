@@ -73,6 +73,7 @@ Campaign: other-project
 ```
 
 Campaign scoping is enforced at multiple levels:
+
 1. **Working directory** — session process starts in campaign root
 2. **Command sandbox** — all commands validated against campaign boundary
 3. **Path resolution** — symlinks resolved before boundary check
@@ -229,6 +230,7 @@ FOREIGN KEY (campaign_id) REFERENCES campaigns(id)
 ### Activity Events (agent_activities) — No Changes
 
 The existing `agent_activities` table already supports:
+
 - `AGENT_THINKING` — model is reasoning
 - `AGENT_TOOL_CALL` — model invoked a tool
 - `AGENT_TOOL_RESULT` — tool returned a result

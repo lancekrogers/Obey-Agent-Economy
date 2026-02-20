@@ -38,6 +38,7 @@ Unless stated otherwise, every submission requires:
 **What they want:** An agent-native application built for a society of OpenClaw agents where commerce, coordination, or value exchange happens autonomously. The app must prioritize agents as primary users, not humans using agents as tools.
 
 **Requirements:**
+
 - Build on OpenClaw runtime (Node.js agent framework, 60k+ GitHub stars)
 - Demonstrate autonomous or semi-autonomous agent behavior
 - Create clear value in multi-agent environments
@@ -48,6 +49,7 @@ Unless stated otherwise, every submission requires:
 **Bonus:** Use UCP (Universal Commerce Protocol) to standardize agent-to-agent commerce.
 
 **Key tech:**
+
 - OpenClaw: local agent runtime bridging LLMs to 50+ integrations
 - Hedera Agent Kit JS (`npm install hedera-agent-kit`) — LangChain, Vercel AI, ElizaOS, MCP Server integrations
 - UCP: Google's open standard for agentic commerce (REST/JSON-RPC, A2A, MCP support)
@@ -59,12 +61,14 @@ Unless stated otherwise, every submission requires:
 **What they want:** Applications that use Hedera's protocol-level smart contract automation (HIP-1215). Smart contracts scheduling their own future executions — on-chain cron jobs with no off-chain keepers.
 
 **Requirements:**
+
 - Working testnet app creating and executing scheduled transactions
 - Scheduling must initiate FROM smart contracts (not external triggers)
 - Focus on DeFi automation or business finance flows
 - Include edge case handling and observability
 
 **Key tech:**
+
 - HIP-1215: Generalized Scheduled Contract Calls — contracts schedule any contract call via Hedera Schedule Service
 - HIP-755: Schedule Service System Contract — EVM access to native scheduling
 - `hasScheduleCapacity(uint256 expiry, uint256 gasLimit)` view function for finding available execution windows
@@ -77,6 +81,7 @@ Unless stated otherwise, every submission requires:
 **What they want:** Applications built entirely with Hedera's native SDKs — zero Solidity, zero EVM contracts.
 
 **Requirements:**
+
 - Must use at least TWO native Hedera capabilities (e.g., HTS + HCS)
 - Zero Solidity or EVM contracts allowed
 - Working testnet app
@@ -85,6 +90,7 @@ Unless stated otherwise, every submission requires:
 **Available SDKs:** JavaScript/TypeScript (`@hashgraph/sdk`), Java, Go, Python (`hedera-sdk-py`), Rust, C
 
 **Native services (no Solidity needed):**
+
 - Hedera Token Service (HTS): create/manage tokens at protocol level
 - Hedera Consensus Service (HCS): timestamped, ordered message logs
 - Hedera File Service: decentralized file storage
@@ -98,6 +104,7 @@ Unless stated otherwise, every submission requires:
 **What they want:** A plugin for the Hiero CLI (formerly Hedera CLI, now under Linux Foundation Decentralized Trust).
 
 **Requirements:**
+
 - Submit a PR to the [hiero-cli repo](https://github.com/hiero-ledger/hiero-cli)
 - Follow existing Node.js plugin architecture (see `PLUGIN_ARCHITECTURE_GUIDE.md`)
 - Must be useful beyond the hackathon
@@ -129,6 +136,7 @@ Unless stated otherwise, every submission requires:
 **What they want:** A functional DeFi product (swap, lend, borrow, stake, LP, vault) where AI materially enhances the workflow — not merely a conversational chatbot.
 
 **Requirements:**
+
 - AI must deliver structured decisions and automation while maintaining user control
 - Safety measures: confirmations, limits, explainability, simulation
 - End-to-end demonstration scenario
@@ -141,6 +149,7 @@ Unless stated otherwise, every submission requires:
 **What they want:** Projects that leverage 0G Compute for decentralized AI inference or fine-tuning.
 
 **Key tech:**
+
 - 0G Compute: decentralized GPU marketplace with broker-based provider matching
 - Fine-Tuning CLI: full lifecycle — upload dataset to 0G Storage, submit training job, monitor, download model
 - Provider runs in Confidential Virtual Machine (CVM) with TEE attestation
@@ -154,6 +163,7 @@ Unless stated otherwise, every submission requires:
 **What they want:** Projects using ERC-7857 Intelligent NFTs — AI agents tokenized as NFTs with encrypted, dynamic metadata.
 
 **Key tech:**
+
 - ERC-7857: 0G's custom NFT standard for AI agents
 - iNFT metadata = agent's "intelligence" (model weights, memory, behavior)
 - Encrypted metadata transferred via TEE oracle during sales
@@ -193,6 +203,7 @@ GitHub: [github.com/0gfoundation](https://github.com/0gfoundation) (99 repos)
 **What they want:** Fully autonomous AI agents that pay for their own compute on Base mainnet.
 
 **Requirements:**
+
 - Self-sustaining: agent earns revenue exceeding its operational costs
 - Fully autonomous on Base mainnet with minimal human loop
 - Public performance dashboard with clear analytics UI
@@ -205,6 +216,7 @@ GitHub: [github.com/0gfoundation](https://github.com/0gfoundation) (99 repos)
 | ERC-8021 | Builder Codes | On-chain transaction attribution via calldata suffix |
 
 **Key tech:**
+
 - Coinbase AgentKit (`coinbase-agentkit`) — framework-agnostic AI agent toolkit
 - Coinbase Agentic Wallets (launched Feb 12, 2026) — autonomous wallets with spend limits
 - Gasless trading on Base via Smart Account (AA) infrastructure
@@ -213,6 +225,7 @@ GitHub: [github.com/0gfoundation](https://github.com/0gfoundation) (99 repos)
 - Builder Codes: [github.com/base/builder-codes](https://github.com/base/builder-codes)
 
 **What judges look for:**
+
 1. Genuine autonomy — no human triggering actions
 2. Economic sustainability — revenue demonstrably exceeds costs
 3. ERC-8021 attribution on every transaction
@@ -233,6 +246,7 @@ GitHub: [github.com/0gfoundation](https://github.com/0gfoundation) (99 repos)
 **What they want:** Any project built on ADI mainnet. Challenge themes TBD on Prizes page; creative projects also qualify.
 
 **Requirements:**
+
 - Build and deploy on ADI mainnet
 - Standard EVM tooling works (Hardhat, Foundry, etc.)
 
@@ -251,11 +265,13 @@ GitHub: [github.com/0gfoundation](https://github.com/0gfoundation) (99 repos)
 **What they want:** Applications demonstrating privacy-focused functionality using Canton's selective disclosure model.
 
 **Requirements:**
+
 - Working dApp with Daml smart contracts
 - Privacy as a core feature (selective disclosure), not an afterthought
 - Clear use case showing who sees what and why
 
 **Canton's privacy model:**
+
 - Sub-transaction level privacy: each party sees only their relevant data
 - Need-to-know basis enforced at the smart contract level
 - Proof-of-Stakeholder consensus: only involved parties validate
@@ -272,6 +288,7 @@ GitHub: [github.com/0gfoundation](https://github.com/0gfoundation) (99 repos)
 **Gaps to fill:** Testing frameworks, IDE tooling, CLI tools, debugging/transaction visualization, documentation generators, migration tools, template libraries, monitoring/observability.
 
 **Key resources:**
+
 - [CN Quickstart](https://github.com/digital-asset/cn-quickstart): Bootstrap a Canton app
 - Daml SDK (v2.10.3)
 - Go SDK with codegen, Python bindings, JS/TS frontend support

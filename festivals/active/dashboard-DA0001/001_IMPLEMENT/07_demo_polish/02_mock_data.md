@@ -33,6 +33,7 @@ Create mock data providers for development and demo without live agents running.
 Create `src/lib/data/mock.ts`. This module exports functions that generate realistic mock data for each panel type.
 
 **Mock Festival Progress:**
+
 ```typescript
 export function generateMockFestivalProgress(): FestivalProgress {
   return {
@@ -72,6 +73,7 @@ export function generateMockFestivalProgress(): FestivalProgress {
 ```
 
 Fill in all 7 sequences with realistic completion states:
+
 - 01_data_layer: completed (100%)
 - 02_festival_view: completed (100%)
 - 03_hcs_feed: completed (100%)
@@ -81,6 +83,7 @@ Fill in all 7 sequences with realistic completion states:
 - 07_demo_polish: pending (0%)
 
 **Mock HCS Messages:**
+
 ```typescript
 export function generateMockHCSMessages(count: number): HCSMessage[] {
   const messageTypes: DaemonEventType[] = [
@@ -102,6 +105,7 @@ export function generateMockHCSMessages(count: number): HCSMessage[] {
 ```
 
 Create a `generateMockPayload()` function that returns realistic message content for each type:
+
 - task_assignment: "Assigned task 03_implement_websocket to inference agent"
 - status_update: "Task 03_implement_websocket: 45% complete, writing tests"
 - task_result: "Task 03_implement_websocket completed successfully"
@@ -110,6 +114,7 @@ Create a `generateMockPayload()` function that returns realistic message content
 - payment_settled: "Payment 0.5 HBAR settled for task completion"
 
 **Mock Agent Status:**
+
 ```typescript
 export function generateMockAgents(): AgentInfo[] {
   return [
@@ -148,6 +153,7 @@ export function generateMockAgents(): AgentInfo[] {
 ```
 
 **Mock DeFi P&L Data:**
+
 ```typescript
 export function generateMockPnLSummary(): PnLSummary {
   return {
@@ -172,6 +178,7 @@ export function generateMockTrades(count: number): Trade[] {
 ```
 
 **Mock Inference Metrics:**
+
 ```typescript
 export function generateMockComputeMetrics(): ComputeMetrics {
   return {
@@ -222,6 +229,7 @@ This hook simulates live data by generating mock data and periodically updating 
    - Slightly adjust compute and storage metrics
 
 3. **Return type**: A single object with all data needed by all panels:
+
    ```typescript
    interface MockDataResult {
      festivalProgress: FestivalProgress;
@@ -272,6 +280,7 @@ cd $(fgo) && NEXT_PUBLIC_USE_MOCK=true npm run dev
 ```
 
 Open the dashboard and verify:
+
 - [ ] All 5 panels render with realistic-looking data
 - [ ] Data updates periodically (new HCS messages appear, heartbeats update)
 - [ ] No errors in console

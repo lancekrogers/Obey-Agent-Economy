@@ -32,7 +32,7 @@ Submit the Base ($3k+) bounty on the ETHDenver submission portal. Fill out the s
 
 | Material | Value |
 |----------|-------|
-| Repository URL | https://github.com/[org]/agent-defi |
+| Repository URL | <https://github.com/[org]/agent-defi> |
 | P&L Proof URL | [direct link to docs/pnl-proof.md] |
 | README URL | [direct link to README.md] |
 | Demo Video URL | [YouTube URL] |

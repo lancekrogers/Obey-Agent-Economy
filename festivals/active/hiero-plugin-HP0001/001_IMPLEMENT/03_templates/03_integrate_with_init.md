@@ -255,6 +255,7 @@ export function displayTemplateList(templates: TemplateMetadata[]): void {
 Modify `src/commands/init.ts` to integrate the template system:
 
 1. Import the template functions:
+
    ```typescript
    import {
      listTemplates,

@@ -101,13 +101,13 @@ A web UI that mirrors `fest status` and `fest tui` but for on-chain agent festiv
 
 ### Off-Chain Components
 
-5. **fest CLI Integration**
+1. **fest CLI Integration**
    - `fest create` generates both local festival AND on-chain HCS topic
    - `fest status` reads from both local state and HCS
    - `fest validate` checks both local structure and on-chain gate results
    - Seamless bridge between developer experience and on-chain coordination
 
-6. **OpenClaw Skills**
+2. **OpenClaw Skills**
    - `hedera-festival-skill`: OpenClaw plugin that lets agents create/join/execute festivals
    - Agents discover available festivals, claim tasks, publish progress
    - Uses Hedera Agent Kit under the hood

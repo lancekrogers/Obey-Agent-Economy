@@ -35,17 +35,20 @@ Implement the Hedera mirror node REST API client that provides historical and ne
 The Hedera mirror node REST API is documented at `https://mainnet.mirrornode.hedera.com/api/v1/docs`. For testnet, use `https://testnet.mirrornode.hedera.com`. Key endpoints:
 
 **HCS Messages:**
+
 - `GET /api/v1/topics/{topicId}/messages` -- returns messages for a topic
 - Query params: `limit`, `order` (asc/desc), `sequencenumber` (gt, gte, lt, lte), `timestamp` (gt, gte, lt, lte)
 - Response: `{ messages: [{ consensus_timestamp, message, payer_account_id, running_hash, sequence_number, topic_id }] }`
 - The `message` field is base64 encoded
 
 **Transactions:**
+
 - `GET /api/v1/transactions` -- returns transactions
 - Query params: `account.id`, `type`, `timestamp`, `limit`, `order`
 - Filter by type: `CRYPTOTRANSFER` for HTS token transfers
 
 **Accounts:**
+
 - `GET /api/v1/accounts/{accountId}` -- returns account info
 - Response includes balance, key, tokens, etc.
 
@@ -70,11 +73,13 @@ const DEFAULT_CONFIG: MirrorNodeConfig = {
 The client class should implement:
 
 **Constructor:**
+
 - Accept partial `MirrorNodeConfig` merged with defaults
 - Initialize empty message cache
 - Initialize polling state as stopped
 
 **fetchTopicMessages(topicId: string, afterTimestamp?: string) method:**
+
 - Build URL: `${baseUrl}/api/v1/topics/${topicId}/messages`
 - Add query params: `limit=100`, `order=asc`
 - If `afterTimestamp` is provided, add `timestamp=gt:${afterTimestamp}` to only fetch new messages
@@ -88,16 +93,19 @@ The client class should implement:
 - Store the latest `consensus_timestamp` for subsequent polling
 
 **fetchTransactions(accountId: string, type?: string) method:**
+
 - Build URL: `${baseUrl}/api/v1/transactions`
 - Add query params: `account.id=${accountId}`, `limit=50`, `order=desc`
 - If `type` is provided, add `type=${type}`
 - Call `fetch()`, parse response, return typed transaction array
 
 **fetchAccountInfo(accountId: string) method:**
+
 - Build URL: `${baseUrl}/api/v1/accounts/${accountId}`
 - Call `fetch()`, parse response, return account info
 
 **startPolling() method:**
+
 - Begin a `setInterval` at `pollingIntervalMs`
 - On each interval:
   - For each topic ID in config, call `fetchTopicMessages()` with the last known timestamp
@@ -106,16 +114,19 @@ The client class should implement:
 - Track polling state
 
 **stopPolling() method:**
+
 - Clear the interval
 - Update polling state
 
 **Error handling:**
+
 - Wrap all `fetch()` calls in try/catch
 - On network error, log the error and continue polling (do not crash)
 - On HTTP error (4xx/5xx), log the status and response body
 - Expose errors through listener pattern
 
 **Listener pattern:**
+
 - `onMessages(callback: (messages: HCSMessage[]) => void): () => void` -- called with new messages on each poll
 - `onError(callback: (error: Error) => void): () => void` -- called on fetch errors
 

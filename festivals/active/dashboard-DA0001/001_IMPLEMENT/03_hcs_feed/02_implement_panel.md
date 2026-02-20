@@ -36,9 +36,11 @@ Build the HCS Feed panel component at `src/components/panels/HCSFeed.tsx`. This 
 Create a small utility (can be in the same file or in `src/components/ui/MessageTypeBadge.tsx`):
 
 **Props:**
+
 - `type: DaemonEventType`
 
 **Implementation:**
+
 - Map each message type to its badge colors (from design task)
 - Render a `<span>` with `text-xs px-2 py-0.5 rounded-full` and the mapped colors
 - Display the type text with underscores replaced by spaces
@@ -46,6 +48,7 @@ Create a small utility (can be in the same file or in `src/components/ui/Message
 ### Step 2: Implement MessageRow sub-component
 
 **Props:**
+
 - `message: HCSMessage`
 
 **Implementation details:**
@@ -68,6 +71,7 @@ Create a small utility (can be in the same file or in `src/components/ui/Message
 ### Step 3: Implement the filter dropdown
 
 **Implementation approach:**
+
 - Use a button in the header that toggles a dropdown panel
 - Filter button text: "Filter" with count of hidden types in parentheses, e.g. "Filter (2 hidden)"
 - Dropdown: `absolute z-10 bg-gray-800 border border-gray-700 rounded-lg shadow-lg p-3`
@@ -77,10 +81,12 @@ Create a small utility (can be in the same file or in `src/components/ui/Message
 - Close dropdown on click outside (use a click-away listener via `useEffect`)
 
 **State:**
+
 - `activeFilters: Set<DaemonEventType>` initialized with all types
 - `showFilterDropdown: boolean`
 
 **Filtering:**
+
 - Use `useMemo` to compute filtered messages: `messages.filter(m => activeFilters.has(m.messageType))`
 
 ### Step 4: Implement auto-scroll with scroll-lock
@@ -93,6 +99,7 @@ Create a small utility (can be in the same file or in `src/components/ui/Message
 4. Track `newMessageCount = useState(0)` for the "new messages" indicator
 
 **Scroll event handler (on the scroll container):**
+
 ```typescript
 const handleScroll = useCallback(() => {
   const container = scrollContainerRef.current;
@@ -104,6 +111,7 @@ const handleScroll = useCallback(() => {
 ```
 
 **Auto-scroll on new messages:**
+
 ```typescript
 useEffect(() => {
   if (isAutoScrolling && bottomRef.current) {
@@ -116,6 +124,7 @@ useEffect(() => {
 ```
 
 **"New messages" indicator:**
+
 - Show a fixed-position button at the bottom of the scroll container when `newMessageCount > 0` and `!isAutoScrolling`
 - Button text: `"${newMessageCount} new messages"` with a down arrow
 - On click: scroll to bottom and set `isAutoScrolling(true)`
@@ -123,6 +132,7 @@ useEffect(() => {
 ### Step 5: Implement connection status indicator
 
 In the panel header, right side:
+
 - Green pulsing dot + "Connected" text when `connectionState === 'connected'`
 - Yellow pulsing dot + "Connecting..." when `connectionState === 'connecting'`
 - Red dot + "Disconnected" when `connectionState === 'disconnected'`
@@ -135,11 +145,13 @@ Use `animate-pulse` for the pulsing effect on the dot.
 **Panel container**: `bg-gray-900 rounded-lg border border-gray-800 flex flex-col` with a fixed height (or flex-grow in the grid)
 
 **Layout structure:**
+
 1. **Header** (fixed, not scrollable): Title, filter button, connection indicator
 2. **Message area** (scrollable, flex-grow): `overflow-y-auto` with messages
 3. **Auto-scroll indicator** (fixed at bottom of message area, overlaid)
 
 **State management:**
+
 - `activeFilters: Set<DaemonEventType>` -- which message types to show
 - `showFilterDropdown: boolean` -- filter dropdown visibility
 - `isAutoScrolling: boolean` -- whether to auto-scroll on new messages

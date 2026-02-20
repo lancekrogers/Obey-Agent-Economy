@@ -89,6 +89,7 @@ type ScheduleMetadata struct {
 ```
 
 Design decisions:
+
 - `ScheduleCreator` is generic (any transaction can be scheduled) while `HeartbeatRunner` is specific to the heartbeat use case
 - `HeartbeatRunner.Start` blocks (like `http.ListenAndServe`) and returns an error channel for non-fatal errors
 - `LastHeartbeat` provides observability without requiring external monitoring

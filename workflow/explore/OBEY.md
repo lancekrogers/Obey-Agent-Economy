@@ -5,6 +5,7 @@
 This directory is for **exploring ideas, designs, concepts, and research** — not for detailed planning or implementation specs.
 
 Use this space to:
+
 - Brainstorm project ideas and directions
 - Explore design concepts and architectural sketches
 - Capture research findings, competitive analysis, and ecosystem mapping

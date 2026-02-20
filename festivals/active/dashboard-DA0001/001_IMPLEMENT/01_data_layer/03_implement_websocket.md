@@ -55,12 +55,14 @@ const DEFAULT_CONFIG: WebSocketConfig = {
 The connector class should implement the following behavior:
 
 **Constructor:**
+
 - Accept a partial `WebSocketConfig` that merges with defaults
 - Initialize connection state as `'disconnected'`
 - Initialize an empty agent map for tracking agent status
 - Do NOT connect in the constructor -- connection is started explicitly
 
 **connect() method:**
+
 - Set state to `'connecting'`
 - Create a new `WebSocket` instance with the configured URL
 - Register `onopen`, `onclose`, `onerror`, and `onmessage` handlers
@@ -70,11 +72,13 @@ The connector class should implement the following behavior:
 - On `onmessage`: parse the message data as JSON into a `DaemonEvent`, notify listeners
 
 **disconnect() method:**
+
 - Set auto-reconnect to false (prevent reconnect loop)
 - Close the WebSocket connection with code 1000 (normal closure)
 - Set state to `'disconnected'`
 
 **Auto-reconnect logic:**
+
 - After `onclose`, if `autoReconnect` is true and max attempts not exceeded:
   - Wait `reconnectDelayMs` using `setTimeout`
   - Increment attempt counter
@@ -83,6 +87,7 @@ The connector class should implement the following behavior:
 - Reset attempt counter and delay on successful connection
 
 **Event parsing in onmessage:**
+
 - Parse the raw `event.data` string as JSON
 - Validate that the parsed object has a `type` field
 - Cast to `DaemonEvent` type
@@ -90,6 +95,7 @@ The connector class should implement the following behavior:
 - Notify all registered event listeners with the parsed event
 
 **Agent status tracking:**
+
 - Maintain a `Map<string, AgentInfo>` keyed by agent ID
 - On `heartbeat` events: update or create the agent entry with latest timestamp, status, current task
 - On `agent_started` events: set agent status to `'running'`
@@ -98,6 +104,7 @@ The connector class should implement the following behavior:
 - Expose `getAgents()` method that returns the current agent map as an array
 
 **Listener pattern:**
+
 - Use a callback pattern: `onEvent(callback: (event: DaemonEvent) => void): () => void`
 - The return value is an unsubscribe function
 - Use a `Set<Function>` internally to manage listeners

@@ -58,6 +58,7 @@ import (
 The test follows these phases:
 
 **Phase 1: Setup**
+
 ```go
 func TestE2E_FullFestivalCycle(t *testing.T) {
     if testing.Short() {
@@ -81,6 +82,7 @@ func TestE2E_FullFestivalCycle(t *testing.T) {
 ```
 
 **Phase 2: Create HCS Topics**
+
 ```go
     // Create HCS topics
     topicSvc := hcs.NewTopicService(coordClient)
@@ -99,6 +101,7 @@ func TestE2E_FullFestivalCycle(t *testing.T) {
 ```
 
 **Phase 3: Create HTS Payment Token**
+
 ```go
     // Create HTS payment token
     tokenSvc := hts.NewTokenService(coordClient)
@@ -136,6 +139,7 @@ func TestE2E_FullFestivalCycle(t *testing.T) {
 ```
 
 **Phase 4: Create Plan and Assign Tasks**
+
 ```go
     // Create a test plan
     plan := coordinator.Plan{
@@ -167,6 +171,7 @@ func TestE2E_FullFestivalCycle(t *testing.T) {
 ```
 
 **Phase 5: Verify HCS Messages (Subscribe and Check)**
+
 ```go
     // Subscribe to task topic and verify messages arrive
     subscriber := hcs.NewSubscriber(coordClient, hcs.DefaultSubscribeConfig())
@@ -198,6 +203,7 @@ func TestE2E_FullFestivalCycle(t *testing.T) {
 ```
 
 **Phase 6: Execute Payment**
+
 ```go
     // Configure and run payment for task-1
     coordConfig := coordinator.Config{
@@ -274,6 +280,7 @@ go test ./internal/integration/... -v -count=1 -tags=integration -timeout=10m
 ### Step 5: Document the run
 
 Create `internal/integration/README_E2E.md` (or a comment in the test file) documenting:
+
 - How to set up .env
 - How to run the test
 - Expected output

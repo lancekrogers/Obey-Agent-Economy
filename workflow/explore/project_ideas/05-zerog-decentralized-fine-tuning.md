@@ -11,6 +11,7 @@
 **Total potential: Up to $11k across two 0G tracks + track prizes**
 
 ### 0G Judging Criteria (from Devfolio)
+
 - **0G Utilization (30%)**: How meaningfully 0G technologies are integrated
 - **User Value (25%)**: Real problem-solving and workflow enablement
 - **Composability (20%)**: Potential for integration with other protocols/systems

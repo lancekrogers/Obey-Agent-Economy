@@ -40,6 +40,7 @@ ls /Users/lancerogers/Dev/Crypto/ETHDENVER/ethdenver2026/projects/agent-coordina
 ```
 
 Look at:
+
 - How topics are created and managed
 - The message envelope format (serialization, sequence numbers, message types)
 - How subscriptions are handled (reconnect logic, streaming)
@@ -195,6 +196,7 @@ type Handler struct {
 Key implementation details:
 
 **Subscribe to task assignments:**
+
 1. Use `hedera.NewTopicMessageQuery()` to subscribe to the task topic
 2. Filter messages by type == "task_assignment"
 3. Deserialize the envelope, then deserialize the payload into TaskAssignment
@@ -203,6 +205,7 @@ Key implementation details:
 6. Run the subscription in a goroutine with context cancellation
 
 **Publish results:**
+
 1. Create an Envelope with type "task_result" and the serialized TaskResult
 2. Use `hedera.NewTopicMessageSubmitTransaction()` to publish
 3. Wait for receipt confirmation
@@ -210,6 +213,7 @@ Key implementation details:
 5. Retry on transient failures
 
 **Publish health:**
+
 1. Same pattern as result publishing but with type "health_status"
 2. Called on a timer from the agent main loop (every 30-60 seconds)
 
@@ -249,12 +253,14 @@ var (
 Create `internal/hcs/handler_test.go` and `internal/hcs/messages_test.go`:
 
 **Message serialization tests:**
+
 1. **TestEnvelope_RoundTrip**: Marshal and unmarshal envelope, verify all fields
 2. **TestTaskAssignment_RoundTrip**: Marshal and unmarshal task, verify all fields
 3. **TestTaskResult_RoundTrip**: Marshal and unmarshal result, verify all fields
 4. **TestHealthStatus_RoundTrip**: Marshal and unmarshal health, verify all fields
 
 **Handler tests (use mock Hedera client):**
+
 1. **TestStartSubscription_ReceivesTask**: Mock incoming message, verify task on channel
 2. **TestStartSubscription_InvalidMessage**: Mock malformed message, verify skipped gracefully
 3. **TestStartSubscription_ContextCancelled**: Cancel context, verify clean shutdown

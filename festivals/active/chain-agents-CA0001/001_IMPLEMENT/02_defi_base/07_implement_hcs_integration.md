@@ -178,6 +178,7 @@ type Handler struct {
 Key implementation details:
 
 **Subscribe to task assignments:**
+
 1. Use `hedera.NewTopicMessageQuery()` to subscribe to the task topic
 2. Parse incoming Envelope messages, extract TaskAssignment payloads
 3. Forward parsed tasks to the `taskCh` channel
@@ -185,22 +186,26 @@ Key implementation details:
 5. Ignore messages not addressed to this agent type
 
 **Publish P&L reports:**
+
 1. Accept a PnLReportMessage from the agent main loop
 2. Wrap it in an Envelope with type "pnl_report"
 3. Serialize and submit to HCS
 4. Wait for receipt confirmation
 
 **Publish strategy updates:**
+
 1. Accept a StrategyUpdate from the trading loop
 2. Wrap in Envelope with type "strategy_update"
 3. Submit to HCS
 
 **Publish health status:**
+
 1. Accept HealthStatus from the health loop
 2. Wrap in Envelope with type "health_status"
 3. Submit to HCS
 
 All publish methods follow the same pattern:
+
 ```go
 func (h *Handler) publish(ctx context.Context, msgType MessageType, payload interface{}) error {
     payloadBytes, err := json.Marshal(payload)
@@ -273,12 +278,14 @@ var (
 Create `internal/hcs/handler_test.go` and `internal/hcs/messages_test.go`:
 
 **Message serialization tests:**
+
 1. **TestEnvelope_RoundTrip**: Marshal and unmarshal envelope
 2. **TestPnLReportMessage_RoundTrip**: Verify all PnL fields survive serialization
 3. **TestStrategyUpdate_RoundTrip**: Verify strategy update serialization
 4. **TestHealthStatus_RoundTrip**: Verify health status serialization
 
 **Handler tests:**
+
 1. **TestStartSubscription_ReceivesTask**: Mock task message, verify on channel
 2. **TestStartSubscription_IgnoresNonTask**: Mock non-task message, verify skipped
 3. **TestPublishPnL_Success**: Mock HCS submit, verify correct envelope type

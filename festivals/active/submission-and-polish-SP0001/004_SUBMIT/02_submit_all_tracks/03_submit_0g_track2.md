@@ -32,7 +32,7 @@ Submit the 0G Track 2 ($7k) bounty on the ETHDenver submission portal. Fill out 
 
 | Material | Value |
 |----------|-------|
-| Repository URL | https://github.com/[org]/agent-inference |
+| Repository URL | <https://github.com/[org]/agent-inference> |
 | Compute Metrics URL | [direct link to docs/compute-metrics.md] |
 | Demo Video URL | [YouTube URL] |
 | README URL | [direct link to README.md] |

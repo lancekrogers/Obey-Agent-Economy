@@ -117,12 +117,14 @@ Each agent card contains:
 The heartbeat is a small circle that visually "pulses" when a heartbeat is received:
 
 **Behavior:**
+
 - Display a small circle (8px) next to the heartbeat time
 - On each new heartbeat event, trigger a CSS animation: scale up briefly then return
 - Use CSS keyframes: `@keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.5); } 100% { transform: scale(1); } }`
 - Re-trigger the animation by toggling a CSS class or using a key prop
 
 **Staleness coloring:**
+
 - Compute seconds since last heartbeat: `(Date.now() - new Date(lastHeartbeat).getTime()) / 1000`
 - < 10 seconds: `bg-green-500` (healthy)
 - 10-30 seconds: `bg-yellow-500` (stale)
@@ -137,6 +139,7 @@ The heartbeat is a small circle that visually "pulses" when a heartbeat is recei
 **Error state**: Panel header with error message. Agent cards may still render if partial data is available.
 
 **Agent-level error**: When an individual agent has status `'error'`:
+
 - Card border changes to red
 - Status shows red "Error" badge
 - Last error message displays below the status

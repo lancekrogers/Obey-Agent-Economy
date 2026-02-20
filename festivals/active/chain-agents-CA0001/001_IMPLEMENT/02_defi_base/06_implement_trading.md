@@ -296,6 +296,7 @@ type ExecutorConfig struct {
 Key implementation details:
 
 **Execute(ctx, trade)**:
+
 1. Check `ctx.Err()` before starting
 2. Build the DEX swap calldata (e.g., Uniswap V3 `exactInputSingle`)
 3. Apply ERC-8021 attribution via `e.cfg.Attribution.Encode(ctx, calldata)`
@@ -308,11 +309,13 @@ Key implementation details:
 10. Return TradeResult with gas cost tracked
 
 **GetBalance(ctx, token)**:
+
 1. For native ETH: query the balance of the agent's address
 2. For ERC-20: call `balanceOf(agentAddress)` on the token contract
 3. Return Balance with amount and decimals
 
 **GetMarketState(ctx, pair)**:
+
 1. Query the DEX pool for current price (e.g., Uniswap V3 `slot0`)
 2. Query an on-chain oracle or DEX for recent price history
 3. Calculate 24h volume if available
@@ -412,6 +415,7 @@ var (
 Create test files for each component:
 
 **internal/base/trading/strategy_test.go:**
+
 1. **TestMeanReversion_Buy**: Price below mean by threshold, verify buy signal
 2. **TestMeanReversion_Sell**: Price above mean by threshold, verify sell signal
 3. **TestMeanReversion_Hold**: Price within threshold, verify hold signal
@@ -419,6 +423,7 @@ Create test files for each component:
 5. **TestMeanReversion_ContextCancelled**: Cancel context, verify error
 
 **internal/base/trading/executor_test.go:**
+
 1. **TestExecute_Success**: Mock successful swap, verify TradeResult with gas
 2. **TestExecute_Reverted**: Mock reverted transaction, verify ErrTradeReverted
 3. **TestExecute_SlippageExceeded**: Mock high slippage, verify error
@@ -428,6 +433,7 @@ Create test files for each component:
 7. **TestGetMarketState_Success**: Mock pool price query
 
 **internal/base/trading/pnl_test.go:**
+
 1. **TestPnLTracker_RecordTrade**: Record a trade, verify it appears in report
 2. **TestPnLTracker_NetPositive**: Record profitable trades, verify IsSelfSustaining=true
 3. **TestPnLTracker_NetNegative**: Record losing trades, verify IsSelfSustaining=false

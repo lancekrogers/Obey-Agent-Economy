@@ -43,15 +43,19 @@
 ## Recommended Strategy
 
 ### Option A: "Hedera Sweep" (HIGHEST EXPECTED VALUE)
+
 Build the Hedera Agentic Commerce Network (#01) targeting ALL 4 Hedera tracks from a single project. One project, $25k potential. Use native SDKs only (no Solidity), include HIP-1215 automation, ship a Hiero CLI plugin. Add Canton Dev Tooling (#07) as a secondary for $7k more. **Total potential: $32k.**
 
 ### Option B: "Cross-Chain Agent Swarm" (Aggressive)
+
 Build the Cross-Chain Agent Swarm (#06) and submit chain-specific components to each sponsor bounty. This requires the most work but maximizes breadth at $22k+.
 
 ### Option C: "0G Deep Dive" (Focused)
+
 Build the 0G iNFT Marketplace (#02) targeting two 0G tracks simultaneously ($14k), or the Fine-Tuning Marketplace (#05, $11k). 0G has novel tech (ERC-7857) that fewer teams will know. Add the Security Agent on Base (#09) as a secondary.
 
 ### Option D: "Quantity Play" (Diversified)
+
 Build 2-3 simpler projects targeting different sponsors: Base Security Agent (#09) + Canton Privacy (#04) + ADI Creative (#08). Lower individual prizes but higher probability of winning something.
 
 ## Avoid Building These (Saturated/Table Stakes in 2026)

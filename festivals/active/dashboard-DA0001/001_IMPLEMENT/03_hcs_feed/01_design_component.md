@@ -75,6 +75,7 @@ interface HCSFeedProps {
 ```
 
 Key wireframe elements:
+
 - **Panel header**: Title "HCS Message Feed" with filter dropdown and connection indicator
 - **Connection indicator**: Green dot for connected, yellow for connecting, red for disconnected/error
 - **Filter dropdown**: Multi-select for message types (task_assignment, status_update, heartbeat, etc.)
@@ -86,12 +87,14 @@ Key wireframe elements:
 Each message row has two lines:
 
 **Line 1 (header):** `[timestamp] | [sender_agent] | [message_type_badge]`
+
 - Timestamp: `text-xs text-gray-500` formatted as `HH:MM:SS`
 - Separator: `text-gray-700` pipe character
 - Sender agent: `text-sm text-gray-300` with agent-specific color (coordinator=purple, inference=blue, defi=green)
 - Message type badge: Small pill with type-specific color (same as StatusBadge approach)
 
 **Line 2 (payload preview):** Truncated payload text
+
 - `text-sm text-gray-400`
 - Max 2 lines, truncated with ellipsis
 - Parse the JSON payload and display a human-readable summary
@@ -121,6 +124,7 @@ Each message row has two lines:
 The feed must auto-scroll to show the newest messages at the bottom, but allow the user to scroll up to read older messages without the feed jumping back down.
 
 **Auto-scroll rules:**
+
 1. When new messages arrive and the user is at the bottom (within 50px), auto-scroll to the new message
 2. When the user scrolls up (more than 50px from bottom), disable auto-scroll ("scroll locked")
 3. Show a "New messages below" button/indicator when scroll-locked and new messages arrive
@@ -128,6 +132,7 @@ The feed must auto-scroll to show the newest messages at the bottom, but allow t
 5. Use `scrollIntoView({ behavior: 'smooth' })` for smooth scrolling
 
 **Implementation approach:**
+
 - Use a `useRef` on the scroll container
 - Track `isAutoScrolling` state
 - On scroll event, check if user is near bottom: `scrollHeight - scrollTop - clientHeight < 50`
@@ -136,6 +141,7 @@ The feed must auto-scroll to show the newest messages at the bottom, but allow t
 ### Step 5: Design the filter UI
 
 **Filter dropdown:**
+
 - Located in the panel header, right-aligned
 - Toggle button showing "Filter" with a count of active filters
 - Dropdown panel with checkboxes for each message type

@@ -216,6 +216,7 @@ func (h *Heartbeat) LastHeartbeat() time.Time {
 ```
 
 Key implementation notes:
+
 - `sendHeartbeat` creates a zero-value HBAR transfer as the inner transaction. This is a minimal-cost liveness proof.
 - The memo encodes the agent ID and Unix timestamp for traceability.
 - Individual heartbeat failures are non-fatal -- they send to the error channel but the loop continues.

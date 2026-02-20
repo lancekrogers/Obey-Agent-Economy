@@ -97,6 +97,7 @@ claude \
 ```
 
 **Environment variables injected**:
+
 ```bash
 ANTHROPIC_API_KEY=<from daemon config or env>
 CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC=1
@@ -484,6 +485,7 @@ func (m *Manager) RegisterAdapter(a Adapter) {
 ### Per-Adapter Tests
 
 Each adapter needs:
+
 1. **Unit tests** with a mock process/API (no real provider needed)
 2. **Integration test** with the real provider (requires API key, run manually)
 3. **Crash recovery test** — kill the process, verify adapter reports FAILED
@@ -492,6 +494,7 @@ Each adapter needs:
 ### Activity Event Tests
 
 Verify that all adapters produce the same `Activity` event types for equivalent operations:
+
 - All produce `THINKING` when the model reasons
 - All produce `TOOL_CALL` with `tool_name` when tools are invoked
 - All produce `TOOL_RESULT` with `success` flag

@@ -95,9 +95,11 @@ interface InferenceMetricsProps {
 Instead of a complex SVG gauge (which adds implementation complexity for the hackathon), use a simple and visually impactful approach:
 
 **GPU Utilization:**
+
 - Large percentage number: `text-4xl font-bold` in the center
 - Color based on utilization: green (< 50%), yellow (50-80%), red (> 80%)
 - Circular progress ring using SVG (a simple circle with `stroke-dasharray`):
+
   ```
   <svg viewBox="0 0 36 36">
     <circle cx="18" cy="18" r="15.9" fill="none" stroke="#374151" strokeWidth="3" />
@@ -106,6 +108,7 @@ Instead of a complex SVG gauge (which adds implementation complexity for the hac
       strokeDashoffset="25" transform="rotate(-90 18 18)" />
   </svg>
   ```
+
 - Below the gauge: three stat rows in `text-sm`:
   - "Memory: {memoryUtilization}%"
   - "Active Jobs: {activeJobs}"
@@ -115,6 +118,7 @@ Instead of a complex SVG gauge (which adds implementation complexity for the hac
 ### Step 4: Design the storage usage bar
 
 **Layout:** Card with storage metrics
+
 - "Used: {usedStorageGb} GB" in white text
 - "Total: {totalStorageGb} GB" in gray text
 - Full-width progress bar (reuse ProgressBar component from 02_festival_view):
@@ -126,12 +130,14 @@ Instead of a complex SVG gauge (which adds implementation complexity for the hac
 ### Step 5: Design the iNFT status card
 
 **Layout:** Full-width card below the gauge and storage:
+
 - Two-column layout:
   - Left: "Token: {tokenId}" and "Status: {status}" with status badge
   - Right: "Model: {modelName}" and "Inferences: {inferenceCount.toLocaleString()}"
 - Below: "Last Active: {relative time from lastActive}"
 
 **Status badges (reuse StatusBadge pattern):**
+
 - active: green
 - minting: yellow/amber
 - inactive: gray

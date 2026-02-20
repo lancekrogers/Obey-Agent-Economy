@@ -132,6 +132,7 @@ func NewClient(cfg ClientConfig) (StorageClient, error) {
 Key implementation details for each method:
 
 **Upload(ctx, data, meta)**:
+
 1. Check `ctx.Err()` before starting
 2. Determine if chunking is needed (data size > chunk size)
 3. For small uploads: single POST request with data and metadata
@@ -140,6 +141,7 @@ Key implementation details for each method:
 6. Wrap all errors: `fmt.Errorf("storage: failed to upload %s: %w", meta.Name, err)`
 
 **Download(ctx, contentID)**:
+
 1. Check `ctx.Err()` before starting
 2. GET request to the storage node with the content ID
 3. Stream the response body into a byte buffer
@@ -147,6 +149,7 @@ Key implementation details for each method:
 5. Wrap errors: `fmt.Errorf("storage: failed to download %s: %w", contentID, err)`
 
 **List(ctx, prefix)**:
+
 1. Query the storage index with the given prefix
 2. Parse metadata from the response
 3. Return sorted by creation time (newest first)

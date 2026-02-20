@@ -9,6 +9,7 @@ see the dashboard to understand what the system is doing.
 ## Scope
 
 ### Dashboard Components (dashboard project)
+
 - **Festival View**: Shows structured phase/sequence/task progress from fest
 - **HCS Feed**: Live stream of agent-to-agent messages on Hedera
 - **Agent Activity**: Status of all three agents (coordinator, inference, defi)
@@ -16,12 +17,14 @@ see the dashboard to understand what the system is doing.
 - **Inference Metrics**: 0G compute utilization, storage usage, iNFT status
 
 ### Data Sources
+
 - Daemon events via hub WebSocket (production path)
 - Direct daemon gRPC (dev mode)
 - Hedera mirror node REST API for HCS/HTS history
 - Read-only — the dashboard observes, never acts
 
 ### UI/UX
+
 - Single-page layout with all panels visible simultaneously
 - Real-time updates (WebSocket-driven)
 - Clean enough for a 2-minute demo walkthrough

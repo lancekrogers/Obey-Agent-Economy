@@ -69,6 +69,7 @@ const DEFAULT_CONFIG: GRPCConfig = {
 The connector class should implement the following:
 
 **Constructor:**
+
 - Accept partial `GRPCConfig` merged with defaults
 - Initialize connection state as `'disconnected'`
 - Initialize empty agent map
@@ -79,6 +80,7 @@ The connector class should implement the following:
 The REST fallback uses Server-Sent Events (SSE) for streaming, falling back to polling if SSE is not available:
 
 **connect() method (SSE mode):**
+
 - Set state to `'connecting'`
 - Create an `EventSource` instance pointing to `${url}/api/events/stream`
 - Register `onopen`, `onerror`, and `onmessage` handlers
@@ -88,6 +90,7 @@ The REST fallback uses Server-Sent Events (SSE) for streaming, falling back to p
 - EventSource has built-in reconnection, but add manual reconnect logic as backup
 
 **connect() method (Polling fallback):**
+
 - If SSE fails or is not supported, fall back to polling
 - Set state to `'connecting'`
 - Start a `setInterval` that calls `${url}/api/events?since=${lastTimestamp}` every `reconnectDelayMs`
@@ -95,18 +98,22 @@ The REST fallback uses Server-Sent Events (SSE) for streaming, falling back to p
 - Update agent map and notify listeners for each event
 
 **disconnect() method:**
+
 - Close EventSource or clear polling interval
 - Set state to `'disconnected'`
 
 **Auto-reconnect logic:**
+
 - Same exponential backoff pattern as the WebSocket connector
 - On SSE error, attempt to reconnect after delay
 - Cap backoff at 30 seconds
 
 **Agent status tracking:**
+
 - Identical to WebSocket connector: maintain `Map<string, AgentInfo>`, update on heartbeat/lifecycle events
 
 **Listener pattern:**
+
 - Same as WebSocket connector: `onEvent()`, `onStateChange()` with unsubscribe functions
 
 ### Step 3: Create the useGRPC React hook

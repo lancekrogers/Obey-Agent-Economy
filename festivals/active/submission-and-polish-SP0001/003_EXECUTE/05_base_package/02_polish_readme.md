@@ -49,14 +49,17 @@ Explain:
 For each standard, explain what it provides and how it is used:
 
 **ERC-8004 (Agent Identity)**:
+
 - What: On-chain identity standard for AI agents
 - How: The DeFi agent has a registered on-chain identity that other agents and contracts can verify
 
 **x402 (Payment Protocol)**:
+
 - What: HTTP-based payment protocol for machine-to-machine payments
 - How: The agent uses x402 to pay for inference services and receive payments for completed work
 
 **ERC-8021 (Attribution)**:
+
 - What: On-chain attribution standard for AI-generated actions
 - How: Every trade the agent makes is attributed on-chain, creating a verifiable track record
 

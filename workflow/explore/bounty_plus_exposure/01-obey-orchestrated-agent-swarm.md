@@ -25,6 +25,7 @@ Instead of building a custom swarm coordinator on Hedera, the obey daemon IS the
 - **Deterministic workflows**: Festival-defined task sequences ensure reproducible agent behavior
 
 The daemon connects to Hedera via the Agent Kit as its blockchain layer, giving agents:
+
 - HCS for inter-agent messaging (immutable audit trail)
 - HTS for agent payments and reputation tokens
 - Scheduled contracts for automated heartbeats

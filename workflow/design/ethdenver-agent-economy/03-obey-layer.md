@@ -22,6 +22,7 @@ daemon start
 ```
 
 Each agent is a daemon-managed process with:
+
 - Its own LLM provider connection (provider-agnostic)
 - Its own blockchain account(s)
 - Its own task queue (festival-structured)
@@ -74,6 +75,7 @@ daemon                          Hedera
 ```
 
 This means all inter-agent communication is both:
+
 - Locally observable (daemon APIs for dashboard)
 - On-chain verifiable (HCS for audit trail)
 

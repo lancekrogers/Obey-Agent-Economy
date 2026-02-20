@@ -33,16 +33,18 @@ Set up Hedera testnet accounts for the coordinator and two worker agents. Fund a
 
 Use the Hedera Portal to create testnet accounts:
 
-1. Navigate to https://portal.hedera.com/
+1. Navigate to <https://portal.hedera.com/>
 2. Create an account (or use existing developer account)
 3. Generate 3 testnet accounts via the portal dashboard
 
 For each account, you will receive:
+
 - Account ID (e.g., `0.0.12345`)
 - Private key (DER-encoded or hex)
 - Public key
 
 Label the accounts:
+
 - **Coordinator**: The treasury account that holds payment tokens and orchestrates
 - **Agent-1**: First worker agent
 - **Agent-2**: Second worker agent
@@ -51,7 +53,7 @@ Label the accounts:
 
 Each testnet account needs HBAR to pay transaction fees. Use the Hedera testnet faucet:
 
-1. Go to https://portal.hedera.com/
+1. Go to <https://portal.hedera.com/>
 2. Use the faucet to send testnet HBAR to each account
 3. Minimum 100 HBAR per account for development and testing
 

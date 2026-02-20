@@ -126,6 +126,7 @@ type RegistryConfig struct {
 Key implementation details:
 
 **Register(ctx, req)**:
+
 1. Check `ctx.Err()` before starting
 2. Connect to Base via the configured RPC endpoint using go-ethereum
 3. Build the ERC-8004 registration transaction:
@@ -139,11 +140,13 @@ Key implementation details:
 8. Wrap errors: `fmt.Errorf("identity: failed to register agent %s: %w", req.AgentID, err)`
 
 **Verify(ctx, agentID)**:
+
 1. Call the contract's verification read method (view function, no gas)
 2. Return true if the agent ID is registered and active
 3. Wrap errors: `fmt.Errorf("identity: failed to verify agent %s: %w", agentID, err)`
 
 **GetIdentity(ctx, agentID)**:
+
 1. Call the contract's identity retrieval read method
 2. Parse the response into an Identity struct
 3. Return ErrIdentityNotFound if not registered

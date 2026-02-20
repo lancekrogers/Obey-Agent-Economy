@@ -112,6 +112,7 @@ func (s *TransferService) Transfer(ctx context.Context, req TransferRequest) (*T
 ```
 
 Key implementation notes:
+
 - `AddTokenTransfer` is called twice: once with negative amount (debit sender) and once with positive amount (credit recipient)
 - The transaction is atomic -- either both sides succeed or neither does
 - Amount validation happens before any network call

@@ -32,7 +32,7 @@ Submit the Hedera Track 4 ($5k) bounty on the ETHDenver submission portal. Fill 
 
 | Material | Value |
 |----------|-------|
-| Plugin Repository URL | https://github.com/[org]/hiero-plugin |
+| Plugin Repository URL | <https://github.com/[org]/hiero-plugin> |
 | PR URL (if applicable) | [PR URL to Hiero CLI repo] |
 | README URL | [direct link to README.md] |
 | Demo Video URL | [YouTube URL if plugin is shown in demo] |

@@ -187,6 +187,7 @@ type ProtocolConfig struct {
 Key implementation details:
 
 **Pay(ctx, req)**:
+
 1. Check `ctx.Err()` before starting
 2. Determine if payment is native ETH or an ERC-20 token
 3. For ETH: Build a standard value transfer transaction
@@ -199,12 +200,14 @@ Key implementation details:
 10. Track the gas cost for P&L reporting
 
 **RequestPayment(ctx, invoice)**:
+
 1. Generate an invoice ID
 2. Create the x402 PaymentEnvelope with the invoice details
 3. The agent exposes this envelope when another agent requests a paid service
 4. Return the PaymentRequest that the payer needs to fulfill
 
 **VerifyPayment(ctx, receiptID)**:
+
 1. Look up the transaction by hash
 2. Verify the transfer event matches the expected amount and recipient
 3. Confirm the transaction is finalized (sufficient block confirmations)

@@ -49,6 +49,7 @@ Copy and organize all logs from the integration test:
 Write `docs/integration/INTEGRATION_TEST_RESULTS.md` documenting:
 
 **Test Environment:**
+
 - Date and time of test
 - Hedera testnet version and network
 - 0G testnet endpoints used
@@ -56,12 +57,14 @@ Write `docs/integration/INTEGRATION_TEST_RESULTS.md` documenting:
 - Agent versions (git commit hashes)
 
 **Test Execution:**
+
 - How agents were started (commands used)
 - Duration of the test
 - Number of tasks processed
 - Number of trades executed
 
 **Inference Agent Results:**
+
 - Task ID(s) processed
 - 0G Compute job IDs and execution times
 - 0G Storage content IDs
@@ -70,6 +73,7 @@ Write `docs/integration/INTEGRATION_TEST_RESULTS.md` documenting:
 - HCS result message timestamps
 
 **DeFi Agent Results:**
+
 - ERC-8004 identity registration transaction hash
 - Number of trades executed
 - Trading pairs used
@@ -79,12 +83,14 @@ Write `docs/integration/INTEGRATION_TEST_RESULTS.md` documenting:
 - HCS P&L report timestamps
 
 **Coordinator Results:**
+
 - Task assignments published via HCS
 - Results received from inference agent
 - P&L reports received from DeFi agent
 - HTS payments triggered (transaction hashes)
 
 **Issues Found:**
+
 - List any issues encountered during integration
 - How they were resolved (or if they remain open)
 - Impact on bounty submissions
@@ -94,6 +100,7 @@ Write `docs/integration/INTEGRATION_TEST_RESULTS.md` documenting:
 **0G Track 2 Evidence ($7k - Decentralized GPU Inference):**
 
 Write `docs/integration/evidence/0g-track2-inference.md`:
+
 - Demonstrate that inference runs on 0G decentralized compute (not centralized)
 - Show 0G Compute job submission and result retrieval
 - Show 0G Storage usage for result persistence
@@ -104,6 +111,7 @@ Write `docs/integration/evidence/0g-track2-inference.md`:
 **0G Track 3 Evidence ($7k - ERC-7857 iNFT):**
 
 Write `docs/integration/evidence/0g-track3-inft.md`:
+
 - Demonstrate ERC-7857 iNFT minting on 0G Chain
 - Show encrypted metadata attached to iNFT
 - Show the minting transaction hash on 0G Chain explorer
@@ -113,6 +121,7 @@ Write `docs/integration/evidence/0g-track3-inft.md`:
 **Base Bounty Evidence ($3k+ - Self-Sustaining Agent):**
 
 Write `docs/integration/evidence/base-self-sustaining.md`:
+
 - Demonstrate ERC-8004 identity registration on Base
 - Show x402 payment protocol implementation
 - Show ERC-8021 builder attribution in transaction calldata

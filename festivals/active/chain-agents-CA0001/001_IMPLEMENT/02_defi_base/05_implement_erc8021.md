@@ -110,6 +110,7 @@ func NewEncoder(cfg Config) (AttributionEncoder, error) {
 Key implementation details:
 
 **Encode(ctx, txData)**:
+
 1. If attribution is disabled, return the original txData unchanged
 2. Validate the builder code is the correct length
 3. Append the ERC-8021 marker bytes to the end of txData
@@ -134,6 +135,7 @@ func (e *encoder) Encode(ctx context.Context, txData []byte) ([]byte, error) {
 ```
 
 **Decode(ctx, txData)**:
+
 1. Check if txData ends with the ERC-8021 marker pattern
 2. If not found, return nil (no attribution present)
 3. Extract the builder code from after the marker

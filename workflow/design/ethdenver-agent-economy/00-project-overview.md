@@ -30,6 +30,7 @@ Once obey agents work end-to-end, we add OpenClaw as a second agent runtime (see
 Three specialized AI agents, orchestrated by the obey daemon, operating across three blockchains simultaneously:
 
 ### Agent 1: Coordinator (Hedera)
+
 - Runs inside obey daemon as the executive agent
 - Publishes festival-structured task plans to HCS (immutable audit trail)
 - Manages agent reputation via HTS tokens
@@ -38,6 +39,7 @@ Three specialized AI agents, orchestrated by the obey daemon, operating across t
 - **Zero Solidity** — all native Hedera SDK operations
 
 ### Agent 2: Inference Provider (0G)
+
 - Runs inference jobs on 0G Compute (decentralized GPU marketplace)
 - Stores agent memory/knowledge on 0G Storage
 - Tokenized as an ERC-7857 iNFT on 0G Chain (transferable agent identity)
@@ -45,6 +47,7 @@ Three specialized AI agents, orchestrated by the obey daemon, operating across t
 - Reports results back through HCS, gets paid via HTS
 
 ### Agent 3: DeFi Trader (Base)
+
 - Self-sustaining: earns revenue exceeding operational costs
 - Registered with ERC-8004 (Trustless Agents — identity + reputation)
 - Pays for compute via x402 (HTTP payment protocol)
@@ -53,6 +56,7 @@ Three specialized AI agents, orchestrated by the obey daemon, operating across t
 - Executes trades autonomously on Base mainnet
 
 ### The Dashboard
+
 - Observer UI showing all three agents operating in real-time
 - Festival progress visualization (phases, sequences, tasks flowing through)
 - HCS message stream (inter-agent communication)

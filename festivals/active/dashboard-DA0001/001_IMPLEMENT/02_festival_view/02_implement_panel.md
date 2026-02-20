@@ -44,11 +44,13 @@ Create `src/components/ui/ProgressBar.tsx`:
 This component renders a horizontal progress bar.
 
 **Props:**
+
 - `percentage: number` -- value from 0 to 100
 - `size?: 'sm' | 'md'` -- height variant, defaults to `'sm'`
 - `className?: string` -- additional CSS classes
 
 **Implementation details:**
+
 - Outer container: `bg-gray-700 rounded-full overflow-hidden` with height based on size (`h-1.5` for sm, `h-2.5` for md)
 - Inner fill: `rounded-full transition-all duration-500` with width set to `${percentage}%`
 - Color logic: `bg-green-500` if percentage > 80, `bg-blue-500` if > 50, `bg-gray-500` if <= 50
@@ -61,10 +63,12 @@ Create `src/components/ui/StatusBadge.tsx`:
 This component renders a small status pill.
 
 **Props:**
+
 - `status: FestivalEntityStatus`
 - `className?: string`
 
 **Implementation details:**
+
 - Use a `<span>` with rounded-full padding
 - Color mapping from the design task:
   - `pending`: `bg-gray-800 text-gray-400`
@@ -80,9 +84,11 @@ This component renders a small status pill.
 This can be defined within the FestivalView file or as a separate component. Recommend keeping it in the same file if the file stays under 500 lines.
 
 **Props:**
+
 - `task: FestivalTask`
 
 **Implementation details:**
+
 - Render a flex row with:
   - A checkbox-style indicator: `[x]` for completed, `[ ]` for other statuses (use a small icon or text)
   - Task name (truncate long names with `truncate` class)
@@ -94,11 +100,13 @@ This can be defined within the FestivalView file or as a separate component. Rec
 ### Step 5: Implement SequenceRow sub-component
 
 **Props:**
+
 - `sequence: FestivalSequence`
 - `isExpanded: boolean`
 - `onToggle: () => void`
 
 **Implementation details:**
+
 - Render a clickable flex row with:
   - Expand/collapse arrow: `>` when collapsed, `v` when expanded (use `ChevronRight` / `ChevronDown` or simple text, rotated with CSS transform)
   - Sequence name
@@ -113,6 +121,7 @@ This can be defined within the FestivalView file or as a separate component. Rec
 ### Step 6: Implement PhaseRow sub-component
 
 **Props:**
+
 - `phase: FestivalPhase`
 - `isExpanded: boolean`
 - `onToggle: () => void`
@@ -120,6 +129,7 @@ This can be defined within the FestivalView file or as a separate component. Rec
 - `onToggleSequence: (sequenceId: string) => void`
 
 **Implementation details:**
+
 - Render a clickable flex row with:
   - Expand/collapse arrow
   - Phase name (bold, slightly larger text)
@@ -136,12 +146,14 @@ This can be defined within the FestivalView file or as a separate component. Rec
 Create `src/components/panels/FestivalView.tsx`:
 
 **Props (from design):**
+
 - `data: FestivalProgress | null`
 - `isLoading: boolean`
 - `error: Error | null`
 - `className?: string`
 
 **State:**
+
 - `expandedPhases: Set<string>` -- tracks which phases are expanded (default: all expanded)
 - `expandedSequences: Set<string>` -- tracks which sequences are expanded (default: none)
 

@@ -81,6 +81,7 @@ The Festival View panel has this visual structure:
 ```
 
 Key wireframe elements:
+
 - **Panel header**: Title "Festival Progress" with overall completion percentage
 - **Overall progress bar**: Full-width bar showing total completion
 - **Phase rows**: Collapsible, showing phase name and completion percentage with progress bar

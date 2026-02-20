@@ -49,11 +49,13 @@ Open the dashboard in Chrome with DevTools open:
 5. Stop recording
 
 **Measure:**
+
 - Time from navigation start to Largest Contentful Paint (LCP)
 - Time from navigation start to all 5 panels visible
 - Target: < 2 seconds for both metrics
 
 **If render time exceeds 2 seconds:**
+
 - Check for large bundle sizes: `cd $(fgo) && npm run build && ls -la .next/static/chunks/`
 - Check for unnecessary re-renders: use React DevTools Profiler
 - Check for slow data fetching: ensure initial mock data is synchronous
@@ -73,6 +75,7 @@ Test the auto-reconnect behavior:
 7. Verify data resumes flowing after reconnection
 
 **If no local WebSocket server is available:**
+
 - Use mock mode and verify the connection state indicator works
 - Manually test by modifying the WebSocket URL to an invalid endpoint, then restoring it
 - Verify the connector's reconnect logic by reviewing the code and unit tests
@@ -102,6 +105,7 @@ Monitor memory usage over a 10-minute session:
 5. Compare: memory should not grow by more than 50MB over 10 minutes
 
 **If memory grows excessively:**
+
 - Check that events arrays are bounded (1000 for WebSocket, 5000 for mirror node)
 - Check that setInterval timers are cleaned up on unmount
 - Check for React hook dependency issues causing re-subscriptions

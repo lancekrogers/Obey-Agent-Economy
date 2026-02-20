@@ -49,12 +49,14 @@ The dashboard uses a CSS grid optimized for wide-screen presentation. The layout
 ```
 
 Grid specification:
+
 - `grid grid-cols-3 grid-rows-[auto_1fr_1fr] gap-4 h-screen p-4`
 - Row 1: Dashboard header (auto height)
 - Row 2: Festival View (col 1), HCS Feed (col 2), Agent Activity (col 3)
 - Row 3: DeFi P&L (col 1-2, spans 2 columns), Inference Metrics (col 3)
 
 Alternative layout if panels need more vertical space:
+
 - `grid grid-cols-3 grid-rows-[auto_2fr_1fr]` -- top panels get 2/3, bottom panels get 1/3
 
 ### Step 2: Create DashboardLayout component
@@ -62,6 +64,7 @@ Alternative layout if panels need more vertical space:
 Create `src/components/DashboardLayout.tsx`:
 
 **Props:**
+
 ```typescript
 interface DashboardLayoutProps {
   children?: React.ReactNode;
@@ -71,11 +74,13 @@ interface DashboardLayoutProps {
 **Implementation:**
 
 1. **Container**: Full viewport height with dark background:
+
    ```tsx
    <div className="min-h-screen bg-gray-950 text-white">
    ```
 
 2. **Header bar**: Fixed at top:
+
    ```tsx
    <header className="flex items-center justify-between px-6 py-3 border-b border-gray-800 bg-gray-900">
      <div className="flex items-center gap-3">
@@ -90,6 +95,7 @@ interface DashboardLayoutProps {
    ```
 
 3. **Panel grid**: Below header, fills remaining viewport:
+
    ```tsx
    <main className="grid grid-cols-3 grid-rows-[2fr_1fr] gap-4 p-4 h-[calc(100vh-60px)]">
      {/* Row 1: Three equal panels */}
@@ -147,11 +153,13 @@ import { useMirrorNode } from '@/hooks/useMirrorNode';
 ```
 
 The page component:
+
 1. Calls the data layer hooks to get live data
 2. Distributes data to each panel via props
 3. Handles the mock vs live data toggle
 
 **Data wiring:**
+
 - `useWebSocket()` or `useGRPC()` provides: daemon events, agent status
 - `useMirrorNode()` provides: HCS messages, festival progress
 - All panels receive their specific data slices
@@ -191,6 +199,7 @@ cd $(fgo) && npm run dev
 ```
 
 Open `http://localhost:3000` in a browser. Verify:
+
 - [ ] All 5 panels render in the grid
 - [ ] No horizontal scrolling at 1920x1080
 - [ ] Header shows title and connection status

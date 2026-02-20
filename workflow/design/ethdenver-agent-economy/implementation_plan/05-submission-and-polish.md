@@ -9,12 +9,14 @@ and submission packaging.
 ## Scope
 
 ### End-to-End Testing
+
 - Full economy cycle: coordinator assigns → inference executes → defi trades → payments settle
 - Failure recovery: what happens when an agent goes down mid-cycle
 - Profitability validation: DeFi agent revenue > costs over N cycles
 - Schedule Service automation running unattended
 
 ### Submission Prep (per bounty track)
+
 - Hedera Track 3: README, demo video, architecture writeup
 - Hedera Track 4: Hiero plugin docs, installation guide, PR
 - 0G Track 2: Inference agent demo, compute metrics
@@ -22,11 +24,13 @@ and submission packaging.
 - Base: P&L proof, ERC-8004/x402/ERC-8021 integration docs
 
 ### Deployment
+
 - All agents running on testnet (or mainnet for Base)
 - Dashboard deployed and accessible
 - Demo script rehearsed and timed (2 min)
 
 ### Optional: Contracts (Track 2)
+
 - If time permits: implement AgentSettlement.sol and ReputationDecay.sol
 - Separate Hedera Track 2 submission ($5k)
 

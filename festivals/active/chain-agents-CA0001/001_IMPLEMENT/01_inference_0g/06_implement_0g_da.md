@@ -143,6 +143,7 @@ type PublisherConfig struct {
 Key implementation details:
 
 **Publish(ctx, event)**:
+
 1. Check `ctx.Err()` before starting
 2. Serialize the AuditEvent to JSON bytes
 3. Create a DA submission request with the serialized bytes and namespace
@@ -153,6 +154,7 @@ Key implementation details:
 8. Wrap errors: `fmt.Errorf("da: failed to publish event %s: %w", event.EventID, err)`
 
 **Verify(ctx, submissionID)**:
+
 1. Check `ctx.Err()` before starting
 2. Query the DA node for the submission status
 3. Return `true` if the data is confirmed available, `false` if pending

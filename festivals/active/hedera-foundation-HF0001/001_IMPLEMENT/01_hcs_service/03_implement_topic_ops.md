@@ -60,6 +60,7 @@ func NewTopicService(client *hedera.Client) *TopicService {
 ### Step 2: Implement CreateTopic
 
 Add the `CreateTopic` method. Key requirements:
+
 - Check `ctx.Err()` before starting the transaction
 - Set the topic memo from the parameter
 - Execute the transaction and extract the topic ID from the receipt

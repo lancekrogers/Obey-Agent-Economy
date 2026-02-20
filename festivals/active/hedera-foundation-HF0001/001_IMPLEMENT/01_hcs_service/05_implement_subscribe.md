@@ -192,6 +192,7 @@ func (s *Subscriber) subscribeOnce(
 ```
 
 **Important notes for the implementer:**
+
 - The `hedera.TopicMessageQuery.Subscribe` callback runs in a separate goroutine managed by the SDK. You must not block in the callback.
 - The `select` with `ctx.Done()` in the callback prevents blocking when the context is cancelled but the message channel is full.
 - The `SetStartTime(time.Unix(0, 0))` subscribes from the beginning of the topic. For production, you may want to accept a start time parameter.

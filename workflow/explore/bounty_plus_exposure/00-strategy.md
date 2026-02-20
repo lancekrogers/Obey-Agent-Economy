@@ -47,11 +47,13 @@ The strongest marketing message: **"We built this project using our own tools."*
 Each idea must score well on BOTH axes:
 
 ### Bounty Axis
+
 - Does it target a real bounty with real prize money?
 - Is the technical approach sound?
 - Will it impress judges?
 
 ### Exposure Axis
+
 - Does it naturally showcase camp/fest/obey tooling?
 - Is there a "built with Obedience Corp" story?
 - Does it demonstrate our unique value prop (hierarchical agent orchestration)?

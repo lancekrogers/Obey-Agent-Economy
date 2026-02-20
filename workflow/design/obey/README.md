@@ -45,6 +45,7 @@ These docs extend the daemon requirements in `../ethdenver-agent-economy/tools/d
 ## For the Obey Team
 
 These documents are designed to be handed to the obey team for implementation. Each document includes:
+
 - Architectural diagrams (mermaid + ASCII)
 - Protobuf definitions (ready to compile)
 - Implementation notes with suggested package structure

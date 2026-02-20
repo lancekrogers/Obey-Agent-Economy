@@ -78,7 +78,7 @@ Build must succeed without errors.
 
 **Test Results Summary:**
 
-- Unit tests: [ ] Pass / [ ] Fail (count: ___ passed, ___ failed)
+- Unit tests: [ ] Pass / [ ] Fail (count: _**passed,**_ failed)
 - Manual tests: [ ] Pass / [ ] Fail (10/10 items)
 - Build: [ ] Pass / [ ] Fail
 - Coverage: ____%

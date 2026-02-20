@@ -27,6 +27,7 @@ This leverages Canton's unique privacy model in a way no other chain can replica
    - Uses Canton's sub-transaction privacy - each party sees only their authorized view
 
 2. **Selective Disclosure Layers**
+
    ```
    Full View (Agent Owner)
    ├── All trades, positions, strategy details, model parameters

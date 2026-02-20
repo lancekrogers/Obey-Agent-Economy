@@ -95,6 +95,7 @@ type TopicMetadata struct {
 ```
 
 Key design decisions:
+
 - Each interface has 1-3 methods (small and focused per project standards)
 - All methods take `context.Context` as the first parameter
 - Return types use concrete Hedera SDK types where appropriate
@@ -177,6 +178,7 @@ func UnmarshalEnvelope(data []byte) (*Envelope, error) {
 ```
 
 Key design decisions:
+
 - `MessageType` is a string type for readability in JSON and logs
 - `Payload` uses `json.RawMessage` for flexibility -- each message type can have different payload schemas without the envelope knowing about them
 - `SequenceNum` enables ordering within a sender when HCS ordering guarantees are insufficient

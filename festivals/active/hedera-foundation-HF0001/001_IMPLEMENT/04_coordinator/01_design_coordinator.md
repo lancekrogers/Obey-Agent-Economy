@@ -98,6 +98,7 @@ type PaymentManager interface {
 ```
 
 Design decisions:
+
 - Each interface has 2-3 methods (small, focused)
 - The coordinator orchestrator will compose these interfaces, not inherit from them
 - `ProgressMonitor.Start` blocks like `HeartbeatRunner.Start` -- consistent pattern
@@ -177,6 +178,7 @@ func IsTerminal(status TaskStatus) bool {
 ```
 
 State machine diagram:
+
 ```
 pending -> assigned -> in_progress -> review -> complete -> paid (terminal)
                                         |

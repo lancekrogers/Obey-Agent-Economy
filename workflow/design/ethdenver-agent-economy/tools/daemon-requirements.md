@@ -9,6 +9,7 @@ This is the key document. It separates what works today, what must be built, and
 These capabilities exist in obeyd v0.1.0 and can be used immediately:
 
 ### Event Routing Infrastructure
+
 - Full event pipeline: source → router → dedup → state update → hub forward
 - Campaign and festival event types cover all lifecycle states
 - Agent activity event types exist (THINKING, TOOL_CALL, TOOL_RESULT, COMPLETION)
@@ -16,6 +17,7 @@ These capabilities exist in obeyd v0.1.0 and can be used immediately:
 - **Hackathon use**: Agent events can flow through this existing pipeline with zero changes to the router
 
 ### Command Execution Sandbox
+
 - `Execute` RPC with streaming stdout/stderr
 - Allowlist-based: fest, camp, just, git
 - Path validation bound to campaign root (symlink-aware)
@@ -23,6 +25,7 @@ These capabilities exist in obeyd v0.1.0 and can be used immediately:
 - **Hackathon use**: Agents can run fest/camp/just commands within sandbox — no need to shell out unsafely
 
 ### State Tracking (SQLite)
+
 - `agent_sessions` table: session ID, campaign, festival, task, agent name, provider, model, tokens, working dir
 - `agent_activities` table: activity type, content, tool name/ID, success flag
 - `festivals` table: status, current phase, current task, completed count
@@ -30,12 +33,14 @@ These capabilities exist in obeyd v0.1.0 and can be used immediately:
 - **Hackathon use**: Agent session data has a home — sessions can be created and queried today
 
 ### Hub Sync
+
 - Real-time WebSocket connection to obey.app
 - Protobuf-encoded events with exponential backoff reconnection
 - Bidirectional: outbound events + inbound commands
 - **Hackathon use**: Dashboard could consume agent events via hub without direct daemon connection
 
 ### gRPC API
+
 - `Ping` — health check with version, hostname, hub status, campaign count
 - `GetState` — query campaigns, festivals, task progress
 - `StreamAgentActivity` — client-streaming for activity events
@@ -52,6 +57,7 @@ These are the new daemon capabilities required for the hackathon. This is **real
 **Purpose**: Register agent definitions so the daemon knows what agents exist and how to run them.
 
 **Data model** (new table: `agents`):
+
 ```
 id TEXT PK
 name TEXT UNIQUE          -- e.g., "coordinator", "inference-agent", "defi-agent"
@@ -65,6 +71,7 @@ updated_at TIMESTAMP
 ```
 
 **gRPC additions**:
+
 - `RegisterAgent(AgentDefinition) → AgentRegistration`
 - `ListAgents() → AgentList`
 - `GetAgent(agent_id) → AgentState`
@@ -75,6 +82,7 @@ updated_at TIMESTAMP
 **Purpose**: Spawn agents as child processes, monitor health, restart on failure, stop gracefully.
 
 **Process lifecycle**:
+
 ```
 RegisterAgent → StartAgent → [running: heartbeat monitoring] → StopAgent
                                      ↓ (failure)
@@ -82,6 +90,7 @@ RegisterAgent → StartAgent → [running: heartbeat monitoring] → StopAgent
 ```
 
 **Key requirements**:
+
 - Spawn agent as OS child process with daemon as parent
 - Capture agent stdout/stderr and route to event pipeline
 - Heartbeat monitoring: agent must ping daemon within configurable interval
@@ -90,6 +99,7 @@ RegisterAgent → StartAgent → [running: heartbeat monitoring] → StopAgent
 - Process group isolation: agent crash doesn't take down daemon
 
 **gRPC additions**:
+
 - `StartAgent(agent_id) → AgentStartResponse`
 - `StopAgent(agent_id, graceful) → Ack`
 - `RestartAgent(agent_id) → AgentStartResponse`
@@ -99,12 +109,14 @@ RegisterAgent → StartAgent → [running: heartbeat monitoring] → StopAgent
 **Purpose**: Per-agent settings that the daemon injects into the agent's environment.
 
 **Config categories**:
+
 - **Blockchain accounts**: Hedera account ID, Base wallet address (injected as env vars)
 - **Working directory**: where the agent operates within the campaign
 - **Environment variables**: arbitrary key-value pairs for agent-specific config
 - **Restart policy**: max restarts, backoff base, backoff max
 
 **What the daemon does NOT configure**:
+
 - LLM provider/model — agents handle their own LLM connections
 - Agent logic or prompts — agents are autonomous programs
 - Blockchain private keys — agents read from their own `.env` files
@@ -114,6 +126,7 @@ RegisterAgent → StartAgent → [running: heartbeat monitoring] → StopAgent
 **Purpose**: gRPC endpoints to query what agents are running, their health, and current work.
 
 **State information per agent**:
+
 - Process status: `registered`, `running`, `stopped`, `failed`, `restarting`
 - Health: last heartbeat timestamp, heartbeat interval, healthy/unhealthy
 - Current work: active session ID, festival ID, task ID
@@ -121,6 +134,7 @@ RegisterAgent → StartAgent → [running: heartbeat monitoring] → StopAgent
 - Token counts: input/output tokens from activity stream
 
 **gRPC additions**:
+
 - `GetAgentStatus(agent_id) → AgentStatus` (detailed single-agent state)
 - `ListAgentStatuses() → AgentStatusList` (all agents summary)
 - `WatchAgentStatus(agent_id) → stream AgentStatus` (server-streaming status updates)
@@ -130,6 +144,7 @@ RegisterAgent → StartAgent → [running: heartbeat monitoring] → StopAgent
 **Purpose**: Tag existing event pipeline events with `agent_id` so the dashboard can filter by agent.
 
 **Changes**:
+
 - Add `agent_id` field to internal `Event` struct
 - Add `agent_id` column to `events` table
 - Add `agent_id` to `StreamAgentActivity` message (currently only has `session_id`)
@@ -155,11 +170,13 @@ RegisterAgent → StartAgent → [running: heartbeat monitoring] → StopAgent
 | Agent config injection (env vars) | Agent (Festival 0, Phase 5) | Not started |
 
 **What I will NOT touch before the deadline:**
+
 - Hub protocol — existing WebSocket sync is sufficient; agent events flow through the same pipeline
 - Daemon startup flow — agents register after daemon is already running, no boot-order changes
 - Sandbox redesign — agents use the existing sandbox boundary (campaign root) for now
 
 **What stays out of scope for the hackathon:**
+
 - Remote agents, agent discovery protocols, distributed registration
 - Agent-to-agent RPC (agents communicate via HCS, not daemon)
 - Hot reload of agent configs (stop + update + start is fine)
@@ -177,6 +194,7 @@ type AgentRuntime interface {
 ```
 
 Built-in runtimes:
+
 - `ProcessRuntime` — what we build for the hackathon (child process, local)
 - `ContainerRuntime` — Docker/Podman agent isolation (post-hackathon)
 - `RemoteRuntime` — agent running on another machine, reporting back via hub (later)
@@ -211,6 +229,7 @@ For the hackathon, agents are registered programmatically via gRPC. The YAML lay
 ### Post-Hackathon: Agent Security Model
 
 **Per-agent sandbox boundaries.** Today all agents share the campaign-root sandbox. Post-hackathon:
+
 - Each agent gets its own boundary (its `working_dir` subtree)
 - Cross-agent file access requires explicit grants in the agent config
 - Agent-specific command allowlists extend the default set

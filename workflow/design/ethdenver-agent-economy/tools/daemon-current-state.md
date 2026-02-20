@@ -36,6 +36,7 @@ The obey daemon (`obeyd`) is an **event broker, file watcher, sandboxed command 
 **Ignored**: `.git`, `node_modules`, `.DS_Store`, `__pycache__`
 
 Watches campaign directories recursively. On file change:
+
 1. Debounces rapid changes per file path
 2. Emits `FileChangePayload` (path, operation, isDir) to the event router
 3. Operations: `create`, `write`, `remove`, `rename`
@@ -45,6 +46,7 @@ Watches campaign directories recursively. On file change:
 **Config defaults**: 500ms dedup window, 100-event buffer
 
 Receives events from both gRPC server and file watcher. Processing:
+
 1. **Deduplication** — SHA256 hash of (event type + truncated timestamp + payload IDs), keyed by entity (`campaign:ID` or `festival:ID`). gRPC events take priority over file watcher events.
 2. **State update** — updates local SQLite via StateHandler
 3. **Hub forwarding** — sends to hub WebSocket client if connected
@@ -52,15 +54,18 @@ Receives events from both gRPC server and file watcher. Processing:
 #### Event Types (internal)
 
 **Campaign events:**
+
 - `CAMPAIGN_CREATED`, `CAMPAIGN_UPDATED`, `CAMPAIGN_DELETED`
 - `PROJECT_ADDED`, `PROJECT_REMOVED`
 
 **Festival events:**
+
 - `FESTIVAL_CREATED`, `FESTIVAL_STATUS_CHANGED`
 - `PHASE_CHANGED`, `SEQUENCE_STARTED`, `SEQUENCE_COMPLETED`
 - `TASK_STARTED`, `TASK_COMPLETED`, `TASK_FAILED`, `TASK_BLOCKED`
 
 **Agent activity events** (infrastructure exists, no agents to emit them yet):
+
 - `AGENT_THINKING`, `AGENT_TOOL_CALL`, `AGENT_TOOL_RESULT`, `AGENT_COMPLETION`
 
 **Event sources**: `SourceGRPC`, `SourceFileWatcher`
@@ -73,6 +78,7 @@ Receives events from both gRPC server and file watcher. Processing:
 **Keepalive**: 30s ping interval, 10s pong timeout
 
 Bidirectional:
+
 - **Outbound**: daemon events forwarded to hub for dashboard consumption
 - **Inbound**: hub commands/requests routed to daemon request handler
 - Sends `DaemonReady` event on successful connection
@@ -84,6 +90,7 @@ Bidirectional:
 #### Schema
 
 **`campaigns`** — registered campaigns
+
 ```
 id TEXT PK, name TEXT, path TEXT UNIQUE, description TEXT,
 festival_count INT, active_festival_count INT,
@@ -91,6 +98,7 @@ created_at TIMESTAMP, updated_at TIMESTAMP
 ```
 
 **`festivals`** — festival state per campaign
+
 ```
 (campaign_id, id) PK, name TEXT, goal TEXT, status TEXT,
 phase TEXT, path TEXT, total_tasks INT, completed_tasks INT,
@@ -100,6 +108,7 @@ FK → campaigns(id)
 ```
 
 **`agent_sessions`** — agent execution sessions
+
 ```
 id TEXT PK, campaign_id TEXT, festival_id TEXT, task_id TEXT,
 agent_name TEXT, provider TEXT, model TEXT, status TEXT,
@@ -109,6 +118,7 @@ FK → campaigns(id)
 ```
 
 **`agent_activities`** — per-session activity log
+
 ```
 id INT PK AUTO, session_id TEXT, activity_type TEXT,
 content TEXT, tool_name TEXT, tool_call_id TEXT, success INT,
@@ -117,6 +127,7 @@ FK → agent_sessions(id)
 ```
 
 **`events`** — event audit log (7-day retention)
+
 ```
 id INT PK AUTO, campaign_id TEXT, festival_id TEXT,
 event_type TEXT, payload TEXT, source TEXT,
@@ -125,6 +136,7 @@ FK → campaigns(id)
 ```
 
 **`recent_events`** — deduplication cache
+
 ```
 entity_key TEXT PK, event_hash TEXT, source TEXT,
 created_at TIMESTAMP
@@ -137,6 +149,7 @@ Festival statuses: `planned`, `active`, `paused`, `completed`, `failed`, `cancel
 ## Command Sandbox
 
 **Allowlist** (default):
+
 | Command | Purpose |
 |---------|---------|
 | `fest` | Festival CLI |
@@ -145,6 +158,7 @@ Festival statuses: `planned`, `active`, `paused`, `completed`, `failed`, `cancel
 | `git` | Version control |
 
 **Execution flow**:
+
 1. Validate request (command + campaign_id required)
 2. Resolve campaign by ID (primary) or name (fallback)
 3. Check command against per-campaign allowlist or defaults
@@ -155,6 +169,7 @@ Festival statuses: `planned`, `active`, `paused`, `completed`, `failed`, `cancel
 8. Return exit code + duration on completion
 
 **Boundary enforcement**:
+
 - Campaign root is the sandbox boundary
 - All paths resolved through symlinks before validation (prevents symlink escape)
 - `cd` command changes working dir within sandbox only

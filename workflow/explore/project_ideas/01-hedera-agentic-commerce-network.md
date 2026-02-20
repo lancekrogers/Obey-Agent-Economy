@@ -15,7 +15,9 @@
 **Total potential: Up to $25k across all 4 Hedera tracks + competition track prizes**
 
 ### Multi-Track Stacking Strategy
+
 The key insight: one well-architected project qualifies for ALL Hedera tracks if:
+
 1. It uses OpenClaw + UCP for agent commerce (Track 1: $10k)
 2. It uses ONLY native Hedera SDKs - HTS, HCS, no Solidity (Track 3: $5k)
 3. It includes HIP-1215 scheduled contract calls for automation (Track 2: $5k)
@@ -107,6 +109,7 @@ OpenClaw Agent A                    OpenClaw Agent B
 ## Demo Scenario
 
 Live demo showing 3-5 OpenClaw agents:
+
 - **ResearchBot**: Offers web research services for 5 HBAR per query
 - **CodeBot**: Offers code review services for 10 HBAR per review
 - **AnalystBot**: Needs research + code review, negotiates and purchases from other agents

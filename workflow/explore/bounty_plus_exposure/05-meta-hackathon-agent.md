@@ -30,6 +30,7 @@ The meta angle: **We used this agent to plan and build itself.**
 ## How It Works
 
 ### Input
+
 ```
 "I want to build a self-sustaining DeFi agent on Base targeting
 the Kite/Bass bounty. I know Solidity and TypeScript. I have
@@ -39,6 +40,7 @@ the Kite/Bass bounty. I know Solidity and TypeScript. I have
 ### Output
 
 1. **Festival Plan** (via fest CLI):
+
    ```
    Festival: Base DeFi Agent
    ├── Phase 1: Setup (Day 1)
@@ -57,6 +59,7 @@ the Kite/Bass bounty. I know Solidity and TypeScript. I have
    ```
 
 2. **Camp Workspace** (via camp CLI):
+
    ```
    base-defi-agent/
    ├── projects/
@@ -76,6 +79,7 @@ the Kite/Bass bounty. I know Solidity and TypeScript. I have
 ### On-Chain Component (for bounty eligibility)
 
 The agent itself runs on-chain:
+
 - Festival plans published to Hedera HCS (immutable planning audit trail)
 - Or to 0G Storage (decentralized plan storage)
 - Agent uses 0G Compute for code generation inference

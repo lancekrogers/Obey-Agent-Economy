@@ -104,12 +104,14 @@ hiero camp navigate <project>       # Jump to project directory
 ### Contracts
 
 **AgentSettlement.sol**
+
 - Accumulates pending payments between agents
 - Schedules batch settlement every N minutes via HIP-1215
 - Uses `hasScheduleCapacity()` to find available execution windows
 - Emits events for dashboard observability
 
 **ReputationDecay.sol**
+
 - Tracks agent activity timestamps
 - Schedules periodic reputation score decay for inactive agents
 - Agents must complete tasks to maintain reputation

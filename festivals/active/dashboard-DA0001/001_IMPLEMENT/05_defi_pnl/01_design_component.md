@@ -90,11 +90,13 @@ interface DeFiPnLProps {
 **Data**: Array of `PnLDataPoint` objects with timestamp, cumulativeRevenue, cumulativeCosts, cumulativeProfit
 
 **Lines:**
+
 - Revenue line: `stroke="#22c55e"` (green-500) with smooth curve
 - Costs line: `stroke="#ef4444"` (red-500) with smooth curve
 - Optional: Profit fill area between the two lines
 
 **Axes:**
+
 - X-axis: timestamp formatted as HH:MM or date depending on range
 - Y-axis: dollar values with $ prefix
 - Grid: subtle gray grid lines (`stroke="#374151"` gray-700)
@@ -104,6 +106,7 @@ interface DeFiPnLProps {
 **Legend**: Small legend below chart showing line colors and labels
 
 **Recharts components needed:**
+
 - `LineChart`, `Line`, `XAxis`, `YAxis`, `CartesianGrid`, `Tooltip`, `Legend`, `ResponsiveContainer`
 
 **Chart container**: `ResponsiveContainer width="100%" height={200}`
@@ -119,6 +122,7 @@ Five summary cards in a grid row:
 5. **Win Rate**: Percentage with color based on value (green > 60%, yellow 40-60%, red < 40%). Label "Win Rate"
 
 Each card: `bg-gray-800 rounded-lg p-3 text-center`
+
 - Value: `text-lg font-bold`
 - Label: `text-xs text-gray-500 uppercase tracking-wider mt-1`
 
@@ -138,6 +142,7 @@ Layout: `grid grid-cols-5 gap-2` (or `grid-cols-3` + `grid-cols-2` for two rows)
 | Time | narrow | right | HH:MM format |
 
 **Table styling:**
+
 - Header: `text-xs text-gray-500 uppercase tracking-wider border-b border-gray-700`
 - Rows: `text-sm text-gray-300 border-b border-gray-800`
 - Alternating row backgrounds: optional for readability

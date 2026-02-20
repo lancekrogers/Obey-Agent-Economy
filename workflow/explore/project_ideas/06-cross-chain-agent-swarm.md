@@ -134,6 +134,7 @@ Each submission tells the same story from a different angle.
 ## Demo Scenario
 
 Live demo with 4 agents running simultaneously across chains:
+
 1. Coordinator (Hedera) discovers cross-chain arbitrage opportunity
 2. 0G agent runs analysis, confirms with confidence score
 3. Base agent and ADI agent execute simultaneously

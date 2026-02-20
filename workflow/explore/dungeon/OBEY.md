@@ -23,17 +23,20 @@ dungeon/
 ## Workflow
 
 ### Finishing Work
+
 ```bash
 camp flow move some-item dungeon/completed   # Done, might reference
 camp flow move some-item dungeon/archived    # Done, won't need again
 ```
 
 ### Deferring Work
+
 ```bash
 camp flow move some-item dungeon/someday     # Not now, maybe later
 ```
 
 ### Reviving Work
+
 ```bash
 camp flow move old-item active    # Back to work
 camp flow move old-item ready     # Queue it up
@@ -42,6 +45,7 @@ camp flow move old-item ready     # Queue it up
 ## Reviewing Items
 
 Run the interactive crawl to review dungeon contents:
+
 ```bash
 camp dungeon crawl
 ```

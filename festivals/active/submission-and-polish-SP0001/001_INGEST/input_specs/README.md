@@ -20,6 +20,7 @@ Place all raw input materials here for the agent to process.
 ## Processing
 
 The agent will:
+
 1. Read all files in this directory
 2. Extract key information
 3. Structure it into `output_specs/`

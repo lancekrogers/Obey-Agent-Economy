@@ -5,6 +5,7 @@
 This document defines the gRPC service additions for agent session management. These RPCs are added to the existing `LocalDaemonService` on the Unix domain socket at `$XDG_RUNTIME_DIR/obey/daemon.sock`.
 
 All session RPCs follow the existing daemon patterns:
+
 - Error codes use `oberror` format (`OBEY-NNNN`)
 - Errors map to gRPC status codes via `ErrorInterceptor`
 - Campaign context is required for all session operations
@@ -292,6 +293,7 @@ message SessionStatusEvent {
 | `timeout` | Optional. 0 = no timeout. |
 
 **Behavior**:
+
 1. Validate inputs
 2. Resolve campaign → get campaign root path
 3. Generate session ULID
@@ -302,6 +304,7 @@ message SessionStatusEvent {
 8. Return `SessionInfo`
 
 **Error codes**:
+
 - `OBEY-2001`: Campaign not found
 - `OBEY-2002`: Provider not supported
 - `OBEY-2003`: Model not supported by provider
@@ -311,6 +314,7 @@ message SessionStatusEvent {
 ### SendMessage
 
 **Behavior**:
+
 1. Validate session exists and is RUNNING
 2. Update status → WORKING
 3. Route message to provider adapter
@@ -319,6 +323,7 @@ message SessionStatusEvent {
 6. Final event has `type = ACTIVITY_TYPE_COMPLETION`
 
 **Error codes**:
+
 - `OBEY-2010`: Session not found
 - `OBEY-2011`: Session not in RUNNING state
 - `OBEY-2012`: Message delivery failed
@@ -326,6 +331,7 @@ message SessionStatusEvent {
 - `OBEY-2014`: Session timeout reached
 
 **Streaming behavior**:
+
 ```
 Client sends: SendMessage("sess_001", "Fix the bug in auth.go")
 Server streams:
@@ -341,6 +347,7 @@ Server streams:
 ### StopSession
 
 **Behavior**:
+
 1. Validate session exists and is in a stoppable state (RUNNING, WORKING, STARTING)
 2. Update status → STOPPING
 3. If `graceful=true`: wait for current activity to complete (with timeout)
@@ -350,6 +357,7 @@ Server streams:
 7. Update status → STOPPED, set `ended_at`
 
 **Error codes**:
+
 - `OBEY-2010`: Session not found
 - `OBEY-2020`: Session already stopped
 - `OBEY-2021`: Graceful stop timed out (session force-killed)
@@ -357,6 +365,7 @@ Server streams:
 ### ListSessions
 
 **Behavior**:
+
 1. Query `agent_sessions` table with optional filters
 2. Default: return only active sessions (CREATED, STARTING, RUNNING, WORKING)
 3. If `include_terminated=true`: also return STOPPED and FAILED
@@ -364,6 +373,7 @@ Server streams:
 ### WatchSession / WatchAllSessions
 
 **Behavior**:
+
 1. Register a listener for session status changes
 2. Stream `SessionStatusEvent` for each state transition
 3. Include the previous and new status for transition tracking

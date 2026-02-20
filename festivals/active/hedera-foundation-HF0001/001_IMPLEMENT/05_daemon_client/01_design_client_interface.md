@@ -148,6 +148,7 @@ type HeartbeatRequest struct {
 ```
 
 Design decisions:
+
 - The interface has exactly 3 domain methods plus `io.Closer` for cleanup
 - All methods take `context.Context` as first parameter
 - Request/response types use simple Go types (no protobuf types in the interface)

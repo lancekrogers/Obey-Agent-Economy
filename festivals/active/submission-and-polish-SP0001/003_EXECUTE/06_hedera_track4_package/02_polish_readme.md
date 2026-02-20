@@ -76,15 +76,18 @@ hiero <plugin-command> <subcommand> --flag value
 ```
 
 **Example:**
+
 ```bash
 $ hiero <plugin-command> <subcommand> --name my-project
 Created project "my-project" at ./my-project/
 ```
 
 **Flags:**
+
 | Flag | Description | Default |
 |------|-------------|---------|
 | --name | Project name | required |
+
 ```
 
 ### Step 5: Showcase templates

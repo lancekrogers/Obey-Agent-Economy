@@ -9,6 +9,7 @@ This is a standalone deliverable targeting Hedera Track 4.
 ## Scope
 
 ### Plugin Architecture (hiero-plugin project)
+
 - Plugin manifest and registration with Hiero CLI
 - `hiero camp init` — initialize a camp workspace for Hedera projects
 - `hiero camp status` — show project status across the workspace
@@ -17,6 +18,7 @@ This is a standalone deliverable targeting Hedera Track 4.
 - Documentation: README, usage guide, architecture overview
 
 ### Integration
+
 - Plugin discovers and invokes the `camp` binary
 - Handles camp not installed gracefully (error messages, install guidance)
 - Works with existing Hiero CLI plugin system

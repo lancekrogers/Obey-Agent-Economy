@@ -130,6 +130,7 @@ Write the submission description that will go on the ETHDenver portal or as a PR
 **Summary:** (2-3 sentences describing what the plugin does and why it matters)
 
 **What It Does:**
+
 - Extends the Hiero CLI with camp workspace management commands
 - Provides `hiero camp init` for project initialization with Hedera templates
 - Provides `hiero camp status` for workspace overview
@@ -137,11 +138,13 @@ Write the submission description that will go on the ETHDenver portal or as a PR
 - Bundles three Hedera-specific scaffold templates (smart contract, dApp, agent)
 
 **How It Works:**
+
 - Plugin registers with Hiero CLI through the standard plugin manifest
 - Commands invoke the camp binary for workspace operations
 - Templates provide ready-to-use Hedera project scaffolds with testnet configuration
 
 **Technical Stack:**
+
 - TypeScript, Node.js
 - Hiero CLI plugin API
 - Camp binary integration

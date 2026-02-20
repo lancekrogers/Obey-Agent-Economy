@@ -33,16 +33,19 @@ Write complete documentation for the hiero-plugin project. Create a comprehensiv
 Create or update `README.md` at the project root. Structure it with these sections:
 
 **Header and Badges:**
+
 - Project name: `hiero-plugin-camp`
 - One-line description: Hiero CLI plugin for camp workspace management
 - Badges: license, Node.js version, Hedera Track 4
 
 **Overview:**
+
 - What the plugin does (2-3 sentences)
 - Why it exists (Hedera developer experience)
 - What commands it provides (init, status, navigate)
 
 **Quick Start:**
+
 ```bash
 # Install the plugin
 npm install -g hiero-plugin-camp
@@ -59,12 +62,14 @@ hiero camp navigate my-app
 ```
 
 **Prerequisites:**
+
 - Node.js 18+
 - Hiero CLI installed
 - Camp binary installed and on PATH
 - Hedera testnet account (for templates that deploy)
 
 **Installation:**
+
 - Global npm install
 - Plugin registration with Hiero CLI
 - Verification steps
@@ -80,11 +85,13 @@ Brief description of each command with basic usage. Link to usage guide for deta
 
 **Templates:**
 List the three bundled templates with descriptions:
+
 - `hedera-smart-contract`: Solidity + Hardhat for Hedera
 - `hedera-dapp`: React + HashConnect
 - `hedera-agent`: Go agent with HCS/HTS
 
 **Development:**
+
 - Clone, install, build, test commands
 - Contributing guidelines (brief)
 
@@ -96,6 +103,7 @@ Apache-2.0
 Create `docs/usage-guide.md` with detailed examples for each command:
 
 **hiero camp init:**
+
 - Basic usage: `hiero camp init my-project`
 - With template: `hiero camp init my-project --template hedera-dapp`
 - With directory: `hiero camp init my-project --directory /path/to/workspace`
@@ -104,6 +112,7 @@ Create `docs/usage-guide.md` with detailed examples for each command:
 - Example output showing what the command prints
 
 **hiero camp status:**
+
 - Basic usage: `hiero camp status`
 - Verbose mode: `hiero camp status --verbose`
 - Filter by project: `hiero camp status --project my-app`
@@ -111,6 +120,7 @@ Create `docs/usage-guide.md` with detailed examples for each command:
 - Troubleshooting: "No workspace found" errors
 
 **hiero camp navigate:**
+
 - Basic usage: `hiero camp navigate`
 - With search query: `hiero camp navigate my-app`
 - List mode: `hiero camp navigate --list`
@@ -119,6 +129,7 @@ Create `docs/usage-guide.md` with detailed examples for each command:
 - Troubleshooting: no projects found
 
 **Common Workflows:**
+
 - Setting up a new Hedera smart contract project from scratch
 - Managing multiple Hedera projects in a workspace
 - Quickly switching between projects during development
@@ -128,32 +139,38 @@ Create `docs/usage-guide.md` with detailed examples for each command:
 Create `docs/architecture.md` explaining the design:
 
 **Plugin Architecture Overview:**
+
 - Diagram showing: Hiero CLI -> Plugin Manifest -> Command Handlers -> Camp Binary
 - Component relationships
 
 **Plugin Registration:**
+
 - How the plugin integrates with Hiero CLI
 - Manifest format and what each field means
 - Plugin lifecycle (discovery, loading, command routing)
 
 **Camp Binary Integration:**
+
 - Why the plugin wraps camp instead of reimplementing
 - Binary discovery mechanism (PATH lookup)
 - execCamp helper design (process spawning, output capture, error handling)
 - Timeout and buffer limit decisions
 
 **Command Design:**
+
 - Consistent argument parsing pattern across commands
 - Error handling strategy (CampNotFoundError, non-zero exits, uninitialized workspace)
 - Output formatting approach (chalk for colors, stderr for UI, stdout for pipe-friendly output)
 
 **Template System:**
+
 - Template storage (bundled in `templates/` directory)
 - Template metadata format (template.json)
 - Variable substitution mechanism
 - File copying and name replacement logic
 
 **Design Decisions:**
+
 - Why TypeScript (Hiero CLI ecosystem alignment)
 - Why chalk v4 (CommonJS compatibility)
 - Why execFile over exec (security: prevents shell injection)

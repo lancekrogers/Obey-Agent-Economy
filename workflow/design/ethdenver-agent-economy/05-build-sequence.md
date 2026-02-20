@@ -171,6 +171,7 @@ The minimum viable submission (P0 tracks only) requires:
 ```
 
 This gets us:
+
 - Hedera Track 3: Agent economy with native services
 - Hedera Track 4: Hiero camp plugin
 

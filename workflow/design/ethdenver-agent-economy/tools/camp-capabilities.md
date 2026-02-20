@@ -124,22 +124,26 @@ Status flow: `inbox → active → ready → dungeon`
 ## Hackathon Relevance
 
 **For the build process:**
+
 - Campaign structure organizes all 6+ projects (coordinator, inference, defi, dashboard, hiero-plugin, contracts)
 - `cgo` navigation enables instant switching between projects during rapid development
 - `camp sync` keeps submodules aligned
 - `camp run` dispatches just recipes across projects
 
 **For the Hiero CLI plugin (Track 4):**
+
 - The `hiero camp` plugin wraps camp's Go binary in a Node.js Hiero CLI plugin
 - Any Hedera developer can use `hiero camp init` to get a structured workspace
 - This is a real developer tool, not a hackathon toy
 
 **For demo and exposure:**
+
 - Campaign structure is visible in the GitHub repo — judges see organized multi-project workspace
 - `camp shortcuts` output demonstrates professional tooling
 - `camp doctor` shows the tool maintains workspace health
 
 **Production proof:**
+
 - camp manages the obey-campaign (the parent campaign for all obey tools) with multiple subprojects
 - Used daily across campaigns with dozens of projects
 - Navigation shortcuts eliminate context-switching friction

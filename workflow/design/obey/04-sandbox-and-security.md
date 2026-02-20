@@ -277,6 +277,7 @@ syscall.Kill(-cmd.Process.Pid, syscall.SIGTERM)
 ```
 
 This ensures:
+
 - If the provider spawns child processes, they're all in the same group
 - Killing the session kills all its children
 - A crash in one session doesn't affect others or the daemon
@@ -337,6 +338,7 @@ For the hackathon, rely on OS defaults and session timeouts.
 Sessions within the same campaign can see each other's files (they share the campaign boundary). This is by design — they're working in the same workspace, like multiple developers on the same repo.
 
 What sessions CANNOT do:
+
 - **Manage other sessions** — no gRPC access to CreateSession/StopSession for other sessions
 - **Read other sessions' activity** — activity events are routed to the daemon, not shared between sessions
 - **Access other campaigns** — campaign boundary is absolute
@@ -415,6 +417,7 @@ For the hackathon, implement these security measures:
 - [ ] Sensitive file deny list (new: .env, credentials, keys)
 
 Post-hackathon additions:
+
 - [ ] Per-session gRPC token with RPC restrictions
 - [ ] Resource limits (cgroup/ulimit)
 - [ ] Per-agent sandbox boundaries (within campaign)

@@ -32,7 +32,7 @@ Submit the 0G Track 3 ($7k) bounty on the ETHDenver submission portal. Fill out 
 
 | Material | Value |
 |----------|-------|
-| Repository URL | https://github.com/[org]/agent-inference |
+| Repository URL | <https://github.com/[org]/agent-inference> |
 | iNFT Showcase URL | [direct link to docs/inft-showcase.md] |
 | Demo Notes URL | [direct link to docs/demo-notes-0g-track3.md] |
 | Demo Video URL | [YouTube URL] |

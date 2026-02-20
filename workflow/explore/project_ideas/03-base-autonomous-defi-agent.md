@@ -106,16 +106,19 @@ Agent Self-Sustains → Repeats
 ## Strategy Details
 
 ### Arbitrage Module
+
 - Cross-DEX price monitoring on Base (Uniswap, Aerodrome, BaseSwap)
 - Flash loan arbitrage for zero-capital opportunities
 - MEV-aware: uses private mempools where available
 
 ### Yield Optimization Module
+
 - Auto-compounds yield farming positions
 - Moves liquidity between protocols based on APY + risk scoring
 - Exits positions when risk exceeds AI-calculated thresholds
 
 ### Liquidation Module
+
 - Monitors lending protocol health factors
 - Executes liquidations when profitable after gas costs
 - Profits flow back to agent's operational budget

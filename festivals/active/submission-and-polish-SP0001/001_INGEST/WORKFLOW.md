@@ -15,6 +15,7 @@ This document guides the agent through the ingest phase. Follow these steps in o
 **Goal:** Build comprehensive understanding of what the user has provided.
 
 **Actions:**
+
 1. List all files in `input_specs/`
 2. Read each file completely — do not skim
 3. Identify: What is the user trying to accomplish? What problem are they solving?
@@ -31,6 +32,7 @@ This document guides the agent through the ingest phase. Follow these steps in o
 **Goal:** Pull out the essential information that needs to be structured.
 
 **Actions:**
+
 1. Extract festival purpose (end goal, "done" criteria, why it matters)
 2. Extract requirements (what needs to happen, acceptance criteria, priorities)
 3. Extract constraints (technical, process, timeline)
@@ -47,6 +49,7 @@ This document guides the agent through the ingest phase. Follow these steps in o
 **Goal:** Transform extracted elements into structured documents.
 
 **Actions:**
+
 1. Create `output_specs/purpose.md` with festival purpose, success criteria, motivation
 2. Create `output_specs/requirements.md` with prioritized requirements (P0/P1/P2)
 3. Create `output_specs/constraints.md` with technical and process constraints
@@ -63,6 +66,7 @@ This document guides the agent through the ingest phase. Follow these steps in o
 **Goal:** Verify the structured output captures the user's intent.
 
 **Actions:**
+
 1. Summarize what you've produced (don't dump full documents)
 2. Highlight any interpretations you made or questions you have
 3. Ask: "Do these specs accurately capture what you want to accomplish?"
@@ -78,6 +82,7 @@ This document guides the agent through the ingest phase. Follow these steps in o
 **Goal:** Handle user feedback or finalize the phase.
 
 **Actions:**
+
 1. If user rejects: Note feedback, return to Step 3, update specs
 2. If user approves: Mark phase complete, note any caveats
 

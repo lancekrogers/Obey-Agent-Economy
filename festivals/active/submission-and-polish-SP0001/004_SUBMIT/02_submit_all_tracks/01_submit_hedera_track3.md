@@ -34,7 +34,7 @@ Before opening the form, gather all links and descriptions:
 
 | Material | Value |
 |----------|-------|
-| Project Repository URL | https://github.com/[org]/agent-coordinator |
+| Project Repository URL | <https://github.com/[org]/agent-coordinator> |
 | Demo Video URL | [YouTube URL from 08_demo_video] |
 | README URL | [direct link to README.md] |
 | Architecture Doc URL | [direct link to docs/architecture.md] |

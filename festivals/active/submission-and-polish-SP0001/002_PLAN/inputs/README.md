@@ -12,6 +12,7 @@ Track inputs and gaps identified during planning.
 ## Gaps Document
 
 Create `gaps.md` if you identify:
+
 - Unclear requirements
 - Decisions that need user input
 - Missing information

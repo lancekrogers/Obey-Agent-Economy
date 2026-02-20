@@ -10,6 +10,7 @@ fest manages **Festival Methodology** — a goal-oriented project management sys
 fest is **production-ready** and already used to plan and execute real development work. The `agent-simulator-update-AS0003` festival completed 48 of 49 tasks (97%) — proof this isn't a prototype.
 
 For the ETHDenver project, fest serves **two roles**:
+
 1. **Build tool** — we use fest to plan and track the hackathon build itself
 2. **Demo subject** — the agents use festival-structured plans for their work, published to HCS
 
@@ -129,18 +130,21 @@ Festival                        # Top-level goal
 ## Hackathon Relevance
 
 **For the build process:**
+
 - `fest create` + `fest scaffold` to set up each project festival
 - `fest next` + `fest task completed` to track progress
 - `fest progress` to show completion state (useful for demo)
 - `fest commit` to maintain audit trail of task-linked commits
 
 **For the agent economy demo:**
+
 - Festival structure becomes the on-chain protocol (published to HCS)
 - `fest progress` output maps to dashboard visualization
 - Quality gates become on-chain checkpoints
 - Task status transitions generate daemon events
 
 **Production proof:**
+
 - `agent-simulator-update-AS0003`: 48/49 tasks completed (97%)
 - fest has been used across multiple campaigns with hundreds of tasks
 - Not a hackathon prototype — this is the real tool

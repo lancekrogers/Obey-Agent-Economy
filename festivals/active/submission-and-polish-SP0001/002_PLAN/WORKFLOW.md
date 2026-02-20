@@ -15,6 +15,7 @@ This document guides the agent through the planning phase. Follow these steps in
 **Goal:** Build comprehensive understanding of what needs to be built.
 
 **Actions:**
+
 1. Read all output specs from ingest phase (if exists)
 2. Read research summary (if exists)
 3. Identify key requirements, constraints, recommendations
@@ -30,6 +31,7 @@ This document guides the agent through the planning phase. Follow these steps in
 **Goal:** Find unclear requirements or needed decisions.
 
 **Actions:**
+
 1. Note anything unclear or ambiguous
 2. Identify decisions that need to be made
 3. List questions you'd need answered
@@ -46,6 +48,7 @@ This document guides the agent through the planning phase. Follow these steps in
 **Goal:** Transform requirements into the festival hierarchy (core methodology).
 
 **Actions:**
+
 1. Identify the **Festival Goal** — what the entire festival accomplishes
 2. Break into **Phase Goals** — major stages of work:
    - What planning phases are needed?
@@ -56,6 +59,7 @@ This document guides the agent through the planning phase. Follow these steps in
 5. Document the hierarchy in `plan/STRUCTURE.md`
 
 **Output:** Documented festival structure showing:
+
 - Phase breakdown with goals
 - Sequence breakdown within phases
 - Task list within sequences
@@ -70,6 +74,7 @@ This document guides the agent through the planning phase. Follow these steps in
 **Goal:** Make and document key design decisions.
 
 **Actions:**
+
 1. For each significant decision, document options and tradeoffs
 2. Create `decisions/D###_title.md` for each decision
 3. Update `decisions/INDEX.md`
@@ -85,6 +90,7 @@ This document guides the agent through the planning phase. Follow these steps in
 **Goal:** Define phases, sequences, and tasks in detail.
 
 **Actions:**
+
 1. Create `plan/IMPLEMENTATION_PLAN.md` with:
    - Overview of what will be implemented
    - Phases with their goals
@@ -103,6 +109,7 @@ This document guides the agent through the planning phase. Follow these steps in
 **Goal:** Verify plan is ready for implementation.
 
 **Actions:**
+
 1. Summarize the plan (phases, sequences, key decisions)
 2. Note areas of uncertainty
 3. Ask: "Is this plan ready for implementation?"
@@ -118,6 +125,7 @@ This document guides the agent through the planning phase. Follow these steps in
 **Goal:** Create the festival directory structure using fest CLI.
 
 **Actions:**
+
 1. If user rejects: Note feedback, return to relevant step
 2. If user approves, **first learn the structure rules:**
    a. Run `fest understand structure` — learn the 3-level hierarchy, required files, and what a well-formed festival looks like
@@ -144,6 +152,7 @@ This document guides the agent through the planning phase. Follow these steps in
 **Goal:** Ensure festival is structurally valid and ready for execution.
 
 **Actions:**
+
 1. Run `fest validate` to check festival structure
 2. Fix any validation errors
 3. **Fill gate markers at phase level:**

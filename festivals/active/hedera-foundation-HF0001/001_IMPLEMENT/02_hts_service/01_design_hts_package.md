@@ -80,6 +80,7 @@ type TokenTransfer interface {
 ```
 
 Design decisions:
+
 - `TokenCreator` is separate from `TokenTransfer` (Interface Segregation Principle)
 - `CreateFungibleToken` takes a `TokenConfig` struct instead of many parameters
 - `Transfer` uses a `TransferRequest` struct for clarity and extensibility
@@ -182,6 +183,7 @@ type TransferReceipt struct {
 ```
 
 Design decisions:
+
 - `TokenConfig` uses a struct with exported fields for clarity (no builder pattern -- KISS)
 - `DefaultTokenConfig` provides sensible defaults but requires the caller to set `TreasuryAccountID`
 - `TransferRequest` bundles all transfer parameters (avoids long parameter lists)

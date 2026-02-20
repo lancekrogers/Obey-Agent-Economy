@@ -173,6 +173,7 @@ type MinterConfig struct {
 Key implementation details:
 
 **Mint(ctx, req)**:
+
 1. Check `ctx.Err()` before starting
 2. Encrypt the plaintext metadata using `encryptMetadata`
 3. Build the ERC-7857 mint transaction:
@@ -185,12 +186,14 @@ Key implementation details:
 8. Wrap all errors: `fmt.Errorf("inft: failed to mint iNFT for job %s: %w", req.InferenceJobID, err)`
 
 **UpdateMetadata(ctx, tokenID, meta)**:
+
 1. Build the update transaction with the new encrypted metadata
 2. Sign and submit to 0G Chain
 3. Wait for confirmation
 4. Wrap errors: `fmt.Errorf("inft: failed to update metadata for token %s: %w", tokenID, err)`
 
 **GetStatus(ctx, tokenID)**:
+
 1. Call the contract's read methods (ownerOf, tokenURI, etc.)
 2. Parse the response into INFTStatus
 3. Wrap errors: `fmt.Errorf("inft: failed to get status for token %s: %w", tokenID, err)`
@@ -214,11 +217,13 @@ var (
 Create `internal/zerog/inft/minter_test.go` and `internal/zerog/inft/encrypt_test.go`:
 
 **Encryption tests:**
+
 1. **TestEncryptMetadata_Success**: Encrypt and decrypt, verify roundtrip
 2. **TestEncryptMetadata_EmptyMap**: Handle empty metadata gracefully
 3. **TestEncryptMetadata_InvalidKey**: Wrong key size, verify error
 
 **Minter tests (use mock chain client):**
+
 1. **TestMint_Success**: Mock successful mint transaction, verify token ID
 2. **TestMint_ChainUnreachable**: Mock RPC failure, verify ErrChainUnreachable
 3. **TestMint_InsufficientGas**: Mock gas estimation failure, verify error

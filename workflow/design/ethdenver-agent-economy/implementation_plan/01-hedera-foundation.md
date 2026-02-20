@@ -9,6 +9,7 @@ native Hedera services with zero Solidity.
 ## Scope
 
 ### Hedera Core (agent-coordinator project)
+
 - Create and manage Hedera testnet accounts for all three agents
 - Implement HCS (Consensus Service) for agent-to-agent messaging
 - Implement HTS (Token Service) for task payments and settlement
@@ -16,12 +17,14 @@ native Hedera services with zero Solidity.
 - Festival protocol: serialize/deserialize fest task assignments over HCS
 
 ### Coordinator Logic
+
 - Task assignment engine: read festival plan → assign tasks to agents via HCS
 - Progress monitoring: listen for agent status messages on HCS
 - Quality gates: enforce sequence completion before advancing
 - Payment flow: trigger HTS transfers on task completion
 
 ### Daemon Client (consumer only)
+
 - Implement the daemon gRPC client used by all agents
 - This festival does NOT build the daemon itself — the daemon is a separate
   project outside this campaign. Agents are consumers of the daemon API.

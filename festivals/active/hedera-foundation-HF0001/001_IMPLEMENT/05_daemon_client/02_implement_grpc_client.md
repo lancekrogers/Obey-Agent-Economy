@@ -34,6 +34,7 @@ Implement the `DaemonClient` interface using gRPC as the transport. This concret
 ### Step 1: Check proto dependencies
 
 Before implementing, verify the daemon proto definitions are available. Check for:
+
 - A `proto/` directory in the project with daemon service definitions
 - Or a Go package generated from the protos
 

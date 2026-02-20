@@ -33,6 +33,7 @@ Build the Inference Metrics panel component at `src/components/panels/InferenceM
 ### Step 1: Implement ComputeGauge sub-component
 
 **Props:**
+
 - `compute: ComputeMetrics | null`
 
 **Implementation:**
@@ -91,6 +92,7 @@ Build the Inference Metrics panel component at `src/components/panels/InferenceM
 ### Step 2: Implement StorageUsage sub-component
 
 **Props:**
+
 - `storage: StorageMetrics | null`
 
 **Implementation:**
@@ -104,6 +106,7 @@ Build the Inference Metrics panel component at `src/components/panels/InferenceM
    - "Total: {totalStorageGb.toFixed(1)} GB" in `text-sm text-gray-500`
 
 4. **Progress bar**: Reuse the `ProgressBar` component from `src/components/ui/ProgressBar.tsx`:
+
    ```tsx
    const percentage = storage ? (storage.usedStorageGb / storage.totalStorageGb) * 100 : 0;
    <ProgressBar percentage={percentage} size="md" />
@@ -118,6 +121,7 @@ Build the Inference Metrics panel component at `src/components/panels/InferenceM
 ### Step 3: Implement INFTCard sub-component
 
 **Props:**
+
 - `inft: INFTStatus | null`
 
 **Implementation:**
@@ -143,6 +147,7 @@ Build the Inference Metrics panel component at `src/components/panels/InferenceM
 ### Step 4: Implement JobTable sub-component
 
 **Props:**
+
 - `jobs: InferenceJob[]`
 
 **Implementation:**
@@ -154,6 +159,7 @@ Build the Inference Metrics panel component at `src/components/panels/InferenceM
 3. **Table header**: Sticky, with columns: Model, Status, Tokens, Latency, Time
 
 4. **Table rows**: Map over jobs (sorted by timestamp descending, limited to 30):
+
    ```tsx
    {jobs.slice(0, 30).map(job => (
      <tr key={job.id} className="text-sm text-gray-300 border-b border-gray-800">
@@ -189,6 +195,7 @@ Build the Inference Metrics panel component at `src/components/panels/InferenceM
 **Panel container**: `bg-gray-900 rounded-lg border border-gray-800 p-4 flex flex-col`
 
 **Layout:**
+
 1. **Panel header**: "Inference & 0G Metrics" with connection indicator
 2. **Top section**: `grid grid-cols-2 gap-4 mt-4`
    - Left: ComputeGauge

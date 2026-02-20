@@ -43,6 +43,7 @@ cd $(fgo) && mkdir -p templates/hedera-agent
 Create all files as designed in `docs/template-design.md`. The key files to create:
 
 **`templates/hedera-smart-contract/template.json`:**
+
 ```json
 {
   "id": "hedera-smart-contract",
@@ -57,7 +58,7 @@ Create all files as designed in `docs/template-design.md`. The key files to crea
 Create with Hardhat dependencies, hedera-specific plugins, and scripts for compile, test, and deploy. Use `{{projectName}}` for the package name.
 
 **`templates/hedera-smart-contract/hardhat.config.ts`:**
-Configure Hedera testnet network with the JSON-RPC relay endpoint. Include the Hedera testnet chain ID (296) and RPC URL (https://testnet.hashio.io/api).
+Configure Hedera testnet network with the JSON-RPC relay endpoint. Include the Hedera testnet chain ID (296) and RPC URL (<https://testnet.hashio.io/api>).
 
 **`templates/hedera-smart-contract/contracts/HelloHedera.sol`:**
 Create a simple Solidity contract that demonstrates deployment on Hedera. Keep it straightforward -- a greeting contract with get/set functions.
@@ -69,6 +70,7 @@ Hardhat deploy script that deploys the HelloHedera contract to the configured ne
 Basic test suite using Hardhat's testing utilities (ethers, chai).
 
 **`templates/hedera-smart-contract/.env.example`:**
+
 ```
 # Hedera Testnet Configuration
 HEDERA_TESTNET_OPERATOR_ID=0.0.XXXXX
@@ -87,6 +89,7 @@ Standard Node.js + Hardhat gitignore (node_modules, artifacts, cache, .env, cove
 Create all files as designed:
 
 **`templates/hedera-dapp/template.json`:**
+
 ```json
 {
   "id": "hedera-dapp",
@@ -122,6 +125,7 @@ Custom React hook that manages HashConnect lifecycle: initialization, pairing, d
 Hedera network configuration constants: network type (testnet), mirror node URL, and HashConnect app metadata.
 
 **`templates/hedera-dapp/.env.example`:**
+
 ```
 # Hedera dApp Configuration
 VITE_HEDERA_NETWORK=testnet
@@ -136,6 +140,7 @@ Complete setup guide: prerequisites, installation, HashPack wallet setup, runnin
 Create all files as designed:
 
 **`templates/hedera-agent/template.json`:**
+
 ```json
 {
   "id": "hedera-agent",
@@ -174,6 +179,7 @@ Configuration loader that reads from environment variables: operator ID, operato
 Standard Go Makefile with targets: build, test, run, lint, clean.
 
 **`templates/hedera-agent/.env.example`:**
+
 ```
 # Hedera Agent Configuration
 HEDERA_NETWORK=testnet
@@ -193,6 +199,7 @@ cd $(fgo) && find templates/ -type f | sort
 ```
 
 Check that each template has:
+
 - [ ] template.json with correct metadata
 - [ ] All source files referenced in the design document
 - [ ] README.md with complete setup instructions

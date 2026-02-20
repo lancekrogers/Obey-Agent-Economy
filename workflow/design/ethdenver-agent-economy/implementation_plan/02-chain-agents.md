@@ -12,6 +12,7 @@ DeFi agent trades autonomously, and both report back via HCS.
 Two parallel workstreams within one festival:
 
 ### Inference Agent (0G) — agent-inference project
+
 - Connect to 0G Compute broker for decentralized GPU inference
 - Store agent memory/results on 0G Storage
 - Mint and maintain ERC-7857 iNFT with encrypted metadata on 0G Chain
@@ -19,6 +20,7 @@ Two parallel workstreams within one festival:
 - Receive tasks from coordinator via HCS, return results
 
 ### DeFi Agent (Base) — agent-defi project
+
 - Register agent identity via ERC-8004 (Agent Identity)
 - Implement x402 payment protocol for compute costs
 - Add ERC-8021 builder attribution codes to transactions
@@ -27,6 +29,7 @@ Two parallel workstreams within one festival:
 - Goal: revenue exceeds operational costs (self-sustaining)
 
 Both agents share:
+
 - Daemon client integration (same pattern as coordinator)
 - HCS message subscribe/publish for task flow
 - Health reporting to coordinator

@@ -12,11 +12,11 @@ Once obey agents work, adding OpenClaw is an integration task, not a rewrite.
 
 ## What OpenClaw Support Unlocks
 
-| Without OpenClaw | With OpenClaw |
-|-----------------|---------------|
-| Tracks 2, 3, 4 ($15k) | **All 4 tracks ($25k)** |
+| Without OpenClaw       | With OpenClaw                               |
+| ---------------------- | ------------------------------------------- |
+| Tracks 2, 3, 4 ($15k)  | **All 4 tracks ($25k)**                     |
 | "Our agents on Hedera" | "Our orchestrator runs ANY agent on Hedera" |
-| obey-only demo | **Provider-agnostic demo** |
+| obey-only demo         | **Provider-agnostic demo**                  |
 
 Track 1 requires: "Build on OpenClaw runtime" + "society of OpenClaw agents" + UCP commerce.
 
@@ -70,14 +70,14 @@ The daemon manages both identically: spawn, configure, monitor, route messages, 
 
 ### Additional Requirements
 
-| Track 1 Requirement | Implementation |
-|---------------------|---------------|
-| Build on OpenClaw runtime | Some agents run as OpenClaw instances via daemon |
-| Agents as primary users | Agent-to-agent commerce, humans only observe |
-| Multi-agent environment | Daemon orchestrates mixed obey + OpenClaw agents |
-| Use Hedera (HTS/HCS) | Already built in Phase 1 |
-| UI shows agent flow | Dashboard already built in Phase 1 |
-| Agent flow steps and states | Festival progress visualization already built |
+| Track 1 Requirement         | Implementation                                   |
+| --------------------------- | ------------------------------------------------ |
+| Build on OpenClaw runtime   | Some agents run as OpenClaw instances via daemon |
+| Agents as primary users     | Agent-to-agent commerce, humans only observe     |
+| Multi-agent environment     | Daemon orchestrates mixed obey + OpenClaw agents |
+| Use Hedera (HTS/HCS)        | Already built in Phase 1                         |
+| UI shows agent flow         | Dashboard already built in Phase 1               |
+| Agent flow steps and states | Festival progress visualization already built    |
 
 ### Additional Components
 

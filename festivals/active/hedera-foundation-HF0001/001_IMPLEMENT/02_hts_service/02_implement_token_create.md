@@ -106,6 +106,7 @@ func (s *TokenService) CreateFungibleToken(ctx context.Context, config TokenConf
 ```
 
 Key implementation notes:
+
 - `SetTokenType(hedera.TokenTypeFungibleCommon)` explicitly marks this as a fungible token
 - AdminKey and SupplyKey are optional (nil means immutable/fixed supply respectively)
 - The `Decimals` field type may need adjustment based on the exact Hedera SDK version -- check the SDK docs for `SetDecimals` parameter type

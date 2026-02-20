@@ -19,11 +19,13 @@ This is the "self-sustaining agent" bounty with a **security angle** instead of 
 ## Why Not Another DeFi Bot?
 
 Research shows these are crowded/table-stakes for 2026:
+
 - Basic yield optimization agents (hundreds exist)
 - GPT-wrapper trading bots (DeFAI space is saturated)
 - Simple arbitrage bots (well-explored)
 
 A security agent is:
+
 - Novel (nobody has built an autonomous bug bounty hunter)
 - Socially beneficial (public good for the ecosystem)
 - Revenue-generating (bug bounty payouts are real money)

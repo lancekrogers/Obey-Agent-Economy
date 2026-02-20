@@ -49,6 +49,7 @@ cd $(fgo) && grep recharts package.json
 ### Step 2: Implement SummaryCards sub-component
 
 **Props:**
+
 - `summary: PnLSummary | null`
 
 **Implementation:**
@@ -88,6 +89,7 @@ When summary is null, render skeleton cards with `animate-pulse`.
 ### Step 3: Implement PnLChart sub-component
 
 **Props:**
+
 - `data: PnLDataPoint[]`
 
 **Implementation using Recharts:**
@@ -106,6 +108,7 @@ import {
 ```
 
 Chart structure:
+
 ```tsx
 <ResponsiveContainer width="100%" height={200}>
   <LineChart data={data} margin={{ top: 5, right: 20, left: 10, bottom: 5 }}>
@@ -161,6 +164,7 @@ When data array is empty, render a placeholder: "Chart will appear when trading 
 ### Step 4: Implement TradeTable sub-component
 
 **Props:**
+
 - `trades: Trade[]`
 
 **Implementation:**
@@ -168,12 +172,15 @@ When data array is empty, render a placeholder: "Chart will appear when trading 
 1. **Container**: `overflow-y-auto max-h-[200px]`
 
 2. **Table header**: `<thead>` with sticky header:
+
    ```
    <tr className="text-xs text-gray-500 uppercase tracking-wider border-b border-gray-700 sticky top-0 bg-gray-900">
    ```
+
    Columns: Pair, Side, Amount, Price, P&L, Gas, Time
 
 3. **Table rows**: Map over trades (sorted by timestamp descending, limited to 50):
+
    ```tsx
    {trades.slice(0, 50).map(trade => (
      <tr key={trade.id} className="text-sm text-gray-300 border-b border-gray-800 hover:bg-gray-800/50">
@@ -201,6 +208,7 @@ When data array is empty, render a placeholder: "Chart will appear when trading 
 **Panel container**: `bg-gray-900 rounded-lg border border-gray-800 p-4 flex flex-col`
 
 **Layout:**
+
 1. **Panel header**: "DeFi P&L (Base)" title with connection indicator
 2. **Summary cards**: SummaryCards component at the top
 3. **Chart section**: Label "Revenue vs Costs" then PnLChart component

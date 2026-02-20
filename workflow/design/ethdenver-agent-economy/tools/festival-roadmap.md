@@ -54,6 +54,7 @@ Festival 0: Daemon Agent Management     ← BLOCKS Festivals 2, 7
 **Dependencies**: None (greenfield addition to existing daemon)
 
 **Phase outline**:
+
 1. **Agent Registry** — data model, gRPC API for register/list/get agents
 2. **Process Management** — spawn agent as child process, monitor heartbeat, restart on failure, graceful stop
 3. **Agent Configuration** — per-agent settings (blockchain accounts, working dir, env vars)
@@ -74,6 +75,7 @@ Festival 0: Daemon Agent Management     ← BLOCKS Festivals 2, 7
 **Dependencies**: None
 
 **Phase outline**:
+
 1. **HCS Integration** — topic creation, message publish, mirror node subscription
 2. **HTS Integration** — token creation (fungible payment + NFT reputation), transfers, association
 3. **Schedule Service** — scheduled heartbeat transactions, multi-agent approval
@@ -95,6 +97,7 @@ Festival 0: Daemon Agent Management     ← BLOCKS Festivals 2, 7
 **Dependencies**: Festival 0 (daemon can spawn/manage agents) + Festival 1 (Hedera SDK ready)
 
 **Phase outline**:
+
 1. **Agent Definition** — coordinator agent config, LLM provider setup, daemon registration
 2. **Festival Plan Reading** — parse fest structures into agent-executable plans
 3. **Task Assignment** — assign tasks to specialist agents via HCS messages
@@ -116,6 +119,7 @@ Festival 0: Daemon Agent Management     ← BLOCKS Festivals 2, 7
 **Dependencies**: Festival 1 (HCS for coordination) + Festival 2 (coordinator can assign tasks)
 
 **Phase outline**:
+
 1. **0G Compute Integration** — broker connection, inference request submission, payment flow
 2. **0G Storage Integration** — upload/download agent memory and results
 3. **iNFT (ERC-7857)** — deploy contract, mint agent iNFT, update metadata on learning
@@ -137,6 +141,7 @@ Festival 0: Daemon Agent Management     ← BLOCKS Festivals 2, 7
 **Dependencies**: Festival 1 (HCS for coordination) + Festival 2 (coordinator can assign tasks)
 
 **Phase outline**:
+
 1. **AgentKit Setup** — Coinbase AgentKit wallet, Smart Account (AA), gasless transactions
 2. **ERC-8004 Identity** — register agent in Trustless Agents Identity Registry
 3. **x402 Payments** — HTTP 402 payment protocol for compute/API access
@@ -157,6 +162,7 @@ Festival 0: Daemon Agent Management     ← BLOCKS Festivals 2, 7
 **Dependencies**: None (wraps existing camp binary)
 
 **Phase outline**:
+
 1. **Plugin Architecture** — follow PLUGIN_ARCHITECTURE_GUIDE.md, Node.js wrapper
 2. **Command Mapping** — map camp commands to `hiero camp` namespace
 3. **Hedera Templates** — bundled project templates for common Hedera patterns
@@ -176,6 +182,7 @@ Festival 0: Daemon Agent Management     ← BLOCKS Festivals 2, 7
 **Dependencies**: Festival 2 (coordinator running) + Festival 3 (inference agent data) + Festival 4 (DeFi agent P&L)
 
 **Phase outline**:
+
 1. **Layout and Navigation** — Next.js app, main views
 2. **Festival Progress View** — visualize fest progress tree, phase/sequence/task states
 3. **HCS Feed** — real-time HCS message stream display
@@ -197,6 +204,7 @@ Festival 0: Daemon Agent Management     ← BLOCKS Festivals 2, 7
 **Dependencies**: Festival 2 (coordinator proves the pattern works)
 
 **Phase outline**:
+
 1. **Extension Interface** — implement OpenClaw runtime plugin contract
 2. **Runtime Adapter** — bridge daemon agent management to OpenClaw expectations
 3. **Template Pack** — festival-structured agent templates
