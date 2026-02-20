@@ -15,6 +15,9 @@ metadata:
         - status: active
           timestamp: 2026-02-20T10:20:15.434898-07:00
           path: /Users/lancerogers/Dev/Crypto/ETHDENVER/ethdenver2026/festivals/active/submission-and-polish-SP0001
+        - status: planning
+          timestamp: 2026-02-20T10:53:40.722429-07:00
+          path: /Users/lancerogers/Dev/Crypto/ETHDENVER/ethdenver2026/festivals/planning/submission-and-polish-SP0001
 type_config:
     auto_phases:
         - INGEST

@@ -2,11 +2,12 @@
 fest_type: festival
 fest_id: SP0001
 fest_name: submission-and-polish
-fest_status: active
+fest_status: planning
 fest_created: 2026-02-18T13:41:01.436091-07:00
-fest_updated: 2026-02-20T10:20:15.433278-07:00
+fest_updated: 2026-02-20T10:53:40.721914-07:00
 fest_tracking: true
 ---
+
 
 
 # Submission and Polish

@@ -4,14 +4,14 @@ Dependency analysis and execution order for the 5 ETHDenver 2026 campaign festiv
 
 ## Festival Inventory
 
-| Festival | ID | Project(s) | Sequences | Tasks |
-|----------|----|------------|-----------|-------|
-| hedera-foundation | HF0001 | agent-coordinator | 6 | 47 |
-| chain-agents | CA0001 | agent-inference, agent-defi, agent-coordinator | 3 | 36 |
-| hiero-plugin | HP0001 | hiero-plugin | 4 | 33 |
-| dashboard | DA0001 | dashboard | 7 | 51 |
-| submission-and-polish | SP0001 | cross-project | 10 | 84 |
-| **Total** | | | **30** | **251** |
+| Festival              | ID     | Project(s)                                     | Sequences | Tasks   |
+| --------------------- | ------ | ---------------------------------------------- | --------- | ------- |
+| hedera-foundation     | HF0001 | agent-coordinator                              | 6         | 47      |
+| chain-agents          | CA0001 | agent-inference, agent-defi, agent-coordinator | 3         | 36      |
+| hiero-plugin          | HP0001 | hiero-plugin                                   | 4         | 33      |
+| dashboard             | DA0001 | dashboard                                      | 7         | 51      |
+| submission-and-polish | SP0001 | cross-project                                  | 10        | 84      |
+| **Total**             |        |                                                | **30**    | **251** |
 
 ## Dependency Chain
 
@@ -83,6 +83,7 @@ Dependency analysis and execution order for the 5 ETHDenver 2026 campaign festiv
 The chain-agents festival explicitly states: "This phase depends on the hedera-foundation festival (HF0001) completing HCS messaging and HTS payment infrastructure." Both the inference and DeFi agents subscribe to HCS for task assignments and publish results back to the coordinator. The coordinator engine, daemon client package, and HTS payment flow are all built in hedera-foundation.
 
 **Specific dependencies**:
+
 - `internal/hedera/hcs/` — agents need HCS topic subscribe/publish
 - `internal/hedera/hts/` — agents need HTS for payment settlement
 - `internal/daemon/client/` — shared consumer package for daemon API
@@ -95,6 +96,7 @@ The chain-agents festival explicitly states: "This phase depends on the hedera-f
 The dashboard connects to daemon hub WebSocket and Hedera mirror node REST API to display live data. The dashboard phase notes: "Dependencies: chain-agents festival must be active for live agent data; hedera-foundation festival must be active for HCS/HTS data. Development can proceed with mock data."
 
 **Specific dependencies**:
+
 - HCS feed panel needs HCS topics to exist and have messages
 - Festival view panel needs daemon state API with festival data
 - Agent activity panel needs running agents reporting to daemon
@@ -236,22 +238,22 @@ Sequences 01-03 (HCS, HTS, Schedule) are independent services and could run in p
 
 When assigning festivals to agents (obey sessions), consider:
 
-| Festival | Recommended Agents | Rationale |
-|----------|--------------------|-----------|
-| hedera-foundation | 1 agent | Sequential sequence dependencies, single project |
-| chain-agents | 2 agents (1 per specialist agent) | inference and defi sequences are independent |
-| hiero-plugin | 1 agent | Small scope, single project, independent |
-| dashboard | 1 agent | Single project, sequential panel builds |
-| submission-and-polish | 1-2 agents | Cross-project but mostly serial |
+| Festival              | Recommended Agents                | Rationale                                        |
+| --------------------- | --------------------------------- | ------------------------------------------------ |
+| hedera-foundation     | 1 agent                           | Sequential sequence dependencies, single project |
+| chain-agents          | 2 agents (1 per specialist agent) | inference and defi sequences are independent     |
+| hiero-plugin          | 1 agent                           | Small scope, single project, independent         |
+| dashboard             | 1 agent                           | Single project, sequential panel builds          |
+| submission-and-polish | 1-2 agents                        | Cross-project but mostly serial                  |
 
 **Maximum useful parallelism**: 4 agents (1 hedera + 1 hiero + 1 inference + 1 defi), later dropping to 3-4 as festivals complete.
 
 ## Risk Factors
 
-| Risk | Impact | Mitigation |
-|------|--------|------------|
-| Hedera testnet instability | Blocks HF0001 → blocks CA0001 | Use recorded testnet data for development; live testnet for integration only |
-| 0G SDK TypeScript-only | Blocks inference agent Go implementation | Go wrapper or TypeScript agent with Go orchestration |
-| Dashboard mock→live data transition | Late integration bugs in DA0001 | Start with realistic mocks matching actual event schemas |
-| Submission festival scope creep | SP0001 takes longer than expected | Strict no-new-features rule; fix-only during submission |
-| Single project contention | Two agents editing same files | Festival methodology enforces one-project-per-sequence |
+| Risk                                | Impact                                   | Mitigation                                                                   |
+| ----------------------------------- | ---------------------------------------- | ---------------------------------------------------------------------------- |
+| Hedera testnet instability          | Blocks HF0001 → blocks CA0001            | Use recorded testnet data for development; live testnet for integration only |
+| 0G SDK TypeScript-only              | Blocks inference agent Go implementation | Go wrapper or TypeScript agent with Go orchestration                         |
+| Dashboard mock→live data transition | Late integration bugs in DA0001          | Start with realistic mocks matching actual event schemas                     |
+| Submission festival scope creep     | SP0001 takes longer than expected        | Strict no-new-features rule; fix-only during submission                      |
+| Single project contention           | Two agents editing same files            | Festival methodology enforces one-project-per-sequence                       |
