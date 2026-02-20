@@ -1,0 +1,31 @@
+{
+  "actual_people": 0,
+  "project_start": "2026-02-18T13:16:35-07:00",
+  "cocomo_project_type": "organic",
+  "projects": {
+    "agent-coordinator": {
+      "path": "projects/agent-coordinator",
+      "include": true
+    },
+    "agent-defi": {
+      "path": "projects/agent-defi",
+      "include": true
+    },
+    "agent-inference": {
+      "path": "projects/agent-inference",
+      "include": true
+    },
+    "contracts": {
+      "path": "projects/contracts",
+      "include": true
+    },
+    "dashboard": {
+      "path": "projects/dashboard",
+      "include": true
+    },
+    "hiero-plugin": {
+      "path": "projects/hiero-plugin",
+      "include": true
+    }
+  }
+}
