@@ -1,6 +1,6 @@
 # Obey Daemon Interface Contract
 
-> **Status:** Scaffolded but **not called at runtime**. All agent coordination currently runs over HCS (Hedera Consensus Service). This document records what the agents expect so the obey daemon can be updated to match.
+> **Status:** **Integrated into agent lifecycle.** All three agents register with the daemon on startup and send periodic heartbeats. If no daemon is running, agents gracefully degrade to standalone mode via `NoopClient` and continue coordinating over HCS.
 
 ## Architecture Overview
 
@@ -8,7 +8,7 @@ The system has two coordination layers:
 
 1. **HCS (active)** — Agents coordinate peer-to-peer over Hedera Consensus Service. The coordinator publishes `task_assignment` messages to an HCS topic, worker agents subscribe, execute, and publish `task_result` back. Payments settle via HTS tokens. This is the live agentic economy.
 
-2. **gRPC / obey daemon (scaffolded, unused)** — A `DaemonService` proto exists in `agent-coordinator/proto/daemon.proto` with Register, Execute, and Heartbeat RPCs. Client code exists but is never invoked at runtime. Worker agents have stub-only daemon clients.
+2. **gRPC / obey daemon (integrated)** — A `DaemonService` proto exists in `agent-coordinator/proto/daemon.proto` with Register, Execute, and Heartbeat RPCs. All three agents call Register on startup and Heartbeat every 30s. If the daemon is unreachable, agents fall back to a `NoopClient` that silently succeeds, allowing standalone operation.
 
 ## gRPC Service Definition
 
@@ -114,15 +114,15 @@ type Config struct {
 - `Register` and `Heartbeat` use `CallTimeout` (30s default)
 - `Execute` uses `req.Timeout` if nonzero, otherwise `CallTimeout`
 
-### Port Convention (inconsistent — needs reconciliation)
+### Port Convention
+
+All agents default to `localhost:50051`, matching the coordinator's `DefaultConfig()`.
 
 | Agent | Default Port | Env Var |
 |-------|-------------|---------|
-| coordinator (`pkg/daemon`) | `50051` | hardcoded in `DefaultConfig()` |
-| agent-defi | `9090` | `DEFI_DAEMON_ADDR` |
-| agent-inference | `9090` | `INFERENCE_DAEMON_ADDR` |
-
-If the daemon integration is activated, these need to agree on a single port.
+| coordinator (`pkg/daemon`) | `50051` | `DAEMON_ADDRESS` |
+| agent-defi | `50051` | `DEFI_DAEMON_ADDR` |
+| agent-inference | `50051` | `INFERENCE_DAEMON_ADDR` |
 
 ## Current Implementation Status Per Agent
 
@@ -131,19 +131,26 @@ If the daemon integration is activated, these need to agree on a single port.
 - **Proto + generated code:** Full implementation in `pkg/daemon/pb/`
 - **Go client:** `pkg/daemon/grpc.go` — fully implemented `GRPCClient` struct with `Register`, `Execute`, `Heartbeat`, `Close`
 - **Go interface:** `pkg/daemon/client.go` — `DaemonClient` interface with all 3 RPCs + `io.Closer`
-- **Runtime usage:** None. `cmd/coordinator/main.go` does not import or instantiate the daemon client. `internal/daemon/client.go` is an empty package.
+- **NoopClient:** `pkg/daemon/noop.go` — `NoopClient` for graceful degradation (silently succeeds on all operations)
+- **Runtime usage:** `cmd/coordinator/main.go` connects to daemon, calls Register, and runs a heartbeat goroutine. Falls back to `NoopClient` on failure.
 
 ### agent-defi
 
-- **Client:** `internal/daemon/client.go` — stub struct that stores endpoint string only
-- **Methods:** `New(endpoint)`, `Endpoint()` — no RPC calls
-- **Runtime usage:** `cfg.DaemonAddr` is loaded from env but daemon client is never constructed in `main.go`
+- **Client:** Imports `pkg/daemon` from agent-coordinator via `replace` directive (no code duplication)
+- **Runtime usage:** `cmd/agent-defi/main.go` constructs a `GRPCClient` or falls back to `Noop()`. Agent calls Register in `Run()` after ERC-8004 registration, heartbeats alongside HCS health publishes.
 
 ### agent-inference
 
-- **Client:** `internal/daemon/client.go` — stub struct that stores endpoint string only
-- **Methods:** `New(endpoint)` — no RPC calls, no `Endpoint()` method
-- **Runtime usage:** `cfg.DaemonAddr` is loaded from env but daemon client is never constructed in `main.go`
+- **Client:** Imports `pkg/daemon` from agent-coordinator via `replace` directive (no code duplication)
+- **Runtime usage:** `cmd/agent-inference/main.go` constructs a `GRPCClient` or falls back to `Noop()`. Agent calls Register at the start of `Run()`, heartbeats alongside HCS health publishes.
+
+### Graceful Degradation (NoopClient)
+
+When no daemon is running, all agents automatically fall back to the `NoopClient`:
+- `Register` returns a synthetic response with `AgentID: "<name>-standalone"`
+- `Execute` returns status `"skipped"`
+- `Heartbeat` and `Close` are no-ops
+- Agents log a warning and continue operating via HCS coordination
 
 ## HCS Protocol (Active Runtime Coordination)
 
