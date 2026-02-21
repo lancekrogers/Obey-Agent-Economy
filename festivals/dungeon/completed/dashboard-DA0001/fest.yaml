@@ -21,6 +21,9 @@ metadata:
         - status: active
           timestamp: 2026-02-20T17:10:11.652128-07:00
           path: /Users/lancerogers/Dev/ethdenver-2026-campaign/festivals/dungeon/completed/active/dashboard-DA0001
+        - status: dungeon/completed
+          timestamp: 2026-02-20T17:43:15.503499-07:00
+          path: /Users/lancerogers/Dev/ethdenver-2026-campaign/festivals/dungeon/completed/dashboard-DA0001
 type_config:
     auto_phases:
         - IMPLEMENT
