@@ -19,8 +19,11 @@ services:
       HCS_TASK_TOPIC_ID: "${HCS_TASK_TOPIC_ID:-}"
       HCS_STATUS_TOPIC_ID: "${HCS_STATUS_TOPIC_ID:-}"
       HTS_PAYMENT_TOKEN_ID: "${HTS_PAYMENT_TOKEN_ID:-}"
+      DAEMON_ADDRESS: "host.docker.internal:50051"
     profiles: [agents]
     restart: unless-stopped
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
 
   inference:
     build:
@@ -29,10 +32,26 @@ services:
       HEDERA_ACCOUNT_ID: "${INFERENCE_HEDERA_ACCOUNT_ID:-}"
       HEDERA_PRIVATE_KEY: "${INFERENCE_HEDERA_PRIVATE_KEY:-}"
       INFERENCE_AGENT_ID: "${INFERENCE_AGENT_ID:-inference-001}"
+      INFERENCE_DAEMON_ADDR: "host.docker.internal:9090"
       HCS_TASK_TOPIC: "${HCS_TASK_TOPIC:-}"
       HCS_RESULT_TOPIC: "${HCS_RESULT_TOPIC:-}"
+      ZG_CHAIN_RPC: "${ZG_CHAIN_RPC:-https://evmrpc-testnet.0g.ai}"
+      ZG_CHAIN_PRIVATE_KEY: "${ZG_CHAIN_PRIVATE_KEY:-}"
+      ZG_SERVING_CONTRACT: "${ZG_SERVING_CONTRACT:-}"
+      ZG_COMPUTE_ENDPOINT: "${ZG_COMPUTE_ENDPOINT:-}"
+      ZG_FLOW_CONTRACT: "${ZG_FLOW_CONTRACT:-0x22E03a6A89B950F1c82ec5e74F8eCa321a105296}"
+      ZG_STORAGE_NODE_ENDPOINT: "${ZG_STORAGE_NODE_ENDPOINT:-}"
+      ZG_STORAGE_ENDPOINT: "${ZG_STORAGE_ENDPOINT:-}"
+      ZG_INFT_CONTRACT: "${ZG_INFT_CONTRACT:-}"
+      ZG_ENCRYPTION_KEY: "${ZG_ENCRYPTION_KEY:-}"
+      ZG_ENCRYPTION_KEY_ID: "${ZG_ENCRYPTION_KEY_ID:-default}"
+      ZG_DA_CONTRACT: "${ZG_DA_CONTRACT:-0xE75A073dA5bb7b0eC622170Fd268f35E675a957B}"
+      ZG_DA_NAMESPACE: "${ZG_DA_NAMESPACE:-inference-audit}"
+      ZG_DA_ENDPOINT: "${ZG_DA_ENDPOINT:-}"
     profiles: [agents]
     restart: unless-stopped
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
 
   defi:
     build:
@@ -41,10 +60,19 @@ services:
       HEDERA_ACCOUNT_ID: "${DEFI_HEDERA_ACCOUNT_ID:-}"
       HEDERA_PRIVATE_KEY: "${DEFI_HEDERA_PRIVATE_KEY:-}"
       DEFI_AGENT_ID: "${DEFI_AGENT_ID:-defi-001}"
+      DEFI_DAEMON_ADDR: "host.docker.internal:9090"
       HCS_TASK_TOPIC: "${DEFI_HCS_TASK_TOPIC:-}"
       HCS_RESULT_TOPIC: "${DEFI_HCS_RESULT_TOPIC:-}"
       DEFI_BASE_RPC_URL: "${DEFI_BASE_RPC_URL:-https://sepolia.base.org}"
       DEFI_PRIVATE_KEY: "${DEFI_PRIVATE_KEY:-}"
       DEFI_WALLET_ADDRESS: "${DEFI_WALLET_ADDRESS:-}"
+      DEFI_ERC8004_CONTRACT: "${DEFI_ERC8004_CONTRACT:-}"
+      DEFI_DEX_ROUTER: "${DEFI_DEX_ROUTER:-}"
+      DEFI_BUILDER_CODE: "${DEFI_BUILDER_CODE:-}"
+      DEFI_ATTRIBUTION_ENABLED: "${DEFI_ATTRIBUTION_ENABLED:-true}"
+      DEFI_TOKEN_IN: "${DEFI_TOKEN_IN:-0x036CbD53842c5426634e7929541eC2318f3dCF7e}"
+      DEFI_TOKEN_OUT: "${DEFI_TOKEN_OUT:-0x4200000000000000000000000000000000000006}"
     profiles: [agents]
     restart: unless-stopped
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
