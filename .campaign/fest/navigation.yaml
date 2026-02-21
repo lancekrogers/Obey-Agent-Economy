@@ -1,3 +1,7 @@
 version: 1
-updated_at: 2026-02-21T00:43:15.503691Z
-links: {}
+updated_at: 2026-02-21T03:04:40.830292Z
+links:
+    chain-agents-CA0001:
+        path: projects/agent-inference
+        festival_path: festivals/active/chain-agents-CA0001
+        linked_at: 2026-02-21T03:04:40.830291Z
