@@ -27,6 +27,7 @@ The inference agent's compute pipeline requires `ZG_SERVING_CONTRACT` on 0G Gali
 **Impact:** Cannot show a visual dashboard in the demo.
 
 **Options (choose one):**
+
 1. Fix imports and implement minimal panel components
 2. Build a stripped-down page that only uses what exists
 3. Use terminal-based visualization instead

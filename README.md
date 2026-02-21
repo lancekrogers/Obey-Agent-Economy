@@ -8,6 +8,16 @@ The Obey Agent Economy is a multi-chain autonomous AI agent system built for ETH
 
 The system demonstrates a complete agent-to-agent economy: the Coordinator dispatches tasks over Hedera Consensus Service (HCS), the Inference agent executes AI compute on 0G's decentralized GPU network, and the DeFi agent runs trading strategies on Base. Agents are paid in HTS tokens upon task completion. Every message, assignment, result, and payment is published to HCS, creating an immutable on-chain audit trail.
 
+## Built with Obedience Corp
+
+This campaign was created and managed using Obedience Corp's developer tooling:
+
+- **[camp](https://github.com/obedience-corp/camp)** — Campaign CLI for multi-project orchestration. Camp manages the workspace layout, git submodules, navigation shortcuts, and project lifecycle across all six repositories in this submission.
+- **[fest](https://github.com/obedience-corp/fest)** — Festival methodology CLI for human-AI collaborative project execution. Every phase of this build — from architecture design to agent wiring to integration testing — was planned, decomposed, and tracked as festivals. See [`festivals/`](festivals/) for the planning artifacts.
+- **[obey](https://github.com/obedience-corp/obey)** — Daemon that orchestrates agent sessions within the campaign sandbox, providing sandboxed command execution, event routing, and session lifecycle management.
+
+This repository — its git history, submodule structure, `festivals/` planning directory, and `workflow/` design documents — is a live example of what these products can do.
+
 ## Architecture
 
 ```
