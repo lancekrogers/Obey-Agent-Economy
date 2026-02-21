@@ -18,6 +18,10 @@ This campaign was created and managed using Obedience Corp's developer tooling:
 
 This repository — its git history, submodule structure, `festivals/` planning directory, and `workflow/` design documents — is a live example of what these products can do.
 
+## Dashboard
+
+![Agent Economy Observer Dashboard](docs/images/dashboard.png)
+
 ## Architecture
 
 ```
