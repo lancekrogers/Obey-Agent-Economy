@@ -1,4 +1,5 @@
 .env
+.env.docker
 .playwright-mcp/*
 .playwright-mcp/
 ai_docs/bugs/*

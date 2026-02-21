@@ -3,7 +3,7 @@ mod test 'justfiles/test.just'
 mod build 'justfiles/build.just'
 mod status 'justfiles/status.just'
 
-# Show all available commands
+[private]
 @default:
     just --list --list-submodules
 

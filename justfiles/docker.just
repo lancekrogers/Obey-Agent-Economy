@@ -1,7 +1,8 @@
-compose := "docker compose"
-compose_env := "docker compose --env-file .env.docker"
+root := justfile_directory()
+compose := "docker compose -f " + root / "docker-compose.yml"
+compose_env := compose + " --env-file " + root / ".env.docker"
 
-# Show docker commands
+[private]
 @default:
     just --list --justfile {{source_file()}}
 
