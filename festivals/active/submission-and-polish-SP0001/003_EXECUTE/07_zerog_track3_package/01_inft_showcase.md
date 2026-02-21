@@ -4,11 +4,13 @@ fest_id: 01_inft_showcase.md
 fest_name: inft_showcase
 fest_parent: 07_zerog_track3_package
 fest_order: 1
-fest_status: pending
+fest_status: completed
 fest_autonomy: medium
 fest_created: 2026-02-18T14:00:00-07:00
+fest_updated: 2026-02-21T12:13:55.031411-07:00
 fest_tracking: true
 ---
+
 
 # Task: Create iNFT Showcase Documentation
 

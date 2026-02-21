@@ -1,3 +1,7 @@
 version: 1
-updated_at: 2026-02-21T15:31:25.358451Z
-links: {}
+updated_at: 2026-02-21T19:14:17.503952Z
+links:
+    submission-and-polish-SP0001:
+        path: projects/agent-defi
+        festival_path: festivals/active/submission-and-polish-SP0001
+        linked_at: 2026-02-21T19:14:17.503952Z
