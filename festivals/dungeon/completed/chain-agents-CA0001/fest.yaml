@@ -21,6 +21,9 @@ metadata:
         - status: dungeon/completed
           timestamp: 2026-02-20T17:11:43.542124-07:00
           path: /Users/lancerogers/Dev/ethdenver-2026-campaign/festivals/dungeon/completed/chain-agents-CA0001
+        - status: dungeon/completed
+          timestamp: 2026-02-21T08:31:25.3575-07:00
+          path: /Users/lancerogers/Dev/ethdenver-2026-campaign/festivals/dungeon/completed/chain-agents-CA0001
 type_config:
     auto_phases:
         - IMPLEMENT

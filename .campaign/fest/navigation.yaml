@@ -1,7 +1,3 @@
 version: 1
-updated_at: 2026-02-21T03:25:52.219778Z
-links:
-    chain-agents-CA0001:
-        path: projects/agent-coordinator
-        festival_path: festivals/active/chain-agents-CA0001
-        linked_at: 2026-02-21T03:25:52.219778Z
+updated_at: 2026-02-21T15:31:25.358451Z
+links: {}
