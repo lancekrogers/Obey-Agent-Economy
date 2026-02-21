@@ -1,3 +1,4 @@
 .env
 .playwright-mcp/*
 .playwright-mcp/
+ai_docs/bugs/*
