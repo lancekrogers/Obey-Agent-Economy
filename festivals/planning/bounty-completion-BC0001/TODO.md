@@ -30,12 +30,11 @@ Blockers: None
 
 #### Sequences
 
-- [ ] **01_base_agent_bugfixes** — Fix 5 bugs in agent-defi that produce wrong trading outputs
+- [ ] **01_base_agent_bugfixes** — Fix 4 bugs in agent-defi that produce wrong trading outputs
   - [ ] 01_fix_strategy_moving_average — Replace hardcoded `price * 0.98` with real SMA calculation
-  - [ ] 02_fix_erc8021_encoding — Hex-decode builder code bytes in attribution builder
-  - [ ] 03_wire_x402_into_trading_loop — Call x402 payment in executeTradingCycle()
-  - [ ] 04_fix_pnl_accuracy — Compute gas costs from tx receipts instead of $0.50 stub
-  - [ ] 05_fix_getidentity_decode — Decode on-chain GetIdentity response instead of returning hardcoded stub
+  - [ ] 02_wire_x402_into_trading_loop — Call x402 payment in executeTradingCycle()
+  - [ ] 03_fix_pnl_accuracy — Compute gas costs from tx receipts instead of $0.50 stub
+  - [ ] 04_fix_getidentity_decode — Decode on-chain GetIdentity response instead of returning hardcoded stub
 
 - [ ] **02_erc7857_inft_contract** — Implement ERC-7857 iNFT Solidity contract for 0G Track 3
   - [ ] 01_implement_erc7857_contract — Write iNFT721.sol with updateVerifiable() and tokenURI()
@@ -83,7 +82,8 @@ None currently.
 
 ## Execution Order
 
-Sequences 01, 02, 03, 07 can run in parallel (no dependencies).
+Sequences 01, 02, 07 can run in parallel (no dependencies).
+Sequence 03 depends on 02 (iNFT contract provides ZG_INFT_CONTRACT needed for minting).
 Sequence 04 soft-depends on 02 (iNFT contract should exist before plugin demo).
 Sequence 05 depends on 01 (DeFi agent must build for Docker healthchecks).
 Sequence 06 runs last (earlier sequences change code that READMEs reference).

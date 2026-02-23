@@ -19,7 +19,7 @@
 
 ### In Scope
 
-- Fixing 5 specific bugs in agent-defi (strategy, x402, ERC-8021, identity, P&L)
+- Fixing 4 specific bugs in agent-defi (strategy, x402, identity, P&L)
 - Implementing ERC-7857 iNFT Solidity contract with Forge tests
 - Adding 0G Compute session auth (signed Bearer tokens) to inference agent
 - Polishing hiero-plugin submission materials (docs, tests, demo script)

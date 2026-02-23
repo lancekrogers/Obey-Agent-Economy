@@ -26,7 +26,6 @@ Deliverables this phase must produce:
 
 - [ ] DeFi agent mean-reversion uses real SMA (not `price * 0.98`)
 - [ ] x402 payment wired into trading cycle in `executeTradingCycle()`
-- [ ] ERC-8021 attribution builder hex-decodes bytes correctly
 - [ ] GetIdentity decodes on-chain response instead of returning hardcoded stub
 - [ ] P&L tracking computes actual gas costs from transaction receipts
 - [ ] ERC-7857 iNFT Solidity contract implemented with `updateVerifiable()` and `tokenURI()`
@@ -56,7 +55,7 @@ Quality criteria for all work in this phase:
 
 | Sequence | Goal | Key Deliverable |
 |----------|------|-----------------|
-| 01_base_agent_bugfixes | Fix 5 specific bugs in agent-defi that produce wrong outputs | DeFi agent produces correct trading behavior |
+| 01_base_agent_bugfixes | Fix 4 specific bugs in agent-defi that produce wrong outputs | DeFi agent produces correct trading behavior |
 | 02_erc7857_inft_contract | Implement ERC-7857 iNFT Solidity contract from scratch | iNFT contract compiling and passing Forge tests |
 | 03_zerog_compute_payment | Wire 0G session auth and populate env vars | Inference requests authenticate with 0G providers |
 | 04_hiero_submission_prep | Polish plugin docs, tests, PR branch, demo script | Hiero plugin submission-ready for Track 4 |

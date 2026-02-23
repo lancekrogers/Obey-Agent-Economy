@@ -26,7 +26,6 @@ The sequence goal is achieved when:
 ### Required Deliverables
 
 - [ ] **Working mean reversion strategy**: `GetMarketState` returns a real windowed moving average instead of `price * 0.98`, and the strategy correctly triggers both buy and sell signals
-- [ ] **ERC-8021 attribution encoding**: Builder code is hex-decoded to 20 bytes, not stored as ASCII string
 - [ ] **x402 payment integration**: The trading loop calls `a.payment.Pay()` or `a.payment.HandlePaymentRequired()` for data/compute costs before executing trades
 - [ ] **Accurate P&L tracking**: Gas costs read from actual transaction receipts, revenue calculated from actual trade output vs input
 - [ ] **ERC-8004 identity decoding**: `GetIdentity` ABI-decodes the on-chain response instead of returning a hardcoded stub
@@ -48,10 +47,9 @@ The sequence goal is achieved when:
 | Task | Task Objective | Contribution to Sequence Goal |
 |------|----------------|-------------------------------|
 | 01_fix_strategy_moving_average | Replace hardcoded moving average with real windowed TWAP | Strategy produces correct buy/sell signals |
-| 02_fix_erc8021_encoding | Hex-decode builder code instead of copying ASCII bytes | ERC-8021 attribution is valid on-chain |
-| 03_wire_x402_into_trading_loop | Call x402 payment protocol during trade execution | Agent pays for data/compute, demonstrating x402 usage |
-| 04_fix_pnl_accuracy | Use real gas costs and trade deltas for P&L | Dashboard and HCS show real self-sustainability metrics |
-| 05_fix_getidentity_decode | ABI-decode the on-chain identity response | ERC-8004 identity reads reflect actual on-chain state |
+| 02_wire_x402_into_trading_loop | Call x402 payment protocol during trade execution | Agent pays for data/compute, demonstrating x402 usage |
+| 03_fix_pnl_accuracy | Use real gas costs and trade deltas for P&L | Dashboard and HCS show real self-sustainability metrics |
+| 04_fix_getidentity_decode | ABI-decode the on-chain identity response | ERC-8004 identity reads reflect actual on-chain state |
 
 ## Dependencies
 

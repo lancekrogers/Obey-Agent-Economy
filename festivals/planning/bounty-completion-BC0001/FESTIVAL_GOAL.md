@@ -23,8 +23,8 @@ fest_tracking: true
 
 - [ ] Base DeFi agent's mean-reversion strategy uses real moving averages (not hardcoded `price * 0.98`)
 - [ ] x402 payment is wired into the trading cycle (not dead code)
-- [ ] ERC-8021 attribution builder encodes bytes correctly (not ASCII string)
 - [ ] ERC-7857 iNFT contract implemented, compiling, and passing Forge tests
+- [ ] 0G inference broker constructs signed Bearer tokens for session auth
 - [ ] 0G inference agent constructs signed Bearer tokens for session auth
 - [ ] AgentSettlement.sol and ReputationDecay.sol have HIP-1215 scheduling functions
 - [ ] Docker healthchecks report all 4 services as healthy

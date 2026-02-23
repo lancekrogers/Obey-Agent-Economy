@@ -10,43 +10,40 @@ fest_created: 2026-02-21T17:49:14.811192-07:00
 fest_tracking: true
 ---
 
-# Task: Add Admin/Submit Keys to Coordinator Topic Creation
+# Task: Verify and Document HCS Topic Key Configuration
 
 ## Objective
 
-Set admin and submit keys on HCS topic creation in the coordinator so the security model claim in the README matches the actual code.
+Verify whether the coordinator's HCS topics require admin/submit keys on Hedera testnet, document the decision, and only add key configuration if tests or testnet behavior require it.
+
+## Context
+
+The architecture doc states: "HCS topic creation uses `TopicCreateTransaction` without a submit key restriction in the current testnet setup." If topics work without submit keys on testnet, adding them could break existing topic IDs. This task verifies the current behavior before making changes.
 
 ## Requirements
 
-- [ ] `CreateTopic` in `projects/agent-coordinator/internal/hedera/hcs/topic.go` sets `SetAdminKey` and `SetSubmitKey` on the `TopicCreateTransaction`
-- [ ] The coordinator's operator key is used as both the admin and submit key
+- [ ] Verify that existing HCS topic message submission works without submit keys on testnet (check coordinator logs or run a test)
+- [ ] If submit keys ARE needed: add `HEDERA_TOPIC_SUBMIT_KEY` env loading and pass to HCS client
+- [ ] If submit keys are NOT needed: document this decision in `projects/agent-coordinator/docs/architecture.md` with a note explaining the testnet security model
+- [ ] Either way, `just test` passes in agent-coordinator
 
 ## Implementation
 
-### Step 1: Find CreateTopic
+### Step 1: Check current behavior
 
-In `projects/agent-coordinator/internal/hedera/hcs/topic.go`, find the `CreateTopic` method. It currently only calls `SetTopicMemo` on the `hiero.NewTopicCreateTransaction()`.
+Run the coordinator's HCS tests or check testnet logs to confirm whether message submission succeeds without submit keys. Look for `INVALID_SIGNATURE` errors in any test output or logs.
 
-### Step 2: Add key configuration
+### Step 2: Decide based on evidence
 
-Add admin and submit keys to the transaction. The keys should come from the client's operator key:
+- If messages submit successfully without keys → document this is intentional for testnet, skip key addition
+- If messages fail with `INVALID_SIGNATURE` → add `HEDERA_TOPIC_SUBMIT_KEY` env var loading to `config/config.go` and pass the key to `TopicCreateTransaction.SetSubmitKey()`
 
-```go
-func (s *TopicService) CreateTopic(ctx context.Context, memo string) (*hiero.TopicID, error) {
-    tx := hiero.NewTopicCreateTransaction().
-        SetTopicMemo(memo).
-        SetAdminKey(s.client.GetOperatorPublicKey()).
-        SetSubmitKey(s.client.GetOperatorPublicKey())
+### Step 3: Update docker-compose.yml if keys are added
 
-    // ... rest of the existing execution logic
-}
-```
-
-### Step 3: Update tests
-
-In `projects/agent-coordinator/internal/hedera/hcs/topic_test.go`, verify the test still passes. If the test mocks the transaction, update the mock expectations to include the key-setting calls.
+If adding submit key support, add `HEDERA_TOPIC_SUBMIT_KEY` to the coordinator's environment section in docker-compose.yml.
 
 ## Done When
 
 - [ ] All requirements met
-- [ ] `just test` passes in agent-coordinator and `CreateTopic` sets both admin and submit keys
+- [ ] Decision documented (either "keys not needed on testnet" or "keys added and working")
+- [ ] `just test` passes in agent-coordinator

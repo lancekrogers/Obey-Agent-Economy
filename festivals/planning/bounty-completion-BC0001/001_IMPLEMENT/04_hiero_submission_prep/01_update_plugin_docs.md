@@ -10,51 +10,35 @@ fest_created: 2026-02-21T17:49:14.794206-07:00
 fest_tracking: true
 ---
 
-# Task: Update Hiero Plugin Documentation
+# Task: Verify and Patch Hiero Plugin Documentation
 
 ## Objective
 
-Add the two 0G templates (`0g-agent`, `0g-inft-build`) to the hiero-plugin README's templates table and update `docs/submission.md` to include the PR link (once created in task 03).
+Verify that the existing hiero-plugin docs (submission.md, architecture.md, usage-guide.md, README.md) accurately describe all 5 templates including the 0G additions, and patch any gaps found. The docs already exist and are substantive — this is an accuracy audit, not a rewrite.
 
 ## Requirements
 
 - [ ] `projects/hiero-plugin/README.md` templates table lists all 5 templates: `hedera-smart-contract`, `hedera-dapp`, `hedera-agent`, `0g-agent`, `0g-inft-build`
 - [ ] `projects/hiero-plugin/docs/usage-guide.md` includes usage examples for the 0G templates
+- [ ] `projects/hiero-plugin/docs/submission.md` accurately describes 0G Track 4 requirements mapping
+- [ ] `projects/hiero-plugin/docs/architecture.md` template system section covers 0G templates
+- [ ] All commands shown in docs actually work when copy-pasted
 
 ## Implementation
 
-### Step 1: Update README templates table
+### Step 1: Audit existing docs
 
-In `projects/hiero-plugin/README.md`, find the templates table (currently lists 3 Hedera templates). Add two rows:
+Read all four docs and cross-reference against the actual template directories in `src/templates/`. Note any inaccuracies, missing templates, or stale references.
 
-| Template | Description |
-|----------|-------------|
-| `0g-agent` | Go agent scaffold with 0G Compute, Storage, and EVM client stubs |
-| `0g-inft-build` | ERC-7857 iNFT minting scaffold with AES-256-GCM encryption and 0G DA publisher |
+### Step 2: Patch gaps
 
-### Step 2: Update usage-guide.md
-
-In `projects/hiero-plugin/docs/usage-guide.md`, add a section for 0G templates:
-
-```markdown
-### 0G Agent Template
-
-\`\`\`bash
-hcli camp init my-0g-agent --template 0g-agent
-\`\`\`
-
-Creates a Go project with 0G Compute broker, Storage client, and chain connection pre-configured for Galileo testnet.
-
-### 0G iNFT Build Template
-
-\`\`\`bash
-hcli camp init my-inft --template 0g-inft-build
-\`\`\`
-
-Creates a Go project for minting ERC-7857 iNFTs with encrypted metadata (AES-256-GCM) and 0G DA integration.
-```
+Fix only what is inaccurate or missing. Do not rewrite sections that are already correct. Focus on:
+- Template table completeness in README
+- 0G template usage examples in usage-guide.md
+- Any stale command syntax or file paths
 
 ## Done When
 
 - [ ] All requirements met
-- [ ] README shows 5 templates and usage-guide has working examples for all 5
+- [ ] All 5 templates accurately described across all 4 docs
+- [ ] No unnecessary rewrites — only targeted patches applied
