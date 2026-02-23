@@ -16,22 +16,22 @@ The system demonstrates a complete agent-to-agent economy: the Coordinator dispa
 
 Everything below runs right now with no daemon required:
 
-- **`just demo`** — Full dashboard with all 5 panels rendering mock data. Zero config, zero env vars.
-- **`just live`** — Dashboard with live Hedera Mirror Node data. Festival View and HCS Feed panels show real on-chain messages.
-- **Go agents build and pass all tests** — `just build all` compiles all three agents; `just test all` runs the full suite.
-- **Real 0G Compute integration** — Provider discovery and inference job submission on the Galileo testnet.
-- **Real DeFi trading on Base Sepolia** — Uniswap V3 swaps, ERC-8004 (agent identity), x402 (HTTP payment protocol), ERC-8021 (builder codes).
-- **Real HCS messaging** — Agents publish task assignments, results, heartbeats, and payments to Hedera topics.
-- **Solidity contracts** — Full Foundry test suite for AgentSettlement, ReputationDecay, and AgentINFT.
-- **Hiero CLI plugin** — `hcli camp` with 5 templates: `hedera-smart-contract`, `hedera-dapp`, `hedera-agent`, `0g-agent`, `0g-inft-build`.
+- **`just demo`** - Full dashboard with all 5 panels rendering mock data. Zero config, zero env vars.
+- **`just live`** - Dashboard with live Hedera Mirror Node data. Festival View and HCS Feed panels show real on-chain messages.
+- **Go agents build and pass all tests** - `just build all` compiles all three agents; `just test all` runs the full suite.
+- **Real 0G Compute integration** - Provider discovery and inference job submission on the Galileo testnet.
+- **Real DeFi trading on Base Sepolia** - Uniswap V3 swaps, ERC-8004 (agent identity), x402 (HTTP payment protocol), ERC-8021 (builder codes).
+- **Real HCS messaging** - Agents publish task assignments, results, heartbeats, and payments to Hedera topics.
+- **Solidity contracts** - Full Foundry test suite for AgentSettlement, ReputationDecay, and AgentINFT.
+- **Hiero CLI plugin** - `hcli camp` with 5 templates: `hedera-smart-contract`, `hedera-dapp`, `hedera-agent`, `0g-agent`, `0g-inft-build`.
 
 ## What Requires the Obey Daemon
 
 Three dashboard panels need the daemon's WebSocket feed to display live agent data:
 
-- **Agent Activity** — Real-time status cards, heartbeats, current task, uptime (needs `heartbeat` events via WebSocket)
-- **DeFi P&L** — Revenue, costs, net profit, trade history with tx hashes (needs `task_result` events via WebSocket)
-- **Inference Metrics** — GPU/memory utilization, active jobs, latency, iNFT status (needs `heartbeat` events via WebSocket)
+- **Agent Activity** - Real-time status cards, heartbeats, current task, uptime (needs `heartbeat` events via WebSocket)
+- **DeFi P&L** - Revenue, costs, net profit, trade history with tx hashes (needs `task_result` events via WebSocket)
+- **Inference Metrics** - GPU/memory utilization, active jobs, latency, iNFT status (needs `heartbeat` events via WebSocket)
 
 The daemon aggregates gRPC events from all agents into a single WebSocket stream for the dashboard. See [`docs/obey/daemon-requirements.md`](docs/obey/daemon-requirements.md) for the full gRPC and WebSocket contracts.
 
@@ -39,11 +39,11 @@ The daemon aggregates gRPC events from all agents into a single WebSocket stream
 
 This campaign was created and managed using Obedience Corp's developer tooling:
 
-- **[camp](https://github.com/obedience-corp/camp)** — Campaign CLI for multi-project orchestration. Camp manages the workspace layout, git submodules, navigation shortcuts, and project lifecycle across all six repositories in this submission.
-- **[fest](https://github.com/obedience-corp/fest)** — Festival methodology CLI for human-AI collaborative project execution. Every phase of this build — from architecture design to agent wiring to integration testing — was planned, decomposed, and tracked as festivals. See [`festivals/`](festivals/) for the planning artifacts.
-- **[obey](https://github.com/obedience-corp/obey)** — Daemon that orchestrates agent sessions within the campaign sandbox, providing sandboxed command execution, event routing, and session lifecycle management.
+- **[camp](https://github.com/obedience-corp/camp)** - Campaign CLI for multi-project orchestration. Camp manages the workspace layout, git submodules, navigation shortcuts, and project lifecycle across all six repositories in this submission.
+- **[fest](https://github.com/obedience-corp/fest)** - Festival methodology CLI for human-AI collaborative project execution. Every phase of this build - from architecture design to agent wiring to integration testing - was planned, decomposed, and tracked as festivals. See [`festivals/`](festivals/) for the planning artifacts.
+- **[obey](https://github.com/obedience-corp/obey)** - Daemon that orchestrates agent sessions within the campaign sandbox, providing sandboxed command execution, event routing, and session lifecycle management.
 
-This repository — its git history, submodule structure, `festivals/` planning directory, and `workflow/` design documents — is a live example of what these products can do.
+This repository - its git history, submodule structure, `festivals/` planning directory, and `workflow/` design documents - is a live example of what these products can do.
 
 ## Quick Start
 
@@ -55,7 +55,7 @@ cd ethdenver-2026-campaign
 # Install all project dependencies
 just install
 
-# Run the demo (dashboard in mock mode — no env vars needed)
+# Run the demo (dashboard in mock mode - no env vars needed)
 just demo
 ```
 
@@ -152,7 +152,7 @@ Three Solidity contracts:
 
 - **AgentSettlement.sol**: Accumulates pending inter-agent payments and batch-settles via HIP-1215 scheduled transactions (Hedera Track 2)
 - **ReputationDecay.sol**: Tracks agent activity timestamps and schedules periodic reputation score decay for inactive agents (Hedera Track 2)
-- **AgentINFT.sol**: ERC-7857 iNFT for agent inference provenance — stores encrypted metadata, result hashes, and DA references on 0G Chain
+- **AgentINFT.sol**: ERC-7857 iNFT for agent inference provenance - stores encrypted metadata, result hashes, and DA references on 0G Chain
 
 ### Hiero Plugin
 
