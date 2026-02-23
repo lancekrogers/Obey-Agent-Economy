@@ -8,6 +8,33 @@ The Obey Agent Economy is a multi-chain autonomous AI agent system built for ETH
 
 The system demonstrates a complete agent-to-agent economy: the Coordinator dispatches tasks over Hedera Consensus Service (HCS), the Inference agent executes AI compute on 0G's decentralized GPU network, and the DeFi agent runs trading strategies on Base. Agents are paid in HTS tokens upon task completion. Every message, assignment, result, and payment is published to HCS, creating an immutable on-chain audit trail.
 
+## Dashboard
+
+![Agent Economy Observer Dashboard](docs/images/dashboard-demo.gif)
+
+## What Works Today
+
+Everything below runs right now with no daemon required:
+
+- **`just demo`** — Full dashboard with all 5 panels rendering mock data. Zero config, zero env vars.
+- **`just live`** — Dashboard with live Hedera Mirror Node data. Festival View and HCS Feed panels show real on-chain messages.
+- **Go agents build and pass all tests** — `just build all` compiles all three agents; `just test all` runs the full suite.
+- **Real 0G Compute integration** — Provider discovery and inference job submission on the Galileo testnet.
+- **Real DeFi trading on Base Sepolia** — Uniswap V3 swaps, ERC-8004 (agent identity), x402 (HTTP payment protocol), ERC-8021 (builder codes).
+- **Real HCS messaging** — Agents publish task assignments, results, heartbeats, and payments to Hedera topics.
+- **Solidity contracts** — Full Foundry test suite for AgentSettlement, ReputationDecay, and AgentINFT.
+- **Hiero CLI plugin** — `hcli camp` with 5 templates: `hedera-smart-contract`, `hedera-dapp`, `hedera-agent`, `0g-agent`, `0g-inft-build`.
+
+## What Requires the Obey Daemon
+
+Three dashboard panels need the daemon's WebSocket feed to display live agent data:
+
+- **Agent Activity** — Real-time status cards, heartbeats, current task, uptime (needs `heartbeat` events via WebSocket)
+- **DeFi P&L** — Revenue, costs, net profit, trade history with tx hashes (needs `task_result` events via WebSocket)
+- **Inference Metrics** — GPU/memory utilization, active jobs, latency, iNFT status (needs `heartbeat` events via WebSocket)
+
+The daemon aggregates gRPC events from all agents into a single WebSocket stream for the dashboard. See [`docs/obey/daemon-requirements.md`](docs/obey/daemon-requirements.md) for the full gRPC and WebSocket contracts.
+
 ## Built with Obedience Corp
 
 This campaign was created and managed using Obedience Corp's developer tooling:
@@ -25,23 +52,29 @@ This repository — its git history, submodule structure, `festivals/` planning 
 git clone --recursive https://github.com/lancekrogers/ethdenver-2026-campaign.git
 cd ethdenver-2026-campaign
 
+# Install all project dependencies
+just install
+
 # Run the demo (dashboard in mock mode — no env vars needed)
 just demo
 ```
 
 Open `http://localhost:3000` to see all 5 panels with simulated data: Festival View, HCS Feed, Agent Activity, DeFi P&L, and Inference Metrics.
 
-### Full System (requires .env configuration)
+### Build & Test
+
+```bash
+just build all              # Compile all Go agents
+just test all               # Run full test suite
+just lint                   # Lint all projects
+```
+
+### Live Mode (requires .env configuration)
 
 ```bash
 cp .env.example .env         # Fill in Hedera + 0G + Base credentials
-just live                    # Build and start all agents + dashboard
-docker compose ps            # Verify health status
+just live                    # Dashboard with live Hedera mirror node data
 ```
-
-## Dashboard
-
-![Agent Economy Observer Dashboard](docs/images/dashboard.png)
 
 ## Architecture
 
@@ -161,4 +194,5 @@ A TypeScript Hiero CLI plugin (`hcli camp`) that extends the Hiero CLI with work
 | `festivals/` | Festival methodology planning |
 | `ai_docs/` | AI-generated documentation |
 | `docs/` | Human-authored documentation |
+| `docs/obey/` | Obey daemon requirements and contracts |
 | `dungeon/` | Final state or paused work |
