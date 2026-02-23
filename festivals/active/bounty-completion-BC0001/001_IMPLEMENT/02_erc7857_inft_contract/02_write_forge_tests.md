@@ -4,11 +4,13 @@ fest_id: 02_write_forge_tests.md
 fest_name: write forge tests
 fest_parent: 02_erc7857_inft_contract
 fest_order: 2
-fest_status: pending
+fest_status: completed
 fest_autonomy: medium
 fest_created: 2026-02-21T17:49:14.760607-07:00
+fest_updated: 2026-02-23T13:42:27.027736-07:00
 fest_tracking: true
 ---
+
 
 # Task: Write Forge Tests for AgentINFT
 

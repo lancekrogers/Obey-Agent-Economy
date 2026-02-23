@@ -4,11 +4,13 @@ fest_id: 03_deploy_and_configure.md
 fest_name: deploy and configure
 fest_parent: 02_erc7857_inft_contract
 fest_order: 3
-fest_status: pending
+fest_status: completed
 fest_autonomy: medium
 fest_created: 2026-02-21T17:49:14.760931-07:00
+fest_updated: 2026-02-23T13:43:58.402728-07:00
 fest_tracking: true
 ---
+
 
 # Task: Deploy AgentINFT and Configure Environment
 

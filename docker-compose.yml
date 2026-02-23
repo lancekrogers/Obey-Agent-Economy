@@ -7,6 +7,12 @@ services:
     ports:
       - "3000:3000"
     restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "--spider", "-q", "http://localhost:3000"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 15s
 
   coordinator:
     build:
@@ -24,6 +30,12 @@ services:
     restart: unless-stopped
     extra_hosts:
       - "host.docker.internal:host-gateway"
+    healthcheck:
+      test: ["CMD", "pgrep", "-x", "coordinator"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
 
   inference:
     build:
@@ -52,6 +64,12 @@ services:
     restart: unless-stopped
     extra_hosts:
       - "host.docker.internal:host-gateway"
+    healthcheck:
+      test: ["CMD", "pgrep", "-x", "agent-inference"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
 
   defi:
     build:
@@ -76,3 +94,9 @@ services:
     restart: unless-stopped
     extra_hosts:
       - "host.docker.internal:host-gateway"
+    healthcheck:
+      test: ["CMD", "pgrep", "-x", "agent-defi"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
