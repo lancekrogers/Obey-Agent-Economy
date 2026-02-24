@@ -21,13 +21,13 @@
     },
     "contracts@lib/forge-std": {
       "path": "projects/contracts/lib/forge-std",
-      "include": true,
+      "include": false,
       "in_monorepo": true,
       "monorepo_path": "projects/contracts"
     },
     "contracts@lib/openzeppelin-contracts": {
       "path": "projects/contracts/lib/openzeppelin-contracts",
-      "include": true,
+      "include": false,
       "in_monorepo": true,
       "monorepo_path": "projects/contracts"
     },
