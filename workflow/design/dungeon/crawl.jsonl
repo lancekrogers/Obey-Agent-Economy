@@ -1,0 +1,12 @@
+{"timestamp":"2026-03-22T20:34:00-06:00","item":"obey","decision":"move:archived","info":{"files":6,"lines":2525,"code":2060,"source":"scc"}}
+{"timestamp":"2026-03-22T20:34:06-06:00","item":"ethdenver-agent-economy","decision":"move:completed","info":{"files":22,"lines":4194,"code":3068,"source":"scc"}}
+{"timestamp":"2026-03-22T20:34:12-06:00","item":"e2e-demo-plan","decision":"move:archived","info":{"files":1,"lines":110,"code":76,"source":"scc"}}
+{"timestamp":"2026-03-22T20:34:15-06:00","item":"chainlink","decision":"move:completed","info":{"files":12,"lines":1913,"code":1388,"source":"scc"}}
+{"timestamp":"2026-03-22T20:34:18-06:00","item":"cre-risk-router","decision":"move:completed","info":{"files":2,"lines":719,"code":528,"source":"scc"}}
+{"timestamp":"2026-03-22T20:34:26-06:00","item":"root-runtime-modes","decision":"move:completed","info":{"files":1,"lines":151,"code":121,"source":"scc"}}
+{"timestamp":"2026-03-22T20:34:36-06:00","item":"fest-cli-integration","decision":"move:completed","info":{"files":7,"lines":648,"code":511,"source":"scc"}}
+{"timestamp":"2026-03-22T20:34:40-06:00","item":"obey-agent-platform","decision":"keep","info":{"files":13,"lines":4208,"code":3389,"source":"scc"}}
+{"timestamp":"2026-03-22T20:34:44-06:00","item":"synthesis","decision":"keep","info":{"files":3,"lines":2801,"code":2202,"source":"scc"}}
+{"timestamp":"2026-03-22T20:34:47-06:00","item":"2026-03-18-synthesis-fest-ritual-runtime","decision":"move:completed","info":{"files":1,"lines":720,"code":503,"source":"scc"}}
+{"timestamp":"2026-03-22T20:34:51-06:00","item":"video-submission-synth","decision":"keep","info":{"files":2,"lines":446,"code":335,"source":"scc"}}
+{"timestamp":"2026-03-22T20:34:54-06:00","item":"youtube-video","decision":"keep","info":{"files":1,"lines":92,"code":68,"source":"scc"}}
