@@ -25,7 +25,7 @@ Every OBEY agent has a persistent on-chain identity using ERC-8004. Registered o
 
 **File: `s3_festival.wav`**
 
-Every agent decision follows the Festival Methodology — an open source planning framework built by Obedience Corp, available at fest dot build. Festival structures work into discover, plan, execute, and verify loops. The fest CLI and camp CLI are real tools that orchestrated this entire project — camp scaffolded the monorepo, and fest planned every phase of development.
+Every agent decision follows the Festival Methodology — a planning framework built by Obedience Corp, available at fest dot build. Festival structures work into discover, plan, execute, and verify loops. The fest CLI and camp CLI are real tools that orchestrated this entire project — camp scaffolded the monorepo, and fest planned every phase of development.
 
 Here's the live campaign state. Twenty festivals total — active ritual runs, completed work archived in the dungeon, and the ritual template that spawns new cycles.
 

@@ -1,0 +1,6 @@
+mod narration '.justfiles/narration.just'
+mod video '.justfiles/video.just'
+
+[private]
+@default:
+    just --list

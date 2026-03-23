@@ -43,7 +43,7 @@ segments = {
         "can query this identity before delegating tasks or trusting decisions."
     ),
     "s3_festival": (
-        "Every agent decision follows the Festival Methodology — an open source planning framework "
+        "Every agent decision follows the Festival Methodology — a planning framework "
         "built by Obedience Corp, available at fest dot build. Festival structures work into "
         "discover, plan, execute, and verify loops. The fest CLI and camp CLI are real tools "
         "that orchestrated this entire project — camp scaffolded the monorepo, and fest planned "
