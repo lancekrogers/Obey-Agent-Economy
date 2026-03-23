@@ -1,0 +1,171 @@
+1
+00:00:00,000 --> 00:00:05,000
+This is OBEY Agent Economy — autonomous agent
+infrastructure built by Obedience Corp.
+
+2
+00:00:05,000 --> 00:00:09,000
+The core principle is simple:
+agents obey their human owner.
+
+3
+00:00:09,000 --> 00:00:15,000
+ObeyVault is an ERC-4626 vault where the human guardian
+sets spending boundaries enforced at the smart contract level.
+
+4
+00:00:15,000 --> 00:00:22,000
+Max swap size, daily volume caps, token whitelists,
+slippage limits — the agent operates within these boundaries
+
+5
+00:00:22,000 --> 00:00:26,000
+and cannot modify them.
+
+6
+00:00:26,000 --> 00:00:31,000
+The guardian controls. The agent executes.
+
+7
+00:00:31,333 --> 00:00:37,000
+Every OBEY agent has a persistent on-chain identity
+using ERC-8004.
+
+8
+00:00:37,000 --> 00:00:43,000
+Registered on Base, this identity links the agent
+to its operator wallet and creates a portable,
+
+9
+00:00:43,000 --> 00:00:48,000
+verifiable track record. Other agents and protocols
+can query this identity
+
+10
+00:00:48,000 --> 00:00:53,000
+before delegating tasks or trusting decisions.
+
+11
+00:00:53,333 --> 00:01:00,000
+Every agent decision follows the Festival Methodology —
+a planning framework built by Obedience Corp,
+
+12
+00:01:00,000 --> 00:01:05,000
+available at fest dot build.
+
+13
+00:01:05,000 --> 00:01:12,000
+Festival structures work into discover, plan,
+execute, and verify loops.
+
+14
+00:01:12,000 --> 00:01:19,000
+The fest CLI and camp CLI are real tools that
+orchestrated this entire project —
+
+15
+00:01:19,000 --> 00:01:25,000
+camp scaffolded the monorepo, and fest planned
+every phase of development.
+
+16
+00:01:25,000 --> 00:01:32,000
+Here's the live campaign state. Twenty festivals total —
+active ritual runs, completed work archived in the dungeon,
+
+17
+00:01:32,000 --> 00:01:37,000
+and the ritual template that spawns new cycles.
+
+18
+00:01:37,000 --> 00:01:44,000
+Each ritual run follows a structured pipeline:
+ingest market data, research signals
+
+19
+00:01:44,000 --> 00:01:49,000
+and run eight CRE risk gates,
+then synthesize a decision.
+
+20
+00:01:49,000 --> 00:01:55,000
+The output is a machine-readable decision dot json
+with confidence scores, gate results,
+
+21
+00:01:55,000 --> 00:01:58,666
+and trade recommendations.
+
+22
+00:01:37,000 --> 00:01:44,000
+A no-go decision — choosing not to trade —
+is just as valuable as a profitable trade.
+
+23
+00:01:44,000 --> 00:01:50,000
+It proves the agent exercises judgment,
+not just execution.
+
+24
+00:01:58,666 --> 00:02:05,000
+When the agent does trade, every swap emits
+a SwapExecuted event on-chain.
+
+25
+00:02:05,000 --> 00:02:12,000
+The reason field contains the agent's encoded rationale —
+committed at transaction time, not after the fact.
+
+26
+00:02:12,000 --> 00:02:17,000
+This is a real transaction on Base Sepolia,
+verifiable on any block explorer.
+
+27
+00:02:17,000 --> 00:02:23,000
+The full reasoning chain is captured in agent log dot json —
+phase, action, tools used,
+
+28
+00:02:23,000 --> 00:02:28,666
+decision rationale, and the transaction hash.
+Complete auditability.
+
+29
+00:02:28,666 --> 00:02:35,000
+OBEY operates across five chains with over
+eighty verified transactions.
+
+30
+00:02:35,000 --> 00:02:40,000
+Base Sepolia for vault trading,
+Hedera for consensus messaging,
+
+31
+00:02:40,000 --> 00:02:45,000
+Ethereum Sepolia for CRE risk evaluation,
+zero-G for contract deployment,
+
+32
+00:02:45,000 --> 00:02:52,000
+and Status Network for gasless transactions.
+Eight contracts deployed across four ERC standards.
+
+33
+00:02:52,000 --> 00:02:57,000
+The agents obey. The vault enforces.
+Every decision has a receipt.
+
+34
+00:02:57,000 --> 00:03:04,000
+Built with Go, Solidity, Uniswap V3, Hedera,
+Chainlink CRE, and the Obey Agent Runtime.
+
+35
+00:03:04,000 --> 00:03:08,000
+Planned and orchestrated with Festival.
+
+36
+00:03:08,000 --> 00:03:12,000
+OBEY Agent Economy — by Obedience Corp.
