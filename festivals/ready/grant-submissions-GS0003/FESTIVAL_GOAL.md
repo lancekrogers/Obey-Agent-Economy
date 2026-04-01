@@ -2,10 +2,12 @@
 fest_type: festival
 fest_id: GS0003
 fest_name: grant-submissions
-fest_status: planning
+fest_status: ready
 fest_created: 2026-03-11T04:59:40.742545-06:00
+fest_updated: 2026-04-01T00:47:13.953094-06:00
 fest_tracking: true
 ---
+
 
 # grant-submissions
 
