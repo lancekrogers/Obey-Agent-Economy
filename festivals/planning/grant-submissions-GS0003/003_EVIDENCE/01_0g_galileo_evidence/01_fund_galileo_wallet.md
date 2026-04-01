@@ -1,14 +1,16 @@
 ---
 fest_type: task
-fest_id: 01_fund_galileo_wallet.md
+fest_id: 01_fund_galileo_wallet
 fest_name: fund-galileo-wallet
 fest_parent: 01_0g_galileo_evidence
 fest_order: 1
-fest_status: pending
+fest_status: completed
 fest_autonomy: medium
 fest_created: 2026-03-11T05:02:37.225057-06:00
+fest_updated: 2026-03-31T16:39:44.693769-06:00
 fest_tracking: true
 ---
+
 
 # Task: Fund Galileo Wallet
 

@@ -1,14 +1,16 @@
 ---
 fest_type: task
-fest_id: 01_deploy_agent_inft.md
+fest_id: 02_deploy_agent_inft
 fest_name: deploy-agent-inft
 fest_parent: 01_0g_galileo_evidence
-fest_order: 1
-fest_status: pending
+fest_order: 2
+fest_status: completed
 fest_autonomy: medium
 fest_created: 2026-03-11T05:02:37.243436-06:00
+fest_updated: 2026-03-31T16:39:41.58582-06:00
 fest_tracking: true
 ---
+
 
 # Task: Deploy AgentINFT.sol to 0G Galileo
 

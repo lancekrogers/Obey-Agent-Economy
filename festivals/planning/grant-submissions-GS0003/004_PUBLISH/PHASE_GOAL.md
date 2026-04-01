@@ -46,7 +46,7 @@ What must be in place before starting:
 
 How to verify each action was completed successfully:
 
-- Repos public: visit github.com/lancekrogers/[repo] in incognito browser
+- Repos public: visit github.com/Blockhead-Consulting/[repo] in incognito browser
 - Hall post live: URL accessible without login
 - 0G application: confirmation email or submission ID received
 - Base nomination: form submitted successfully

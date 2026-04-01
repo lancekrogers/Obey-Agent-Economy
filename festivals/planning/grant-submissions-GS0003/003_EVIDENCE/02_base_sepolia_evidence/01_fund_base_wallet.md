@@ -1,14 +1,16 @@
 ---
 fest_type: task
-fest_id: 01_fund_base_wallet.md
+fest_id: 01_fund_base_wallet
 fest_name: fund-base-wallet
 fest_parent: 02_base_sepolia_evidence
 fest_order: 1
-fest_status: pending
+fest_status: completed
 fest_autonomy: medium
 fest_created: 2026-03-11T05:02:40.970143-06:00
+fest_updated: 2026-03-31T16:39:46.28794-06:00
 fest_tracking: true
 ---
+
 
 # Task: Fund Base Sepolia Wallet
 

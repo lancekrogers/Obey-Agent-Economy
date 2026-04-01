@@ -7,6 +7,7 @@ fest_order: 2
 fest_status: pending
 fest_created: 2026-03-11T05:02:32.003977-06:00
 fest_tracking: true
+fest_working_dir: "projects/agent-defi"
 ---
 
 # Sequence Goal: 02_base_sepolia_evidence
@@ -15,9 +16,9 @@ fest_tracking: true
 
 ## Sequence Objective
 
-**Primary Goal:** Generate 2+ write transactions on Base Sepolia (chain ID 84532) to produce verifiable on-chain evidence for the grant submission.
+**Primary Goal:** Generate 4+ write transactions on Base Sepolia (chain ID 84532) to produce verifiable on-chain evidence for the grant submission, covering all 3 Base-native standards (ERC-8004, x402, ERC-8021) plus Uniswap V3.
 
-**Contribution to Phase Goal:** Provides the Base Sepolia transaction hashes and basescan links that grant reviewers need to verify our ERC-8004 identity and Uniswap V3 swap integrations.
+**Contribution to Phase Goal:** Provides the Base Sepolia transaction hashes and basescan links that grant reviewers need to verify our ERC-8004 identity, Uniswap V3 swap, x402 payment, and ERC-8021 attribution integrations.
 
 ## Success Criteria
 
@@ -25,9 +26,11 @@ The sequence goal is achieved when:
 
 ### Required Deliverables
 
-- [ ] **Funded Base Sepolia Wallet**: Wallet funded with testnet ETH and USDC (0x036CbD53842c5426634e7929541eC2318f3dCF7e) on Base Sepolia
-- [ ] **ERC-8004 Identity Registration**: Successful identity registration transaction on Base Sepolia via agent-defi, tx hash on basescan
+- [x] **Funded Base Sepolia Wallet**: Wallet funded with testnet ETH and USDC — 0.4999 ETH confirmed
+- [x] **ERC-8004 Identity Registration**: Registered as `defi-001` — tx `0x9b31bd...` on basescan
 - [ ] **Uniswap V3 Swap**: Successful swap transaction on Base Sepolia via agent-defi SwapRouter, tx hash on basescan
+- [ ] **x402 Payment**: Successful x402 USDC payment transaction on Base Sepolia, tx hash on basescan
+- [ ] **ERC-8021 Attribution**: Transaction with builder code suffix verified in calldata on basescan
 
 ### Quality Standards
 
@@ -43,11 +46,13 @@ The sequence goal is achieved when:
 
 ## Task Alignment
 
-| Task | Task Objective | Contribution to Sequence Goal |
-|------|----------------|-------------------------------|
-| 03_fund_base_wallet | Fund wallet with ETH + USDC on Base Sepolia | Prerequisite for all other transactions |
-| 02_execute_identity_registration | Register ERC-8004 identity on Base Sepolia | Generates identity registration evidence tx |
-| 01_execute_uniswap_swap | Execute Uniswap V3 swap on Base Sepolia | Generates swap evidence tx |
+| Task | Task Objective | Contribution to Sequence Goal | Status |
+|------|----------------|-------------------------------|--------|
+| 01_fund_base_wallet | Fund wallet with ETH + USDC on Base Sepolia | Prerequisite for all other transactions | DONE |
+| 02_execute_identity_registration | Register ERC-8004 identity on Base Sepolia | Generates identity registration evidence tx | DONE |
+| 03_execute_uniswap_swap | Execute Uniswap V3 swap on Base Sepolia | Generates swap evidence tx | TODO |
+| 04_execute_x402_payment | Execute x402 USDC payment on Base Sepolia | Generates x402 payment protocol evidence tx | TODO |
+| 05_execute_erc8021_attribution | Capture ERC-8021 attributed tx on Base Sepolia | Generates builder attribution evidence tx | TODO |
 
 ## Dependencies
 

@@ -7,6 +7,7 @@ fest_order: 1
 fest_status: pending
 fest_created: 2026-03-11T05:02:28.582903-06:00
 fest_tracking: true
+fest_working_dir: "projects/agent-inference"
 ---
 
 # Sequence Goal: 01_0g_galileo_evidence
@@ -45,13 +46,13 @@ The sequence goal is achieved when:
 
 ## Task Alignment
 
-| Task | Task Objective | Contribution to Sequence Goal |
-|------|----------------|-------------------------------|
-| 05_fund_galileo_wallet | Fund wallet via 0G faucet | Prerequisite for all other transactions |
-| 04_deploy_agent_inft | Deploy AgentINFT.sol to Galileo | Provides contract address for iNFT mint |
-| 03_execute_storage_submit | Execute Storage submit() | Generates storage layer evidence tx |
-| 02_execute_da_submit | Execute DA submitOriginalData() | Generates DA layer evidence tx |
-| 01_execute_inft_mint | Execute iNFT mint() | Generates iNFT minting evidence tx |
+| Task | Task Objective | Contribution to Sequence Goal | Status |
+|------|----------------|-------------------------------|--------|
+| 01_fund_galileo_wallet | Fund wallet via 0G faucet | Prerequisite for all other transactions | DONE |
+| 02_deploy_agent_inft | Deploy AgentINFT.sol to Galileo | Provides contract address for iNFT mint | DONE |
+| 03_execute_storage_submit | Execute Storage submit() | Generates storage layer evidence tx | TODO |
+| 04_execute_da_submit | Execute DA submitOriginalData() | Generates DA layer evidence tx | TODO |
+| 05_execute_inft_mint | Execute iNFT mint() | Generates iNFT minting evidence tx | TODO |
 
 ## Dependencies
 

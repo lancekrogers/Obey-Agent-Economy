@@ -7,6 +7,7 @@ fest_order: 3
 fest_status: pending
 fest_created: 2026-03-11T05:02:32.022115-06:00
 fest_tracking: true
+fest_working_dir: "workflow/explore/grant-research/2026-03-11"
 ---
 
 # Sequence Goal: 03_evidence_manifest

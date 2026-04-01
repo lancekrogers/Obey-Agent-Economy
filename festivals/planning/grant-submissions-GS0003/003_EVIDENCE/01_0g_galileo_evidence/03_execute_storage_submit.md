@@ -1,9 +1,9 @@
 ---
 fest_type: task
-fest_id: 01_execute_storage_submit.md
+fest_id: 03_execute_storage_submit
 fest_name: execute-storage-submit
 fest_parent: 01_0g_galileo_evidence
-fest_order: 1
+fest_order: 3
 fest_status: pending
 fest_autonomy: medium
 fest_created: 2026-03-11T05:02:37.260088-06:00

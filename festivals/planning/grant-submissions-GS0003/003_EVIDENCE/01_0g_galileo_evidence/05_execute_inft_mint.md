@@ -1,9 +1,9 @@
 ---
 fest_type: task
-fest_id: 01_execute_inft_mint.md
+fest_id: 05_execute_inft_mint
 fest_name: execute-inft-mint
 fest_parent: 01_0g_galileo_evidence
-fest_order: 1
+fest_order: 5
 fest_status: pending
 fest_autonomy: medium
 fest_created: 2026-03-11T05:02:37.294941-06:00

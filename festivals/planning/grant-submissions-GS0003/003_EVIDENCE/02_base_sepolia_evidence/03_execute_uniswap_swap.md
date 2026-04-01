@@ -1,9 +1,9 @@
 ---
 fest_type: task
-fest_id: 01_execute_uniswap_swap.md
+fest_id: 03_execute_uniswap_swap
 fest_name: execute-uniswap-swap
 fest_parent: 02_base_sepolia_evidence
-fest_order: 1
+fest_order: 3
 fest_status: pending
 fest_autonomy: medium
 fest_created: 2026-03-11T05:02:41.005693-06:00
