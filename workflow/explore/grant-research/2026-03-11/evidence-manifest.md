@@ -45,7 +45,7 @@
 
 **Wallet:** `0x38CB2E2eeb45E6F70D267053DcE3815869a8C44d`
 **Explorer:** https://chainscan.0g.ai
-**Nonce:** 4 (4 transactions confirmed)
+**Nonce:** 16 (16 transactions confirmed)
 
 ### Contract Deployments
 
@@ -54,6 +54,14 @@
 | 1 | ReputationDecay | `0x5a028b3fafd2179c3a453dd3f12b0cead16d86e3810e76b4776478dc06350c58` | `0xbdCdBfd93C4341DfE3408900A830CBB0560a62C4` | Verified |
 | 2 | AgentSettlement | `0x30f03a1777ab8bb0c106260891ec69eb0c0226eaf9243b0456552825698ed89b` | `0x437c2bF7a00Da07983bc1eCaa872d9E2B27A3d40` | Verified |
 | 3 | AgentINFT (ERC-7857) | `0x929d4a74fd6a25ed34e1762181ba842edfa20f76b476a6adc1290db5175a88f4` | `0x17F41075454cf268D0672dd24EFBeA29EF2Dc05b` | Verified |
+
+### Runtime Operations
+
+| # | Operation | Tx Hash | Status |
+|---|-----------|---------|--------|
+| 4 | Storage submit (Flow) | `0x2f0474c92ff45d4844b84798b7e0a0234fbff93f4865f98aacb132ddf2cc0127` | Verified (block 25162207) |
+| 5 | DA submitOriginalData | `0xd1005231e72eac23e89b0d270d2961e46ef1ffeeb61d681fb7eba2a04a13040e` | Verified (block 25162243) |
+| 6 | iNFT mint (token #1) | `0x1e3ef5d267abf759bf173ec7080bbb1c9bc99cdc56890ef36fa749bb542333a2` | Verified (block 25162283) |
 
 ### 0G System Contracts Used
 
@@ -69,8 +77,8 @@
 
 **Wallet:** `0xc71d8a19422c649fe9bdcbf3ffa536326c82b58b`
 **Explorer:** https://sepolia.basescan.org
-**Nonce:** 5 (5 transactions confirmed)
-**Balance:** 0.4999 ETH
+**Nonce:** 9 (9 transactions confirmed)
+**Balance:** ~0.4999 ETH
 
 ### Contract Deployments
 
@@ -86,6 +94,10 @@
 | # | Operation | Tx Hash | Status |
 |---|-----------|---------|--------|
 | 5 | ERC-8004 identity registration (defi-001) | `0x9b31bd785dd7b12649d9d12379546c268aea1da6e0060777bed6276cf8e4002a` | Verified |
+| 6 | USDC approval for Uniswap SwapRouter | `0x83decf0ee123e3d80cd5150c497203e38f2efc02d6d65988b5958a573f694a9d` | Verified |
+| 7 | Uniswap V3 swap (USDC → WETH) | `0x8d316fca79a9f59be8ea27fe11bf48f46ab99841a04f0fcebc36b8a4ad56c74c` | Verified |
+| 8 | x402 USDC payment | `0x68ffd3a619ddb6b6da110f2aef8c16d198dac34a6661efb68241d770297ab6eb` | Verified |
+| 9 | ERC-8021 attributed USDC transfer (builder code: `0xc71d...b58b`) | `0x992c28fa7af5e30b41d997181064367c251b51c47c69122f285c892e2e403b6f` | Verified |
 
 ### Funding
 
@@ -114,8 +126,8 @@
 | Chain | Transactions | Contracts Deployed | Agent Operations |
 |-------|-------------|-------------------|------------------|
 | Hedera Testnet | 70+ | — (native services) | HCS messaging, token transfers, scheduling |
-| 0G Galileo | 3 | 3 (Settlement, Reputation, iNFT) | Contract deployment |
-| Base Sepolia | 5 | 4 (Settlement, Reputation, iNFT, Identity) | ERC-8004 identity registration |
+| 0G Galileo | 16 | 3 (Settlement, Reputation, iNFT) | Storage submit, DA submit, iNFT mint |
+| Base Sepolia | 9 | 4 (Settlement, Reputation, iNFT, Identity) | ERC-8004 registration, Uniswap swap, x402 payment, ERC-8021 attribution |
 | Ethereum Sepolia | 2+ | CRE Risk Router | Risk evaluation with DON consensus |
 
-**Total on-chain transactions across 4 chains: 80+**
+**Total on-chain transactions across 4 chains: 97+**

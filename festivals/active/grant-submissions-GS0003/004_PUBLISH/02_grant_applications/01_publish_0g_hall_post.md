@@ -4,11 +4,13 @@ fest_id: 01_publish_0g_hall_post
 fest_name: publish-0g-hall-post
 fest_parent: 02_grant_applications
 fest_order: 1
-fest_status: pending
+fest_status: completed
 fest_autonomy: low
 fest_created: 2026-03-31T16:50:00-06:00
+fest_updated: 2026-04-01T17:12:12.114708-06:00
 fest_tracking: true
 ---
+
 
 # Task: Publish 0G Guild Forum Post
 

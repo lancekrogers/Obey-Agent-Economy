@@ -1,18 +1,20 @@
 ---
+fest_type: gate
+fest_id: 05_fest_commit.md
+fest_name: Fest Commit Changes
+fest_parent: 03_evidence_manifest
+fest_order: 5
+fest_status: completed
 fest_autonomy: high
-fest_created: 2026-03-31T17:16:13.653187-06:00
 fest_gate_id: fest-commit
 fest_gate_type: commit
-fest_id: 05_fest_commit.md
 fest_managed: true
-fest_name: Fest Commit Changes
-fest_order: 5
-fest_parent: 03_evidence_manifest
-fest_status: pending
+fest_created: 2026-03-31T17:16:13.653187-06:00
+fest_updated: 2026-04-01T03:18:21.248964-06:00
 fest_tracking: true
-fest_type: gate
 fest_version: "1.0"
 ---
+
 
 # Task: Fest Commit Sequence Changes
 

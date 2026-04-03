@@ -4,11 +4,13 @@ fest_id: 03_evidence_manifest
 fest_name: evidence-manifest
 fest_parent: 003_EVIDENCE
 fest_order: 3
-fest_status: pending
+fest_status: completed
 fest_created: 2026-03-11T05:02:32.022115-06:00
+fest_updated: 2026-04-01T03:18:21.249153-06:00
 fest_tracking: true
-fest_working_dir: "workflow/explore/grant-research/2026-03-11"
+fest_working_dir: workflow/explore/grant-research/2026-03-11
 ---
+
 
 # Sequence Goal: 03_evidence_manifest
 
