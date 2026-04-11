@@ -1,21 +1,14 @@
 ---
 id: bagsapp-hackathon-20260312-233001
 title: Bags Hackathon - AI Agent Integration
+status: dungeon/archived
+created_at: 2026-03-12T00:00:00Z
 type: idea
-concept:
-status: inbox
-created_at: 2026-03-12
 author: lancekrogers
-
 priority: high
 horizon: now
-
-blocked_by: []
-depends_on: []
-
-promotion_criteria: >
-  Exploration doc completed, integration path validated, Bags API key obtained,
-  and mainnet deployment strategy approved.
+promotion_criteria: Exploration doc completed, integration path validated, Bags API key obtained, and mainnet deployment strategy approved.
+updated_at: 2026-04-11T05:40:28.451918-06:00
 ---
 
 # Bags Hackathon - AI Agent Integration
@@ -71,3 +64,8 @@ Bags-native agent opens a path to mainnet traction, real revenue, and hackathon 
 - Fee sharing supports up to 100 claimers with basis point allocation
 - Agent can autonomously launch tokens, trade, and claim fees
 - See workflow/explore/bagsapphackathon/ for full integration analysis
+
+
+## Decision Record
+**Status**: dungeon/archived | **Date**: 2026-04-11
+Bags ecosystem deprioritized as gambling-adjacent
