@@ -2,6 +2,10 @@
 
 **Autonomous AI agents with human-controlled boundaries. Five agents. Five blockchains. Verifiable on-chain.**
 
+[![Hackathon](https://img.shields.io/badge/Chainlink%20Convergence-2nd%20Place%20Autonomous%20Agents-FFD700)](https://chain.link/hackathon/winners/cre-risk-router)
+
+**2nd Place, Autonomous Agents** -- [Convergence: A Chainlink Hackathon 2026](https://chain.link/hackathon/winners/cre-risk-router) (CRE Risk Router)
+
 ![Agent Economy Observer Dashboard](docs/images/dashboard-demo.gif)
 
 ## Overview
